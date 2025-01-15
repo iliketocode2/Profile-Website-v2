@@ -1,15 +1,18 @@
-import { Github } from "lucide-react"; // Import GitHub icon
+import { Github } from "lucide-react";
 import { Project } from "../app/lib/types";
+import Image from "next/image";
 
 export function ProjectCard({ title, date, description, imageUrl, links }: Project) {
   return (
     <div className="flex flex-col md:flex-row w-full max-w-4xl mx-auto mb-8 pb-8 border-b border-gray-300 dark:border-gray-700">
       <div className="flex-shrink-0 w-full md:w-72 h-44 mb-4 md:mb-0 md:mr-5">
-        <div className="w-full h-full bg-gray-900 rounded-lg overflow-hidden">
-          <img
+        <div className="relative w-full h-full bg-gray-900 rounded-lg overflow-hidden">
+          <Image
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
           />
         </div>
       </div>

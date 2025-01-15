@@ -1,8 +1,5 @@
 'use client'
 
-import { ProjectCard } from "@/components/ProjectCard";
-import { projects } from '@/app/lib/projects';
-
 export default function Home() {
   return (
     <main className="min-h-screen w-full max-w-full overflow-x-hidden pb-24">
