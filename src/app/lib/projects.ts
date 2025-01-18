@@ -2,6 +2,15 @@ import { Project } from './types'
 
 export const projects: Project[] = [
     {
+        title: "InterSystems $VECTOR Data Type in Rust",
+        date: "January 2025 | Rust",
+        description: "During January 2025, I worked as a team member of a project group whose goal was to implement the InterSystems $VECTOR data type in Rust. This was an unpaid internship through Tufts and I worked with an Intersystems developer on the project.",
+        imageUrl: "/images/IrisVector.png",
+        links: [
+          { label: "", url: "https://github.com/iliketocode2/Rust-VECTOR", isGithub: true }
+        ]
+    },
+    {
       title: "MealPlanGuru",
       date: "January 2025 | React.js, Next.js, Tailwind CSS, Neon, PostgreSQL, Resend Email",
       description: "A website designed to help students at Boston universities learn more about their meal plans.",
