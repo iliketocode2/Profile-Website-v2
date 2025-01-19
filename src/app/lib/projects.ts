@@ -43,7 +43,7 @@ export const projects: Project[] = [
     {
         title: "LEGO SPIKE AI Maze",
         date: "July 2024 | HTML, JavaScript, CSS, Python, LEGO",
-        description: ">As a research project for the Tufts Center for Engineering Education and Outreach, I developed a Lego labyrinth that is able to solve itself. This project integrated an openMV camera with a Lego Spike, all sending and receiving data from my computer.",
+        description: "As a research project for the Tufts Center for Engineering Education and Outreach, I developed a Lego labyrinth that is able to solve itself. This project integrated an openMV camera with a Lego Spike, all sending and receiving data from my computer.",
         imageUrl: "/images/MazeAndInterfaceRender.png",
         links: [
             { label: "", url: "https://github.com/iliketocode2/Lego-Spike-AI-Labyrinth", isGithub: true }

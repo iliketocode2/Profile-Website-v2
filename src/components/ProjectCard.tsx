@@ -18,18 +18,7 @@ export function ProjectCard({ title, date, description, imageUrl, links }: Proje
       </div>
       <div className="flex-grow">
         <h3 className="text-2xl font-semibold mb-2">
-          {links?.length === 1 ? (
-            <a
-              href={links[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-900 dark:text-white hover:underline"
-            >
-              {title}
-            </a>
-          ) : (
             <span className="text-gray-900 dark:text-white">{title}</span>
-          )}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{date}</p>
         <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
