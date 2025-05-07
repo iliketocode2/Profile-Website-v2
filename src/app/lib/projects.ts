@@ -2,6 +2,15 @@ import { Project } from './types'
 
 export const projects: Project[] = [
     {
+        title: "JumboMap",
+        date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
+        description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
+        imageUrl: "/images/jumbomap.png",
+        links: [
+          { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
+        ]
+    },
+    {
         title: "InterSystems $VECTOR Data Type in Rust",
         date: "January 2025 | Rust",
         description: "During January 2025, I worked as a team member of a project group whose goal was to implement the InterSystems $VECTOR data type in Rust. This was an unpaid internship through Tufts and I worked with an Intersystems developer on the project.",
@@ -12,7 +21,7 @@ export const projects: Project[] = [
     },
     {
       title: "MealPlanGuru",
-      date: "January 2025 | React.js, Next.js, Tailwind CSS, Neon, PostgreSQL, Resend Email",
+      date: "January 2025 | React.js, Next.js, Tailwind CSS, PostgreSQL, Neon, Resend Email",
       description: "A website designed to help students at Boston universities learn more about their meal plans.",
       imageUrl: "/images/mealplangurus.png",
       links: [
