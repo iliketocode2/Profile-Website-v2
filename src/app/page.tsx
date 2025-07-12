@@ -32,10 +32,14 @@ export default function Home() {
 
           <div className="w-full max-w-4xl mx-auto space-y-8 mb-12 pb-12 border-b border-gray-300 dark:border-gray-700">
             <p className="text-xl leading-relaxed text-gray-800 dark:text-gray-200 text-center">
-              Hi, I&apos;m Will! I am a freshman at Tufts University studying mechanical engineering and computer science. 
-              I love STEM-related topics such as website design, aerospace engineering, and robotics. 
-              I have experience programming with Python 2.7 and 3, C++, Rust, Java, HTML, CSS, JavaScript, 
-              Typescript, and Swift. In my free time, I love to watch Chelsea FC and go skiing!
+              Hi, I&apos;m Will! I’m a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
+              Some of my current interests include web development, cybersecurity, aerospace engineering, and robotics. 
+              I learn quickly and enjoy working with others, or independently on smaller projects.
+              I’ve worked across the full stack on web-based projects and have also built systems that connect software and hardware.
+              On the mechanical side, I’ve led student teams that designed satellites and competition robots, contributing to CAD modeling, 
+              machining, simulation, and systems integration. In my free time, I enjoy watching Chelsea FC, building with LEGO, and skiing 
+              whenever I get the chance. Feel free to reach out if you’d like to collaborate on a project or just chat about tech, 
+              engineering, or anything else!
             </p>
           </div>
 
@@ -44,7 +48,7 @@ export default function Home() {
             <div className="flex-1 space-y-4">
               <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Featured Projects</h2>
               <div className="flex space-x-6 overflow-x-auto pb-4">
-                {projects.slice(1, 3).map((project, index) => (
+                {projects.slice(2, 4).map((project, index) => (
                   <div 
                     key={index} 
                     className="flex-shrink-0 w-64 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"

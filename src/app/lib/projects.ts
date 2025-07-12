@@ -11,6 +11,16 @@ export const projects: Project[] = [
         ]
     },
     {
+        title: "Somerville Museum Website - JumboCode",
+        date: "September 2024 - May 2025 | React.js, Next.js, Javascript, CSS, PostgreSQL, Neon",
+        description: "Working with a team of 13 other Tufts students, we developed an inventory management system for a local museum in Somerville, MA. The project was developed as part of the JumboCode organization at Tufts University.",
+        imageUrl: "/images/Somerville Museum Dashboard.png",
+        links: [
+          { label: "Website", url: "https://somervillemuseum.vercel.app/", isGithub: false },
+          { label: "", url: "https://github.com/JumboCode/somerville-museum", isGithub: true }
+        ]
+    },
+    {
         title: "InterSystems $VECTOR Data Type in Rust",
         date: "January 2025 | Rust",
         description: "During January 2025, I worked as a team member of a project group whose goal was to implement the InterSystems $VECTOR data type in Rust. This was an unpaid internship through Tufts and I worked with an Intersystems developer on the project.",
