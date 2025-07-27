@@ -94,7 +94,7 @@ export default function Home() {
 
             {/* Skills Section */}
             <div className="flex-1 space-y-4">
-              <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Skills</h2>
+              <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Featured Skills</h2>
               {skillCategories.map((category, catIndex) => (
                 <div key={catIndex} className="mb-4 text-center">
                   <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-300">

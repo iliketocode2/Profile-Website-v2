@@ -19,4 +19,15 @@ export interface Hobby {
   image: string;
   description: string;
 }
+
+export interface StackItem {
+  name: string;
+  category?: string;
+  description?: string;
+}
+
+export interface StackCategory {
+  title: string;
+  items: StackItem[];
+}
   
