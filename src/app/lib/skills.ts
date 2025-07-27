@@ -56,12 +56,14 @@ export const stackCategories: StackCategory[] = [
     ]
   },
   {
-    title: "Python Libraries & Frameworks",
+    title: "CAD & UI Tools",
     items: [
-      { name: "NumPy", category: "Scientific Computing" },
-      { name: "Pandas", category: "Scientific Computing" },
-      { name: "Matplotlib", category: "Scientific Computing" },
-      { name: "PySerial", category: "Hardware/IO" }
+      { name: "SOLIDWORKS", category: "3D CAD & Modeling" },
+      { name: "Fusion 360", category: "3D CAD & Modeling" },
+      { name: "Onshape", category: "3D CAD & Modeling" },
+      { name: "Shapr3D", category: "3D CAD & Modeling" },
+      { name: "Figma", category: "UI & Graphics" },
+      { name: "Canva", category: "UI & Graphics" }
     ]
   },
   {
@@ -90,14 +92,12 @@ export const stackCategories: StackCategory[] = [
     ]
   },
   {
-    title: "CAD & UI Tools",
+    title: "Python Libraries & Frameworks",
     items: [
-      { name: "SOLIDWORKS", category: "3D CAD & Modeling" },
-      { name: "Fusion 360", category: "3D CAD & Modeling" },
-      { name: "Onshape", category: "3D CAD & Modeling" },
-      { name: "Shapr3D", category: "3D CAD & Modeling" },
-      { name: "Figma", category: "UI & Graphics" },
-      { name: "Canva", category: "UI & Graphics" }
+      { name: "NumPy", category: "Scientific Computing" },
+      { name: "Pandas", category: "Scientific Computing" },
+      { name: "Matplotlib", category: "Scientific Computing" },
+      { name: "PySerial", category: "Hardware/IO" }
     ]
   }
 ]

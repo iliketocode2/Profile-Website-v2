@@ -1,13 +1,13 @@
 'use client'
 
-import { stackCategories } from '@/app/lib/stack';
+import { stackCategories } from '@/app/lib/skills';
 import { StackCategory } from '@/app/lib/types';
 
 export default function Stack() {
   return (
     <main className="min-h-screen w-full pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Stack Categories - Two Column Layout */}
+        {/* Skill Categories - Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {stackCategories.map((category, categoryIndex) => (
             <StackCategorySection key={categoryIndex} category={category} />
