@@ -1,5 +1,6 @@
 'use client'
 import { projects } from '@/app/lib/projects';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -20,21 +21,21 @@ export default function Home() {
               <div className="lg:w-[75%]">
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
-                    Hi, I'm Will! I'm a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
+                    Hi, I&apos;m Will! I&apos;m a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
                     In addition to my studies, I work as a student researcher at the Tufts Center for Engineering Education and Outreach (CEEO) 
                     and I serve as the captain of the Tufts CubeSat team, where I lead a group of students in designing and building a small satellite. 
                     Some of my current interests include web development, cybersecurity, aerospace engineering, and robotics.
                   </p>
                   <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
                     I learn quickly and enjoy working with others, or independently on smaller projects. 
-                    I've worked across the full stack on web-based projects and have recently been building systems that connect software and hardware 
+                    I&apos;ve worked across the full stack on web-based projects and have recently been building systems that connect software and hardware 
                     through UART, BLE, and serial connection. 
-                    On the mechanical side, I've led a competition robotics team (FTC Team 5276), contributing to CAD modeling, 
+                    On the mechanical side, I&apos;ve led a competition robotics team (FTC Team 5276), contributing to CAD modeling, 
                     machining, simulation, and systems integration in addition to my current work as the CubeSat lead.
                   </p>
                   <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
                     In my free time, I enjoy watching Chelsea FC, building with LEGO, and skiing whenever I get the chance. 
-                    Feel free to reach out if you'd like to collaborate on a project or just chat about tech, engineering, or anything else!
+                    Feel free to reach out if you&apos;d like to collaborate on a project or just chat about tech, engineering, or anything else!
                   </p>
                 </div>
               </div>
@@ -48,9 +49,11 @@ export default function Home() {
                       className="w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"
                     >
                       <div className="relative">
-                        <img
+                        <Image
                           src={project.imageUrl}
                           alt={project.title}
+                          width={400}
+                          height={112}
                           className="w-full h-28 object-cover"
                         />
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/70 flex items-end p-3">
