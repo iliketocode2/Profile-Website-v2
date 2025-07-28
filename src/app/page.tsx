@@ -20,7 +20,7 @@ export default function Home() {
               <div className="lg:w-[75%]">
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
-                    Hi, I&apos;m Will! I&apos;m a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
+                    Hi, I'm Will! I'm a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
                     In addition to my studies, I work as a student researcher at the Tufts Center for Engineering Education and Outreach (CEEO) 
                     and I serve as the captain of the Tufts CubeSat team, where I lead a group of students in designing and building a small satellite. 
                     Some of my current interests include web development, cybersecurity, aerospace engineering, and robotics.

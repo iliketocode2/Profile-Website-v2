@@ -4,10 +4,10 @@ export const projects: Project[] = [
     {
         title: "Technologies and Designs for Remote Robotics Competition",
         date: "July 2025 | MicroPython, Python, Javascript, OpenCV, Websockets",
-        description: "Developed as a summer research project at the Tufts Center for Engineering Education and Outreach, this platform enables teams to complete mission-based challenges using LEGO SPIKE and LEGO Science hardware and projected and physical game elements. It integrates real-time communication through WebSockets, Bluetooth, and serial protocols, built entirely on the open-source PyScript.com platform.",
+        description: "Developed as a summer research project at the Tufts Center for Engineering Education and Outreach with Conor Temme, this platform enables teams to complete mission-based challenges using LEGO SPIKE and LEGO Science hardware and projected and physical game elements. It integrates real-time communication through WebSockets, Bluetooth, and serial protocols, built entirely on the open-source PyScript.com platform.",
         imageUrl: "/images/robot and controller.jpeg",
         links: [
-          { label: "Website", url: "https://fetlab.notion.site/Remote-FLL-Competition-237df3d0e05280e09622c856f06f14f7", isGithub: false },
+          { label: "Documentation", url: "https://fetlab.notion.site/Remote-FLL-Competition-237df3d0e05280e09622c856f06f14f7", isGithub: false },
           { label: "", url: "https://github.com/tuftsceeo/Remote-Robotics-Competition", isGithub: true }
         ]
     },
@@ -17,7 +17,7 @@ export const projects: Project[] = [
         description: "This project involved creating a system that allows multiple ESP32 devices to communicate with each other and a web server using websockets. The project was designed to enable real-time data exchange between devices, built at the CEEO.",
         imageUrl: "/images/Smart Motor Swarm img.png",
         links: [
-          { label: "Website", url: "https://fetlab.notion.site/Smart-Motors-with-Websockets-23cdf3d0e05280e59db1ee467530549b?source=copy_link", isGithub: false },
+          { label: "Documentation", url: "https://fetlab.notion.site/Smart-Motors-with-Websockets-23cdf3d0e05280e59db1ee467530549b?source=copy_link", isGithub: false },
           { label: "", url: "https://github.com/iliketocode2/Smart-Motors", isGithub: true }
         ]
     },
