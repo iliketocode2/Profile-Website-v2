@@ -3,9 +3,9 @@ import { Project } from './types'
 export const projects: Project[] = [
     {
         title: "Technologies and Designs for Remote Robotics Competition",
-        date: "July 2025 | MicroPython, Python, Javascript, OpenCV, Websockets",
-        description: "Developed as a summer research project at the Tufts Center for Engineering Education and Outreach with Conor Temme, this platform enables teams to complete mission-based challenges using LEGO SPIKE and LEGO Science hardware and projected and physical game elements. It integrates real-time communication through WebSockets, Bluetooth, and serial protocols, built entirely on the open-source PyScript.com platform.",
-        imageUrl: "/images/robot and controller.jpeg",
+        date: "July 2025 | MicroPython, Python, Javascript, OpenCV, Websockets, WebRTC, Pyscript.com",
+        description: "Inspired by FIRST LEGO League, this project explored and developed multiple mission-based robotics competitions using LEGO SPIKE, LEGO Science Hardware, and OpenMV cameras. Real-time Apriltag tracking (via OpenCV and Pupil-Apriltags) enabled projection of both a team’s and their opponent’s robot positions onto a shared field, with communication handled through WebSockets and Bluetooth protocols using PyScript.com interfaces.",
+        imageUrl: "/images/Apriltag overview1.png",
         links: [
           { label: "Documentation", url: "https://fetlab.notion.site/Remote-FLL-Competition-237df3d0e05280e09622c856f06f14f7", isGithub: false },
           { label: "", url: "https://github.com/tuftsceeo/Remote-Robotics-Competition", isGithub: true }
@@ -14,7 +14,7 @@ export const projects: Project[] = [
     {
         title: "Websocket Communication with ESP32s",
         date: "June 2025 | MicroPython, Python, TCP/IP, Websockets",
-        description: "This project involved creating a system that allows multiple ESP32 devices to communicate with each other and a web server using websockets. The project was designed to enable real-time data exchange between devices, built at the CEEO.",
+        description: "This project explored the feasibility of creating a direct WebSocket connection written in MicroPython from ESP32 \"Smart Motors\" to a secure JSON-based messaging system called channels, without relying on intermediary PyScript webpages.",
         imageUrl: "/images/Smart Motor Swarm img.png",
         links: [
           { label: "Documentation", url: "https://fetlab.notion.site/Smart-Motors-with-Websockets-23cdf3d0e05280e59db1ee467530549b?source=copy_link", isGithub: false },
