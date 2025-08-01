@@ -94,7 +94,7 @@ export const projects: Project[] = [
       ],
       tags: {
         technologies: ["HTML", "JavaScript", "CSS", "Python", "MicroPython", "LEGO"],
-        categories: ["Research", "Hardware"]
+        categories: ["Research"]
       }
     },
     {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import ProjectFilter from "@/components/ProjectFilter";
 import { projects } from '@/app/lib/projects';
@@ -17,9 +17,9 @@ export default function Projects() {
 
   const displayedProjects = filteredProjects.slice(0, showAll);
 
-  const handleFilteredProjects = (filtered: Project[]) => {
+  const handleFilteredProjects = useCallback((filtered: Project[]) => {
     setFilteredProjects(filtered);
-  };
+  }, []);
 
   return (
     <div className="w-full px-4 py-8">
@@ -61,7 +61,7 @@ export default function Projects() {
         <div className="text-center py-12 max-w-4xl mx-auto">
           <div className="text-gray-500 dark:text-gray-400">
             <h3 className="text-xl font-semibold mb-2">No projects found</h3>
-            <p className="text-sm">Try adjusting your search terms or filters to find what you're looking for.</p>
+            <p className="text-sm">Try adjusting your search terms or filters to find what you&apos;re looking for.</p>
           </div>
         </div>
       )}

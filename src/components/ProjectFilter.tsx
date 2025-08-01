@@ -28,7 +28,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
   const allCategories = Array.from(new Set(projects.flatMap(p => p.tags.categories))).sort();
 
   // Filter projects based on current filters
-  const filterProjects = () => {
+  useEffect(() => {
     let filtered = projects;
 
     // Text search
@@ -62,19 +62,14 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
     }
 
     onFilteredProjects(filtered);
-  };
-
-  // Apply filters whenever dependencies change
-  useEffect(() => {
-    filterProjects();
-  }, [searchTerm, selectedTechnologies, selectedCategories, projects]);
+  }, [searchTerm, selectedTechnologies, selectedCategories, projects, onFilteredProjects]);
 
   // Show all projects by default when no filters are applied
   useEffect(() => {
     if (!searchTerm && selectedTechnologies.length === 0 && selectedCategories.length === 0) {
       onFilteredProjects(projects);
     }
-  }, [projects]);
+  }, [projects, searchTerm, selectedTechnologies.length, selectedCategories.length, onFilteredProjects]);
 
   const toggleTechnology = (tech: string) => {
     setSelectedTechnologies(prev => 
@@ -191,7 +186,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
           <div className="flex flex-wrap gap-1.5">
             {searchTerm && (
               <div className="flex items-center gap-1 px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded-full text-xs">
-                <span>Search: "{searchTerm}"</span>
+                <span>Search: &quot;{searchTerm}&quot;</span>
                 <button onClick={() => setSearchTerm('')}>
                   <X className="h-3 w-3" />
                 </button>
