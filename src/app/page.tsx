@@ -3,6 +3,14 @@ import { projects } from '@/app/lib/projects';
 import Image from 'next/image';
 
 export default function Home() {
+  const featuredProjectTitles = [
+    "Technologies and Designs for Remote Robotics Competition",
+    "MealPlanGuru"
+  ];
+  const featuredProjects = projects.filter(project => 
+    featuredProjectTitles.includes(project.title)
+  );
+
   return (
     <main className="min-h-screen w-full max-w-full overflow-x-hidden pb-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +51,7 @@ export default function Home() {
               <div className="lg:w-[25%]">
                 <h2 className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Featured Projects</h2>
                 <div className="space-y-4">
-                  {projects.slice(4, 6).map((project, index) => (
+                  {featuredProjects.map((project, index) => (
                     <div 
                       key={index} 
                       className="w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"
