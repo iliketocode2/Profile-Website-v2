@@ -1,17 +1,13 @@
-// export interface Project {
-//     title: string;
-//     date: string;
-//     description: string;
-//     imageUrl: string;
-//     link?: string;
-//   }
-
 export interface Project {
   title: string;
   date: string;
   description: string;
   imageUrl: string;
   links?: { label: string; url: string; isGithub?: boolean }[];
+  tags: {
+    technologies: string[];
+    categories: string[];
+  };
 }
   
 export interface Hobby {

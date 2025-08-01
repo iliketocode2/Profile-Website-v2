@@ -3,13 +3,17 @@ import { Project } from './types'
 export const projects: Project[] = [
     {
         title: "Technologies and Designs for Remote Robotics Competition",
-        date: "July 2025 | MicroPython, Python, Javascript, OpenCV, Websockets, WebRTC, Pyscript.com",
-        description: "Inspired by FIRST LEGO League, this project explored and developed multiple mission-based robotics competitions using LEGO SPIKE, LEGO Science Hardware, and OpenMV cameras. Real-time Apriltag tracking (via OpenCV and Pupil-Apriltags) enabled projection of both a team’s and their opponent’s robot positions onto a shared field, with communication handled through WebSockets and Bluetooth protocols using PyScript.com interfaces.",
+        date: "July 2025 | MicroPython, Python, JavaScript, OpenCV, Websockets, WebRTC, Pyscript.com",
+        description: "Inspired by FIRST LEGO League, this project explored and developed multiple mission-based robotics competitions using LEGO SPIKE, LEGO Science Hardware, and OpenMV cameras. Real-time Apriltag tracking (via OpenCV and Pupil-Apriltags) enabled projection of both a team's and their opponent's robot positions onto a shared field, with communication handled through WebSockets and Bluetooth protocols using PyScript.com interfaces.",
         imageUrl: "/images/Apriltag overview1.png",
         links: [
           { label: "Documentation", url: "https://fetlab.notion.site/Remote-FLL-Competition-237df3d0e05280e09622c856f06f14f7", isGithub: false },
-          { label: "", url: "https://github.com/tuftsceeo/Remote-Robotics-Competition", isGithub: true }
-        ]
+          { label: "GitHub", url: "https://github.com/tuftsceeo/Remote-Robotics-Competition", isGithub: true }
+        ],
+        tags: {
+          technologies: ["MicroPython", "Python", "JavaScript", "Websockets", "WebRTC", "Pyscript.com"],
+          categories: ["Research", "Robotics"]
+        }
     },
     {
         title: "Websocket Communication with ESP32s",
@@ -18,8 +22,12 @@ export const projects: Project[] = [
         imageUrl: "/images/Smart Motor Swarm img.png",
         links: [
           { label: "Documentation", url: "https://fetlab.notion.site/Smart-Motors-with-Websockets-23cdf3d0e05280e59db1ee467530549b?source=copy_link", isGithub: false },
-          { label: "", url: "https://github.com/iliketocode2/Smart-Motors", isGithub: true }
-        ]
+          { label: "GitHub", url: "https://github.com/iliketocode2/Smart-Motors", isGithub: true }
+        ],
+        tags: {
+          technologies: ["MicroPython", "Python", "TCP/IP", "Websockets"],
+          categories: ["Research", "Software"]
+        }
     },
     {
         title: "JumboMap",
@@ -28,17 +36,25 @@ export const projects: Project[] = [
         imageUrl: "/images/jumbomap.png",
         links: [
           { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
-        ]
+        ],
+        tags: {
+          technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
+          categories: ["Web Development"]
+        }
     },
     {
         title: "Somerville Museum Website - JumboCode",
-        date: "September 2024 - May 2025 | React.js, Next.js, Javascript, CSS, PostgreSQL, Neon",
+        date: "September 2024 - May 2025 | React.js, Next.js, JavaScript, CSS, PostgreSQL, Neon",
         description: "Working with a team of 13 other Tufts students, we developed an inventory management system for a local museum in Somerville, MA. The project was developed as part of the JumboCode organization at Tufts University.",
         imageUrl: "/images/Somerville Museum Dashboard.png",
         links: [
           { label: "Website", url: "https://somervillemuseum.vercel.app/", isGithub: false },
-          { label: "", url: "https://github.com/JumboCode/somerville-museum", isGithub: true }
-        ]
+          { label: "GitHub", url: "https://github.com/JumboCode/somerville-museum", isGithub: true }
+        ],
+        tags: {
+          technologies: ["React.js", "Next.js", "JavaScript", "CSS", "PostgreSQL", "Neon"],
+          categories: ["Web Development"]
+        }
     },
     {
         title: "InterSystems $VECTOR Data Type in Rust",
@@ -46,8 +62,12 @@ export const projects: Project[] = [
         description: "During January 2025, I worked as a team member of a project group whose goal was to implement the InterSystems $VECTOR data type in Rust. This was an unpaid internship through Tufts and I worked with an Intersystems developer on the project.",
         imageUrl: "/images/IrisVector.png",
         links: [
-          { label: "", url: "https://github.com/iliketocode2/Rust-VECTOR", isGithub: true }
-        ]
+          { label: "GitHub", url: "https://github.com/iliketocode2/Rust-VECTOR", isGithub: true }
+        ],
+        tags: {
+          technologies: ["Rust"],
+          categories: ["Research"]
+        }
     },
     {
       title: "MealPlanGuru",
@@ -56,8 +76,12 @@ export const projects: Project[] = [
       imageUrl: "/images/mealplangurus.png",
       links: [
         { label: "Website", url: "https://www.mealplangurus.com/", isGithub: false },
-        { label: "", url: "https://github.com/iliketocode2/mealplanguruofficial", isGithub: true }
-      ]
+        { label: "GitHub", url: "https://github.com/iliketocode2/mealplanguruofficial", isGithub: true }
+      ],
+      tags: {
+        technologies: ["React.js", "Next.js", "CSS", "PostgreSQL", "Neon", "Resend Email"],
+        categories: ["Web Development"]
+      }
     },
     {
       title: "LEGO SPIKE Test Rig",
@@ -66,8 +90,12 @@ export const projects: Project[] = [
       imageUrl: "/images/testRigSite.png",
       links: [
         { label: "Website", url: "https://iliketocode2.pyscriptapps.com/firmware-rig-feedback/latest/", isGithub: false },
-        { label: "", url: "https://github.com/iliketocode2/Lego-Spike-Test-Rig", isGithub: true }
-      ]
+        { label: "GitHub", url: "https://github.com/iliketocode2/Lego-Spike-Test-Rig", isGithub: true }
+      ],
+      tags: {
+        technologies: ["HTML", "JavaScript", "CSS", "Python", "MicroPython", "LEGO"],
+        categories: ["Research", "Hardware"]
+      }
     },
     {
         title: "AI Mini Golf",
@@ -76,8 +104,12 @@ export const projects: Project[] = [
         imageUrl: "/images/mini golf interface.png",
         links: [
             { label: "Website", url: "https://iliketocode2.github.io/AI-Mini-Golf/", isGithub: false },
-            { label: "", url: "https://github.com/iliketocode2/AI-Mini-Golf", isGithub: true }
-        ]
+            { label: "GitHub", url: "https://github.com/iliketocode2/AI-Mini-Golf", isGithub: true }
+        ],
+        tags: {
+          technologies: ["HTML", "JavaScript", "CSS"],
+          categories: ["Game Development"]
+        }
     },
     {
         title: "LEGO SPIKE AI Maze",
@@ -85,8 +117,12 @@ export const projects: Project[] = [
         description: "As a research project for the Tufts Center for Engineering Education and Outreach, I developed a Lego labyrinth that is able to solve itself. This project integrated an openMV camera with a Lego Spike, all sending and receiving data from my computer.",
         imageUrl: "/images/MazeAndInterfaceRender.png",
         links: [
-            { label: "", url: "https://github.com/iliketocode2/Lego-Spike-AI-Labyrinth", isGithub: true }
-        ]
+            { label: "GitHub", url: "https://github.com/iliketocode2/Lego-Spike-AI-Labyrinth", isGithub: true }
+        ],
+        tags: {
+          technologies: ["HTML", "JavaScript", "CSS", "Python", "LEGO"],
+          categories: ["Research", "Robotics"]
+        }
     },
     {
         title: "5276 Robotics Website",
@@ -95,8 +131,12 @@ export const projects: Project[] = [
         imageUrl: "/images/robotics team cover.png",
         links: [
             { label: "Website", url: "https://dshsrobotics.com/index.html", isGithub: false },
-            { label: "", url: "https://github.com/5276-Dover-Sherborn-Robotcs/DSRobotics5276-Web", isGithub: true }
-        ]
+            { label: "GitHub", url: "https://github.com/5276-Dover-Sherborn-Robotcs/DSRobotics5276-Web", isGithub: true }
+        ],
+        tags: {
+          technologies: ["HTML", "JavaScript", "CSS"],
+          categories: ["Web Development"]
+        }
     },
     {
         title: "Hook Mechanism and Spool Design for FTC Robot",
@@ -107,6 +147,10 @@ export const projects: Project[] = [
             { label: "Hook Design", url: "https://collaborate.shapr3d.com/v/ph_cqrzNmELp2-bVyTiZt", isGithub: false },
             { label: "Spool Design", url: "https://collaborate.shapr3d.com/v/ltu1S9aaVxZQYumGc5XWy", isGithub: false },
         ],
+        tags: {
+          technologies: ["Shapr3D"],
+          categories: ["CAD/Design", "Robotics"]
+        }
     },
     {
         title: "Pong Game",
@@ -116,6 +160,10 @@ export const projects: Project[] = [
         links: [
             { label: "Pong Game", url: "https://studio.code.org/projects/applab/o0hDC9nUEVWDZsVRUaRonSjqOA-t3MYLHqWAwwaGW9U", isGithub: false },
         ],
+        tags: {
+          technologies: ["JavaScript"],
+          categories: ["Game Development"]
+        }
     },
     {
         title: "Mandelbrot Fractal Generator",
@@ -125,12 +173,20 @@ export const projects: Project[] = [
         links: [
             { label: "Fractal Generator", url: "https://replit.com/@iliketocode2/Wills-Fractal-Generator-v1", isGithub: false },
         ],
+        tags: {
+          technologies: ["HTML", "JavaScript", "CSS"],
+          categories: ["Web Development"]
+        }
     },
     {
         title: "Model Rockets",
         date: "2015 - 2023 | Estes and Custom Builds",
         description: "In my spare time I enjoy building model rockets and launching them-- from double staged models to pyramid versions they're a fun summer and fall project.",
         imageUrl: "/images/rockets.jpg",
-        links: []
+        links: [],
+        tags: {
+          technologies: [],
+          categories: ["Software"]
+        }
     }
 ];
