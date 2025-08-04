@@ -72,7 +72,16 @@ export default function Home() {
                         <p className="text-xs text-gray-600 dark:text-gray-400">{project.date}</p>
                       </div>
                       <div className="absolute inset-0 bg-gray-900 bg-opacity-70 opacity-0 hover:opacity-100 transition-opacity duration-300 flex">
-                        {project.links?.map((link, linkIndex) => (
+                        {project.academicProject ? (
+                          <div className="flex-1 flex items-center justify-center p-2">
+                            <div className="text-white text-xs text-center">
+                              <div className="mb-1">Academic Project</div>
+                              <div>Contact for details</div>
+                            </div>
+                          </div>
+                        ) : (
+                        
+                        project.links?.map((link, linkIndex) => (
                           <a
                             key={linkIndex}
                             href={link.url}
@@ -90,7 +99,8 @@ export default function Home() {
                             </svg>
                           )}
                           </a>
-                        ))}
+                        ))
+                      )}
                       </div>
                     </div>
                   ))}

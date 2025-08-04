@@ -8,6 +8,7 @@ export interface Project {
     technologies: string[];
     categories: string[];
   };
+  academicProject?: boolean;
 }
   
 export interface Hobby {

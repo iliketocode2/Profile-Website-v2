@@ -30,6 +30,30 @@ export const projects: Project[] = [
         }
     },
     {
+        title: "Gerp - Directory Search Tool",
+        date: "May 2025 | C++, Data Structures, Hash Tables",
+        description: "C++ implementation of a simplified Unix grep tool that recursively searches through directory structures. Features custom hash table with quadratic probing for efficient word indexing, case-sensitive and case-insensitive search modes, memory-optimized file path storage, and query processing with various commands.",
+        imageUrl: "/images/gerp.png",
+        links: [],
+        tags: {
+          technologies: ["C++"],
+          categories: ["Software"]
+        },
+        academicProject: true
+    },
+    {
+        title: "Satellite Orbit Simulation Toolkit",
+        date: "April 2025 | MATLAB, Numerical Methods, GUI Development",
+        description: "A MATLAB simulation toolkit for satellite orbital mechanics featuring multiple numerical methods (Euler, Runge-Kutta 4,5), interactive GUI for parameter selection, 3D visualization with Earth texture mapping, and orbital stability analysis. Demonstrates Newton-Raphson root finding and cubic spline interpolation.",
+        imageUrl: "/images/matlab_final.png",
+        links: [],
+        tags: {
+          technologies: ["MATLAB"],
+          categories: ["Research", "Software"]
+        },
+        academicProject: true
+    },
+    {
         title: "JumboMap",
         date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
         description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
