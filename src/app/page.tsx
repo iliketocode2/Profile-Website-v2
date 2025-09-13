@@ -17,7 +17,14 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center">
           <section className="w-full max-w-4xl mx-auto text-center py-8">
             <h1  
-              className="text-[clamp(3rem,6vw,9rem)] font-bold font-mono bg-gradient-to-r from-[rgb(13,169,216)] to-[rgb(23,196,7)] text-transparent bg-clip-text uppercase leading-[1.1] mb-4 w-full text-center"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-mono uppercase leading-tight mb-4 w-full text-center"
+              style={{
+                background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(34, 197, 94))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                display: 'inline-block'
+              }}
             >
               William <br className="sm:hidden" />
               Goldman
