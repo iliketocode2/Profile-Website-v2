@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-dialog": "^1.1.15",
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.1",
     "next": "15.5.6",
