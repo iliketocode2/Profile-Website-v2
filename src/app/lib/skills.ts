@@ -19,6 +19,7 @@ export const stackCategories: StackCategory[] = [
     title: "Programming Languages",
     items: [
       { name: "Python", category: "General Purpose" },
+      { name: "x86 assembly language", category: "General Purpose" },
       { name: "C", category: "General Purpose" },
       { name: "C++", category: "General Purpose" },
       { name: "Java", category: "General Purpose" },
