@@ -2,6 +2,52 @@ import { Project } from './types'
 
 export const projects: Project[] = [
       {
+        title: "Acrylic Phone Stand & Injection Molding",
+        date: "November 2025",
+        description: `This lab focused on the fundamentals of polymer processing, 
+        specifically exploring the manufacturing techniques of injection molding 
+        and thermal forming. I produced standardized "dogbone" test specimens for tensile
+        analysis and fabricated an acrylic phone stand using localized heating.`,
+        imageUrl: "/images/ME10 Project Images/Project6.1.jpeg",
+        images: [
+          "/images/ME10 Project Images/Project6.jpeg" 
+        ],
+        tags: {
+          technologies: ["Injection Molding", "Strip Heater", "Instron"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering"
+      },
+      {
+        title: "Tea Candle Holder",
+        date: "November 2025",
+        description: `Using the cold saw and Ironworker, I manufactured a small tea candle
+        holder! This involved the fabrication of a three-piece assembly consisting of an 
+        Aluminum ring, a steel plate, and a steel stand.`,
+        imageUrl: "/images/ME10 Project Images/Project5.jpeg",
+        images: [
+          "/images/ME10 Project Images/Project5.1.jpeg" 
+        ],
+        tags: {
+          technologies: ["Sheet Metal Work", "Ironworker", "Cold Saw"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering"
+      },
+      {
+        title: "Sheet Metal Box",
+        date: "October 2025",
+        description: `A simple box made of 1/32" Aluminum. The goal was to practice using
+        the sheet metal break, table sheet metal bender, bead roller, English Wheel, and 
+        various punches and rivets.`,
+        imageUrl: "/images/ME10 Project Images/Project4.jpeg",
+        tags: {
+          technologies: ["Sheet Metal Work"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering"
+      },
+      {
         title: "Gear Sand Casting",
         date: "September 2025",
         description: `This project was an introduction to sand casting and how to design a 
