@@ -154,10 +154,9 @@ export const projects: Project[] = [
     {
         title: "5276 Robotics Website",
         date: "2023 - 2024 | HTML, JavaScript, CSS",
-        description: "I made this website for my school's FIRST Robotics team. It was the first major website that I actually deployed.",
+        description: "I made this website for my school's FIRST Robotics team. It was the first major website that I actually deployed. The website has since be rebuilt by the team's new leadership, but the code is still buried in the original repository.",
         imageUrl: "/images/robotics team cover.png",
         links: [
-            { label: "Website", url: "https://dshsrobotics.com/index.html", isGithub: false },
             { label: "GitHub", url: "https://github.com/5276-Dover-Sherborn-Robotcs/DSRobotics5276-Web", isGithub: true }
         ],
         tags: {
