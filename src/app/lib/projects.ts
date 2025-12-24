@@ -1,6 +1,38 @@
 import { Project } from './types'
 
 export const projects: Project[] = [
+      {
+        title: "Gear Sand Casting",
+        date: "September 2025",
+        description: `This project was an introduction to sand casting and how to design a 
+        proper mold with a runner and a sprue. I chose to make a gear which was casted
+        with molten pewter.`,
+        imageUrl: "/images/ME10 Project Images/Project2.jpeg",
+        images: [
+          "/images/ME10 Project Images/Project2.1.jpeg", 
+          "/images/ME10 Project Images/Project2.2.jpeg"
+        ],
+        tags: {
+          technologies: ["Sand Casting", "Belt Sander"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering"
+      },
+      {
+        title: "Press Support Base",
+        date: "September 2025",
+        description: `This lab activity focused on developing proficiency with the horizontal and vertical bandsaws, 
+        the drill press, and the belt sander. The goal was to fabricate a precision part from 
+        Aluminum 6061-T6511 stock, requiring that the tolerances specified in the 
+        engineering drawings were met. The final success of the project was determined by whether the finished part could 
+        fit into a precision-machined gage block.`,
+        imageUrl: "/images/ME10 Project Images/Project1.jpeg",
+        tags: {
+          technologies: ["Drill Press", "Vertical Bandsaw"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering"
+    },
     {
         title: "Technologies and Designs for Remote Robotics Competition",
         date: "July 2025 | MicroPython, Python, JavaScript, OpenCV, Websockets, WebRTC, Pyscript.com",

@@ -3,6 +3,7 @@ export interface Project {
   date: string;
   description: string;
   imageUrl: string;
+  images?: string[]; // Optional array of additional images for gallery/carousel
   links?: { label: string; url: string; isGithub?: boolean }[];
   tags: {
     technologies: string[];

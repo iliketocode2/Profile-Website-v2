@@ -1,14 +1,19 @@
 'use client'
 
 import { useState } from "react";
-import { Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { Github, ExternalLink, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { Project } from "../app/lib/types";
 import Image from "next/image";
 
 export function ProjectTile(project: Project) {
-  const { title, date, description, imageUrl, links, tags } = project;
+  const { title, date, description, imageUrl, images, links, tags } = project;
   const [datePart] = date.split(' | ');
   const [isExpanded, setIsExpanded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Combine imageUrl with images array if provided
+  const allImages = images && images.length > 0 ? [imageUrl, ...images] : [imageUrl];
+  const hasMultipleImages = allImages.length > 1;
   
   // Check if description is longer than ~150 characters (approximate 3 lines)
   const shouldTruncate = description.length > 150;
@@ -22,16 +27,60 @@ export function ProjectTile(project: Project) {
   
   return (
     <div className="group relative flex flex-col h-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 border border-gray-100 dark:border-gray-800">
-      {/* Image with sophisticated overlay */}
+      {/* Image Gallery with sophisticated overlay */}
       <div className="relative h-56 w-full overflow-hidden">
         <Image
-          src={imageUrl}
-          alt={title}
+          src={allImages[currentImageIndex]}
+          alt={`${title} - Image ${currentImageIndex + 1}`}
           fill
           style={{ objectFit: 'cover' }}
-          className="transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60" />
+        
+        {/* Image Navigation Arrows */}
+        {hasMultipleImages && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+            
+            {/* Image Dots Indicator */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+              {allImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex(index);
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-200 ${
+                    index === currentImageIndex 
+                      ? 'w-6 bg-white' 
+                      : 'w-1.5 bg-white/50 hover:bg-white/75'
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
         
         {/* Discipline Badge */}
         {project.discipline && (
