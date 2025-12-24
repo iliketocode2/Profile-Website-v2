@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import BackgroundAnimation from '@/components/BackgroundAnimation'
 
-const inter = Inter({ subsets: ['latin'] })
+const lora = Lora({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'William Goldman',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={lora.className}>
         <BackgroundAnimation />
         <div className="min-h-screen pb-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

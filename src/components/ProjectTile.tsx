@@ -109,13 +109,11 @@ export function ProjectTile(project: Project) {
         {/* Links or Academic Notice */}
         <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
           {project.academicProject ? (
-            <div className="flex items-start gap-2 p-3 bg-amber-50/80 dark:bg-amber-900/20 backdrop-blur-sm border border-amber-200/50 dark:border-amber-800/50 rounded-xl text-xs">
-              <svg className="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
+              <svg className="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              <span className="text-amber-800 dark:text-amber-200">
-                Academic Project
-              </span>
+              <span>Academic Project</span>
             </div>
           ) : (
             links && links.length > 0 && (

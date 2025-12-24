@@ -20,12 +20,12 @@ export default function CategorySelector({ selectedCategory, onCategoryChange }:
   const categories: Category[] = ['All', 'Computer Science', 'Mechanical Engineering'];
 
   return (
-    <div className="flex p-1 bg-gray-100/50 dark:bg-gray-900/50 backdrop-blur-md rounded-xl w-fit mx-auto border border-gray-200 dark:border-gray-800">
+    <div className="flex flex-wrap justify-center gap-2 p-1 bg-gray-100/50 dark:bg-gray-900/50 backdrop-blur-md rounded-xl w-full mx-auto border border-gray-200 dark:border-gray-800">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onCategoryChange(category)}
-          className={`relative px-6 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2 ${
+          className={`relative px-4 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 flex items-center gap-2 ${
             selectedCategory === category 
               ? 'text-blue-600 dark:text-blue-400' 
               : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'

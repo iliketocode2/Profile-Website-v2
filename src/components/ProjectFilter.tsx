@@ -113,24 +113,25 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
           </div>
 
           {/* Filter Toggle Button and Clear All */}
-          <div className="flex gap-2 sm:flex-shrink-0 items-center">
+          <div className="flex flex-wrap gap-2 sm:flex-nowrap sm:flex-shrink-0 items-center">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-xl 
-                         transition-all duration-200 whitespace-nowrap ${
+              className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-medium rounded-xl 
+                         transition-all duration-200 ${
                 showFilters
                   ? 'bg-white/80 dark:bg-gray-800/80 text-blue-600 dark:text-blue-400 border border-gray-200/50 dark:border-gray-700/50 shadow-sm'
                   : 'bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-white/80 dark:hover:bg-gray-800/80'
               }`}
             >
               <Filter className="h-4 w-4" />
-              Filters {activeFiltersCount > 0 && <span className="ml-1 text-blue-600 dark:text-blue-400">({activeFiltersCount})</span>}
+              <span className="whitespace-nowrap">Filters</span>
+              {activeFiltersCount > 0 && <span className="text-blue-600 dark:text-blue-400 whitespace-nowrap">({activeFiltersCount})</span>}
             </button>
             
             {activeFiltersCount > 0 && (
               <button
                 onClick={clearAllFilters}
-                className="px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 
+                className="px-4 py-2.5 text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 
                            hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 whitespace-nowrap"
               >
                 Clear All

@@ -70,7 +70,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full max-w-3xl space-y-6 p-6 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800 shadow-xl shadow-blue-500/5"
+            className="w-full max-w-3xl space-y-4 sm:space-y-6 p-4 sm:p-6 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800 shadow-xl shadow-blue-500/5"
           >
             <CategorySelector 
               selectedCategory={selectedCategory}
