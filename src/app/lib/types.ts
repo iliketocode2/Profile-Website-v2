@@ -9,6 +9,7 @@ export interface Project {
     categories: string[];
   };
   academicProject?: boolean;
+  featured?: boolean;
 }
   
 export interface Hobby {

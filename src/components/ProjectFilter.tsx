@@ -92,40 +92,39 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
   const activeFiltersCount = selectedTechnologies.length + selectedCategories.length + (searchTerm ? 1 : 0);
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="w-full pb-6 mb-8 border-b border-gray-200 dark:border-gray-700">
       {/* Search Bar and Filter Button Row */}
       <div className="flex flex-col sm:flex-row gap-4 mb-4">
         {/* Search Bar */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 h-5 w-5" />
           <input
             type="text"
             placeholder="Search projects..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
-                       bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                       focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border-b-2 border-gray-300 dark:border-gray-600 
+                       bg-transparent text-gray-900 dark:text-white
+                       focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200"
           />
         </div>
 
         {/* Filter Toggle Button and Clear All */}
-        <div className="flex gap-2 sm:flex-shrink-0">
+        <div className="flex gap-3 sm:flex-shrink-0 items-center">
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 
-                       bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 
-                       transition-colors duration-200 whitespace-nowrap"
+                       hover:text-gray-900 dark:hover:text-white transition-colors duration-200 whitespace-nowrap"
           >
             <Filter className="h-4 w-4" />
-            Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+            Filters {activeFiltersCount > 0 && <span className="ml-1 text-blue-600 dark:text-blue-400">({activeFiltersCount})</span>}
           </button>
           
           {activeFiltersCount > 0 && (
             <button
               onClick={clearAllFilters}
-              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 
-                         px-3 py-2 whitespace-nowrap"
+              className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 
+                         transition-colors duration-200 whitespace-nowrap"
             >
               Clear All
             </button>
@@ -135,7 +134,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
 
       {/* Filter Panel */}
       {showFilters && (
-        <div className="space-y-4 border-t border-gray-200 dark:border-gray-600 pt-4">
+        <div className="space-y-4 pt-4">
           {/* Technologies */}
           {allTechnologies.length > 0 && (
             <div>
@@ -182,7 +181,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
 
       {/* Active Filters Display */}
       {activeFiltersCount > 0 && (
-        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+        <div className="mt-4 pt-4">
           <div className="flex flex-wrap gap-1.5">
             {searchTerm && (
               <div className="flex items-center gap-1 px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded-full text-xs">

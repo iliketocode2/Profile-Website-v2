@@ -30,7 +30,7 @@ function StackCategorySection({ category }: { category: StackCategory }) {
   }, {} as Record<string, typeof category.items>);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-800/30 p-4 rounded-lg">
+    <div className="p-4 rounded-lg">
       <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
         {category.title}
       </h2>

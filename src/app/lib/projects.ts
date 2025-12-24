@@ -13,7 +13,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["MicroPython", "Python", "JavaScript", "Websockets", "WebRTC", "Pyscript.com"],
           categories: ["Research", "Robotics"]
-        }
+        },
+        featured: true
     },
     {
         title: "Websocket Communication with ESP32s",
@@ -64,7 +65,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
           categories: ["Web Development"]
-        }
+        },
+        featured: true
     },
     {
         title: "Somerville Museum Website - JumboCode",
@@ -105,7 +107,8 @@ export const projects: Project[] = [
       tags: {
         technologies: ["React.js", "Next.js", "CSS", "PostgreSQL", "Neon", "Resend Email"],
         categories: ["Web Development"]
-      }
+      },
+      featured: true
     },
     {
       title: "LEGO SPIKE Test Rig",
