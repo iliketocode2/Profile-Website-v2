@@ -21,55 +21,74 @@ export function ProjectTile(project: Project) {
   const displayDescription = isExpanded ? description : (shouldTruncate ? getTruncatedDescription(description, 150) : description);
   
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
-      {/* Image */}
-      <div className="relative w-full h-48 bg-gray-900 overflow-hidden">
+    <div className="group relative flex flex-col h-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 border border-gray-100 dark:border-gray-800">
+      {/* Image with sophisticated overlay */}
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={imageUrl}
           alt={title}
           fill
           style={{ objectFit: 'cover' }}
-          className="hover:scale-105 transition-transform duration-300"
+          className="transition-transform duration-700 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60" />
+        
+        {/* Discipline Badge */}
+        {project.discipline && (
+          <div className="absolute top-4 left-4">
+            <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-md text-gray-900 dark:text-white shadow-lg">
+              {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
+            </span>
+          </div>
+        )}
+        
+        {/* Featured Badge */}
+        {project.featured && (
+          <div className="absolute top-4 right-4">
+            <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-blue-500/90 backdrop-blur-md text-white shadow-lg">
+              Featured
+            </span>
+          </div>
+        )}
       </div>
       
       {/* Content */}
-      <div className="flex flex-col flex-grow p-4">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+      <div className="flex flex-col flex-grow p-6">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
           {title}
         </h3>
         
-        <div className="text-xs mb-2 text-gray-600 dark:text-gray-400">
+        <div className="text-xs mb-3 text-gray-500 dark:text-gray-400">
           {datePart}
         </div>
         
         {/* Categories as tags */}
         {tags.categories.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-3">
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {tags.categories.slice(0, 2).map((category, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 text-xs rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
+                className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300"
               >
                 {category}
               </span>
             ))}
             {tags.categories.length > 2 && (
-              <span className="px-2 py-0.5 text-xs rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
+              <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300">
                 +{tags.categories.length - 2}
               </span>
             )}
           </div>
         )}
         
-        <div className="flex-grow mb-4">
-          <p className="text-sm text-gray-700 dark:text-gray-300">
+        <div className="flex-grow mb-6">
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
             {displayDescription}
           </p>
           {shouldTruncate && (
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-2 text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 
+              className="mt-3 text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 
                          font-medium flex items-center gap-1 transition-colors duration-200"
             >
               {isExpanded ? (
@@ -88,9 +107,9 @@ export function ProjectTile(project: Project) {
         </div>
 
         {/* Links or Academic Notice */}
-        <div className="mt-auto">
+        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
           {project.academicProject ? (
-            <div className="flex items-start gap-2 p-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded text-xs">
+            <div className="flex items-start gap-2 p-3 bg-amber-50/80 dark:bg-amber-900/20 backdrop-blur-sm border border-amber-200/50 dark:border-amber-800/50 rounded-xl text-xs">
               <svg className="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>

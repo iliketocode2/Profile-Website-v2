@@ -10,6 +10,7 @@ export interface Project {
   };
   academicProject?: boolean;
   featured?: boolean;
+  discipline?: 'Computer Science' | 'Mechanical Engineering';
 }
   
 export interface Hobby {

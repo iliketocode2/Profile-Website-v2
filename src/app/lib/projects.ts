@@ -176,7 +176,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["Shapr3D"],
           categories: ["CAD/Design", "Robotics"]
-        }
+        },
+        discipline: "Mechanical Engineering"
     },
     {
         title: "Pong Game",
