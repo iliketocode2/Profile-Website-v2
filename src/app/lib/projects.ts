@@ -2,6 +2,31 @@ import { Project } from './types'
 
 export const projects: Project[] = [
       {
+        title: "Step Stool",
+        date: "December 2025",
+        description: `The step ladder project was a 3-week design and build process that 
+        consisted of an initial round of designs in OnShape and SOLIDWORKS, followed by 
+        an FEA in SOLIDWORKS to simulate loads on the final design. The build process took 
+        approximately two weeks, first done with initial testing on 1/32" and later 1/16" 
+        material before completing the final build. The resulting step ladder (step stool) 
+        could hold members of the building team with ease (up to 180lbs).`,
+        imageUrl: "/images/ME10 Project Images/Final Project - StepLadder/Final Step.jpeg",
+        images: [
+          "/images/ME10 Project Images/Final Project - StepLadder/English Roller.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/16step.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/16side_bent.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/16side_allfour.jpeg"
+        ],
+        tags: {
+          technologies: ["Ironworker", "Waterjet", "Drill Press", "Hydraulic Press"],
+          categories: ["Manufacturing"]
+        },
+        discipline: "Mechanical Engineering",
+        featured: true,
+        pdfUrl: "/pdfs/ME10 Final Project Report - Google Docs.pdf",
+        slug: "step-stool"
+      },
+      {
         title: "Acrylic Phone Stand & Injection Molding",
         date: "November 2025",
         description: `This lab focused on the fundamentals of polymer processing, 
@@ -143,8 +168,7 @@ export const projects: Project[] = [
         tags: {
           technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
           categories: ["Web Development"]
-        },
-        featured: true
+        }
     },
     {
         title: "Somerville Museum Website - JumboCode",

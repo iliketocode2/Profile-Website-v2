@@ -12,6 +12,8 @@ export interface Project {
   academicProject?: boolean;
   featured?: boolean;
   discipline?: 'Computer Science' | 'Mechanical Engineering';
+  pdfUrl?: string; // Optional PDF report URL for detailed project pages
+  slug?: string; // Optional slug for routing to detail page
 }
   
 export interface Hobby {

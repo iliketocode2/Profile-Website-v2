@@ -60,11 +60,24 @@ export const stackCategories: StackCategory[] = [
     title: "CAD & UI Tools",
     items: [
       { name: "SOLIDWORKS", category: "3D CAD & Modeling" },
+      { name: "SOLIDWORKS FEA", category: "3D CAD & Modeling" },
       { name: "Fusion 360", category: "3D CAD & Modeling" },
       { name: "Onshape", category: "3D CAD & Modeling" },
       { name: "Shapr3D", category: "3D CAD & Modeling" },
       { name: "Figma", category: "UI & Graphics" },
       { name: "Canva", category: "UI & Graphics" }
+    ]
+  },
+    {
+    title: "Manufacturing",
+    items: [
+      { name: "Drill Press", category: "General" },
+      { name: "Cold Saw", category: "General" },
+      { name: "Vertical & Horizontal Bandsaw", category: "General" },
+      { name: "Lathe", category: "General" },
+      { name: "Ironworker", category: "Sheet Metal Working" },
+      { name: "Sheet Metal Brake", category: "Sheet Metal Working" },
+      { name: "Waterjet", category: "Sheet Metal Working" },
     ]
   },
   {
