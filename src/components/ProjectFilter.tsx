@@ -94,7 +94,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
   return (
     <div className="w-full">
       {/* Search Bar and Filter Button Row */}
-      <div className="mb-4">
+      <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-xl border border-gray-200 dark:border-gray-800 p-4">
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search Bar */}
           <div className="relative flex-1">
@@ -107,7 +107,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
               className="w-full pl-10 pr-4 py-2.5 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm 
                          border border-gray-200/50 dark:border-gray-700/50 rounded-xl
                          text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500
-                         focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 
+                         focus:outline-none focus:ring-2 focus:ring-blue-500/30 dark:focus:ring-blue-400/30 
                          focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-200"
             />
           </div>
@@ -143,7 +143,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
 
       {/* Filter Panel */}
       {showFilters && (
-        <div className="pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
+        <div className="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
           <div className="space-y-4">
             {/* Technologies */}
             {allTechnologies.length > 0 && (

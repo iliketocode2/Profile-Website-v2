@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ProjectTile } from "@/components/ProjectTile";
 import ProjectFilter from "@/components/ProjectFilter";
-import CategorySelector from "@/components/CategorySelector";
+import CategoryTabs from "@/components/CategoryTabs";
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 
@@ -53,8 +53,8 @@ export default function Projects() {
   return (
     <div className="w-full px-4 py-12 min-h-screen">
       <div className="max-w-7xl mx-auto mb-16">
-        {/* Unified Header / Control Center */}
-        <div className="flex flex-col items-center space-y-8 mb-12">
+        {/* Header */}
+        <div className="flex flex-col items-center space-y-6 mb-12">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,23 +65,25 @@ export default function Projects() {
             <p className="text-gray-500 dark:text-gray-400">Exploring the intersection of code and hardware.</p>
           </motion.div>
           
-          {/* Unified Control Center */}
+          {/* Search and Filters */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full max-w-3xl space-y-4 sm:space-y-6 p-4 sm:p-6 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800 shadow-xl shadow-blue-500/5"
+            className="w-full max-w-3xl"
           >
-            <CategorySelector 
-              selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
-            />
             <ProjectFilter 
               projects={categoryFilteredProjects} 
               onFilteredProjects={handleFilteredProjects}
             />
           </motion.div>
         </div>
+
+        {/* Category Tabs */}
+        <CategoryTabs 
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
 
         {/* Results Summary */}
         {allDisplayedProjects.length > 0 && (

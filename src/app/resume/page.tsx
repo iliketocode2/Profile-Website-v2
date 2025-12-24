@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { FileText, Download, ExternalLink } from 'lucide-react'
+import { Download } from 'lucide-react'
 
 export default function Resume() {
   const [iframeHeight, setIframeHeight] = useState('800px')
