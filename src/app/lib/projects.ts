@@ -2,6 +2,63 @@ import { Project } from './types'
 
 export const projects: Project[] = [
       {
+        title: "Beam Deflection Analysis - Cantilevered and Simply Supported",
+        date: "December 2025",
+        description: `Experimental and analytical study of beam mechanics, focusing on the 
+        deflection and stress profiles of steel, aluminum, and acrylic under varying support 
+        conditions. With a partner, we conducted theoretical calculations and physical 
+        experiments to validate Euler-Bernoulli beam theory, specifically analyzing how 
+        geometric orientation influences stiffness in acrylic rods. The study required 
+        Finite Element Analysis (FEA) to correlate simulated stress distributions with 
+        physical results.`,
+        imageUrl: "/images/pdf_images/acrylic_polar1.jpeg",
+        tags: {
+          technologies: ["SOLIDWORKS FEA", "Latex"],
+          categories: ["Analysis"]
+        },
+        discipline: "Mechanical Engineering",
+        pdfUrl: "/pdfs/ME20___Project2___Maggie_Will.pdf",
+        slug: "Beam-Deflection-Analysis"
+      },
+      {
+        title: "Hip Truss Analysis",
+        date: "October 2025",
+        description: `Working in a group of two, this project focused on the design and 
+        structural analysis of a statically determinate truss. The workflow involved 
+        calculating theoretical support reactions and internal member forces using the 
+        Method of Joints and Method of Sections. After performing manual calculations, 
+        we constructed a physical model to experimentally verify the support reactions 
+        under various loading conditions. We also validated the results by developing a 
+        MATLAB script to perform the matrix analysis of the truss’s equilibrium equations.`,
+        imageUrl: "/images/pdf_images/loadingcondition2.jpg",
+        tags: {
+          technologies: ["SOLIDWORKS FEA", "Latex", "MATLAB"],
+          categories: ["Analysis"]
+        },
+        discipline: "Mechanical Engineering",
+        pdfUrl: "/pdfs/ME20___Project1___Maggie_Will.pdf",
+        slug: "Hip-Truss-Analysis"
+      },
+      {
+        title: "FEA Analysis of a Cantilevered Beam",
+        date: "October 2025",
+        description: `This project focused on the fundamentals of Finite Element Analysis (FEA) 
+        by simulating a copper cantilever beam under a 75 lbf load. The study involved 
+        configuring boundary conditions, generating meshes, and extracting displacement 
+        and von Mises stress plots. A critical component was the analytical verification 
+        of the results, where FEA data was validated against Euler-Bernoulli beam theory. 
+        Additionally, the study evaluated the transition from elastic to plastic deformation 
+        to determine the maximum load threshold before material yield.`,
+        imageUrl: "/images/pdf_images/SZ.png",
+        tags: {
+          technologies: ["SOLIDWORKS FEA", "Latex"],
+          categories: ["Analysis"]
+        },
+        discipline: "Mechanical Engineering",
+        pdfUrl: "/pdfs/ME10___FEA_LAB___William_Goldman.pdf",
+        slug: "FEA-of-a-Cantilevered-Beam"
+      },
+      {
         title: "Step Stool",
         date: "December 2025",
         description: `The step ladder project was a 3-week design and build process that 

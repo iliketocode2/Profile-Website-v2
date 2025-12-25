@@ -6,7 +6,6 @@ import { ArrowLeft, Download, FileText } from 'lucide-react';
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 import { createProjectSlug } from '@/app/lib/utils';
-import Image from 'next/image';
 
 // Helper to find project by slug
 function findProjectBySlug(slug: string): Project | undefined {
