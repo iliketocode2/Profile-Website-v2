@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav className="relative z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-4">
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-center space-x-8 text-2xl font-light">
           {navItems.map((item) => (

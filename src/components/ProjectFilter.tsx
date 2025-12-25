@@ -94,7 +94,7 @@ export default function ProjectFilter({ projects, onFilteredProjects }: ProjectF
   return (
     <div className="w-full">
       {/* Search Bar and Filter Button Row */}
-      <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-xl border border-gray-200 dark:border-gray-800 p-4">
+      <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-xl border border-gray-200 dark:border-gray-800 p-3 sm:p-4">
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search Bar */}
           <div className="relative flex-1">

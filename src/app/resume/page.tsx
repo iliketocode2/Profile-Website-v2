@@ -19,11 +19,11 @@ export default function Resume() {
   }, [])
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-6">
+    <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-6">
       {/* Subtle Header Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-end mb-8 gap-4 px-2">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-8 gap-4 px-2">
+        <div className="text-center sm:text-left">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:flex items-center gap-3">
             General Resume
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
@@ -32,7 +32,7 @@ export default function Resume() {
         </div>
 
         {/* Floating Action-style Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 justify-center sm:justify-start">
           <a
             href="https://docs.google.com/document/d/1lSkKShNRphKa4fnbEpuaeE1REsETmUX14UV60kVxU4A/export?format=pdf"
             className="flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm"

@@ -46,7 +46,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="min-h-screen w-full py-12">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Back Button */}
         <button
           onClick={() => router.back()}

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
       <ThemeToggle />
-      <div className="max-w-4xl mx-auto px-4 py-4">
+      <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4">
         {/* Footer content */}
         <div className="flex flex-col items-center md:flex-row md:justify-between">
           {/* Centered icons */}

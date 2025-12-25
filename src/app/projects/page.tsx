@@ -51,7 +51,7 @@ export default function Projects() {
   const allDisplayedProjects = [...featuredProjects, ...displayedRegularProjects];
 
   return (
-    <div className="w-full px-4 py-12 min-h-screen">
+    <div className="w-full px-2 sm:px-4 py-12 min-h-screen">
       <div className="max-w-7xl mx-auto mb-16">
         {/* Header */}
         <div className="flex flex-col items-center space-y-6 mb-12">

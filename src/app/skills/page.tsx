@@ -6,7 +6,7 @@ import { StackCategory } from '@/app/lib/types';
 export default function Stack() {
   return (
     <main className="min-h-screen w-full pb-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Skill Categories - Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {stackCategories.map((category, categoryIndex) => (
