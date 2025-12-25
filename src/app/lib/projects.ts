@@ -133,7 +133,7 @@ export const projects: Project[] = [
         ],
         tags: {
           technologies: ["Ironworker", "Waterjet", "Drill Press", "Hydraulic Press"],
-          categories: ["Manufacturing"]
+          categories: ["Manufacturing", "CAD/Design"]
         },
         discipline: "Mechanical Engineering",
         featured: true,
@@ -229,7 +229,7 @@ export const projects: Project[] = [
         ],
         tags: {
           technologies: ["MicroPython", "Python", "JavaScript", "Websockets", "WebRTC", "Pyscript.com"],
-          categories: ["Research", "Robotics"]
+          categories: ["Research", "Robotics", "Software"]
         },
         featured: true
     },
@@ -313,7 +313,7 @@ export const projects: Project[] = [
         ],
         tags: {
           technologies: ["Rust"],
-          categories: ["Research"]
+          categories: ["Research", "Software"]
         },
         discipline: "Computer Science"
     },
@@ -344,7 +344,7 @@ export const projects: Project[] = [
       ],
       tags: {
         technologies: ["HTML", "JavaScript", "CSS", "Python", "MicroPython", "LEGO"],
-        categories: ["Research"]
+        categories: ["Research", "Software"]
       }
     },
     {
@@ -358,7 +358,7 @@ export const projects: Project[] = [
         ],
         tags: {
           technologies: ["HTML", "JavaScript", "CSS"],
-          categories: ["Game Development"]
+          categories: ["Game Development", "Research"]
         },
         discipline: "Computer Science"
     },
@@ -440,7 +440,7 @@ export const projects: Project[] = [
         links: [],
         tags: {
           technologies: [],
-          categories: ["Software"]
+          categories: ["CAD/Design"]
         },
         discipline: "Mechanical Engineering"
     }
