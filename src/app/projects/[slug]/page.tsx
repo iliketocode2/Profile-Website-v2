@@ -6,6 +6,7 @@ import { ArrowLeft, Download, FileText } from 'lucide-react';
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 import { createProjectSlug } from '@/app/lib/utils';
+import { motion } from 'framer-motion';
 
 // Helper to find project by slug
 function findProjectBySlug(slug: string): Project | undefined {
@@ -48,16 +49,24 @@ export default function ProjectDetailPage() {
     <div className="min-h-screen w-full py-12">
       <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Back Button */}
-        <button
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
           onClick={() => router.back()}
           className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Projects
-        </button>
+        </motion.button>
 
         {/* Project Header */}
-        <div className="mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-8"
+        >
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
             {project.title}
           </h1>
@@ -84,18 +93,28 @@ export default function ProjectDetailPage() {
               </span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Description */}
-        <div className="mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-8"
+        >
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
             {project.description}
           </p>
-        </div>
+        </motion.div>
 
         {/* Sub-Projects (for grouped academic projects) */}
         {project.subProjects && project.subProjects.length > 0 && (
-          <div className="mb-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-8"
+          >
             {/* Academic Notice */}
             {project.academicProject && (
               <div className="mb-6">
@@ -114,8 +133,11 @@ export default function ProjectDetailPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Projects</h2>
             <div className="space-y-6">
               {project.subProjects.map((subProject, index) => (
-                <div 
+                <motion.div 
                   key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
                   className="border-l-4 border-blue-500 dark:border-blue-400 pl-6 py-2"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
@@ -129,15 +151,21 @@ export default function ProjectDetailPage() {
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {subProject.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* PDF Embed */}
         {project.pdfUrl && (
-          <div className="mb-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
             <div className="flex items-center gap-3 mb-4">
               <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Project Report</h2>
@@ -160,12 +188,18 @@ export default function ProjectDetailPage() {
                 title={`${project.title} Report`}
               />
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Links */}
         {project.links && project.links.length > 0 && (
-          <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
+            className="border-t border-gray-200 dark:border-gray-800 pt-8"
+          >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Links</h3>
             <div className="flex flex-wrap gap-4">
               {project.links.map((link, index) => (
@@ -180,7 +214,7 @@ export default function ProjectDetailPage() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

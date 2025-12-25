@@ -2,6 +2,7 @@
 
 import { stackCategories } from '@/app/lib/skills';
 import { StackCategory } from '@/app/lib/types';
+import { motion } from 'framer-motion';
 
 export default function Stack() {
   return (
@@ -10,7 +11,15 @@ export default function Stack() {
         {/* Skill Categories - Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {stackCategories.map((category, categoryIndex) => (
-            <StackCategorySection key={categoryIndex} category={category} />
+            <motion.div
+              key={categoryIndex}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.3, delay: categoryIndex * 0.05 }}
+            >
+              <StackCategorySection category={category} />
+            </motion.div>
           ))}
         </div>
       </div>
@@ -30,7 +39,10 @@ function StackCategorySection({ category }: { category: StackCategory }) {
   }, {} as Record<string, typeof category.items>);
 
   return (
-    <div className="p-4 rounded-lg">
+    <motion.div 
+      className="p-4 rounded-lg"
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+    >
       <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
         {category.title}
       </h2>
@@ -60,6 +72,6 @@ function StackCategorySection({ category }: { category: StackCategory }) {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

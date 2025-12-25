@@ -1,6 +1,7 @@
 'use client'
 import { projects } from '@/app/lib/projects';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const featuredProjectTitles = [
@@ -15,7 +16,12 @@ export default function Home() {
     <main className="min-h-screen w-full max-w-full overflow-x-hidden pb-12">
       <div className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center">
-          <section className="w-full max-w-4xl mx-auto text-center py-8">
+          <motion.section 
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="w-full max-w-4xl mx-auto text-center py-8"
+          >
             <h1  
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-mono uppercase leading-tight mb-4 w-full text-center"
               style={{
@@ -29,38 +35,74 @@ export default function Home() {
               William <br className="sm:hidden" />
               Goldman
             </h1>
-          </section>
+          </motion.section>
 
           <div className="w-full max-w-6xl mx-auto mb-12 pb-12 border-b border-gray-300 dark:border-gray-700">
             <div className="flex flex-col lg:flex-row lg:space-x-8 space-y-8 lg:space-y-0">
-              <div className="lg:w-[75%]">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                className="lg:w-[75%]"
+              >
                 <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
+                  >
                     Hi, I&apos;m Will! I&apos;m a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
                     In addition to my studies, I work as a research technology intern at Tufts Technology Services (TTS) 
                     and I serve as the captain of the Tufts CubeSat team, where I lead a group of students in designing and building a small satellite. 
                     Some of my current interests include web development, cybersecurity, aerospace engineering, and robotics.
-                  </p>
-                  <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
+                  </motion.p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
+                  >
                     I learn quickly and enjoy working with others, or independently on smaller projects. 
                     I&apos;ve worked across the full stack on web-based projects and have recently been building systems that connect software and hardware 
                     through UART, BLE, and serial connection. 
                     On the mechanical side, I&apos;ve led a competition robotics team (FTC Team 5276), contributing to CAD modeling, 
                     machining, simulation, and systems integration in addition to my current work as the CubeSat lead.
-                  </p>
-                  <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left">
+                  </motion.p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
+                  >
                     In my free time, I enjoy watching Chelsea FC, building with LEGO, and skiing whenever I get the chance. 
                     Feel free to reach out if you&apos;d like to collaborate on a project or just chat about tech, engineering, or anything else!
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="lg:w-[25%]">
-                <h2 className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100">Featured Projects</h2>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                className="lg:w-[25%]"
+              >
+                <motion.h2 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100"
+                >
+                  Featured Projects
+                </motion.h2>
                 <div className="space-y-4">
                   {featuredProjects.map((project, index) => (
-                    <div 
-                      key={index} 
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
+                      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                       className="w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"
                     >
                       <div className="relative">
@@ -109,10 +151,10 @@ export default function Home() {
                         ))
                       )}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
