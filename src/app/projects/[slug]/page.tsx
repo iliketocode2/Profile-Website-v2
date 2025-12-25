@@ -93,6 +93,48 @@ export default function ProjectDetailPage() {
           </p>
         </div>
 
+        {/* Sub-Projects (for grouped academic projects) */}
+        {project.subProjects && project.subProjects.length > 0 && (
+          <div className="mb-8">
+            {/* Academic Notice */}
+            {project.academicProject && (
+              <div className="mb-6">
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">PLEASE NOTE: </span>
+                  All source code is available for request from{' '}
+                  <a 
+                    href="mailto:William.Goldman@tufts.edu" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    William.Goldman@tufts.edu
+                  </a>
+                </p>
+              </div>
+            )}
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Projects</h2>
+            <div className="space-y-6">
+              {project.subProjects.map((subProject, index) => (
+                <div 
+                  key={index}
+                  className="border-l-4 border-blue-500 dark:border-blue-400 pl-6 py-2"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      {subProject.title}
+                    </h3>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                      {subProject.date}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {subProject.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* PDF Embed */}
         {project.pdfUrl && (
           <div className="mb-8">

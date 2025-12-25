@@ -1,6 +1,63 @@
 import { Project } from './types'
 
 export const projects: Project[] = [
+  {
+      title: "C & Assembly Projects",
+      date: "September 2025 - December 2025",
+      description: `A collection of systems programming projects written in C and x86 assembly language. 
+      These projects focused on low-level programming, memory management, performance optimization, 
+      and understanding computer architecture fundamentals.`,
+      imageUrl: "/images/CS40.png",
+      tags: {
+        technologies: ["C", "x86 assembly language"],
+        categories: ["Software"]
+      },
+      discipline: "Computer Science",
+      academicProject: true,
+      slug: "c-assembly-projects",
+      subProjects: [
+        {
+          title: "Assembly-Language Programming (RPN Calculator)",
+          date: "12/8/2025",
+          description: `A fully functional Reverse Polish Notation (RPN) calculator implemented entirely in Universal Machine Assembly language. The system uses a finite-state machine to process character-by-character numerical input and manages a value stack for arithmetic operations. The implementation required strictly adhering to a recommended calling convention, creating custom macro instructions, and managing low-level program sections to ensure the assembly code mirrored the behavior of a reference C implementation.`
+        },
+        {
+          title: "Code Improvement Through Profiling",
+          date: "12/1/2025",
+          description: `A performance-tuning project dedicated to optimizing a Universal Machine emulator by identifying and eliminating computational bottlenecks. Using qcachegrind and valgrind, I profiled the emulator while running the "sandmark" benchmark to isolate high-latency instructions and memory access patterns. Improvements were achieved through code-tuning techniques such as reducing function-call overhead and optimizing the inner instruction-dispatch loop, resulting in measurable increases in MIPS performance`
+        },
+        {
+          title: "A Universal Virtual Machine (UM)",
+          date: "11/17/2025",
+          description: `A software emulator for the "Universal Machine," a 32-bit virtual architecture featuring segmented memory and a custom instruction set. The system implements a complete execution cycle to run compiled .um binaries, managing a machine state that includes eight general-purpose registers and dynamic memory mapping. Key technical challenges included simulating 32-bit segment identifiers on a native 64-bit system and optimizing the instruction-dispatch loop to meet specific millions-of-instructions-per-second (MIPS) performance benchmarks.`
+        },
+        {
+          title: "Analysis of AMD64 Assembly Code (The Binary Bomb)",
+          date: "11/3/2025",
+          description: `A reverse-engineering project focused on defusing a "binary bomb" executable by analyzing its AMD64 (x86_64) assembly code. Using the GNU Debugger (GDB) and objdump, I performed deep-dive analysis into six distinct phases of increasing complexity, identifying control-flow structures, stack frame management, and data-flow patterns. This required a precise understanding of the calling convention, register usage, and the Instruction Set Architecture (ISA) level representation of C procedures.`
+        },
+        {
+          title: "Machine Arithmetic",
+          date: "10/21/2025",
+          description: `A lossy image compression tool modeled after the JPEG standard, utilizing color space transformation and discrete cosine transforms (DCT). The program converts PPM images from RGB to component video before quantizing luminance and chroma data into 32-bit codewords. A significant portion of the project involved building a robust Bitpack interface to manipulate bit-level data, requiring careful handling of two's-complement signed integers and floating-point precision6666.`
+        },
+        {
+          title: "Locality-Optimized PPM Rotator/Reflector",
+          date: "10/7/2025",
+          description: `An experimental study of cache performance and memory locality through the implementation of polymorphic, blocked 2D arrays. The project focused on optimizing image rotation algorithms by comparing row-major, column-major, and block-major access patterns. Technical deliverables included a performance analysis that used cache-hit predictions and measurement tools to explain the dramatic execution-time differences caused by spatial and temporal locality in the CPU cache.`
+        },
+        {
+          title: "Interfaces, Implementations, and Images",
+          date: "9/25/2025",
+          description: `A suite of data structures and applications built around custom 2D unboxed arrays (UArray2) and bit-mapped arrays (Bit2). The project demonstrates modular design through two primary applications: a Sudoku solution verifier and an "unblackedges" tool that utilizes a depth-first search (DFS) or similar traversal to remove bordering black pixels from PBM images. This assignment emphasized the design of clean function contracts, representation invariants, and polymorphic interfaces.`
+        },
+        {
+          title: "Files, Pictures, and Interfaces",
+          date: "9/15/2025",
+          description: `An image restoration utility designed to recover corrupted digital images by identifying and extracting hidden data within a proprietary file format. The project involved implementing a modular readaline interface for robust input handling and building a restoration engine that uses pattern recognition to filter out "treacherous" data. This served as an introduction to managing memory with Hanson’s interfaces and developing large-scale C programs with a heavy focus on modularity and pointer arithmetic.`
+        }
+      ]
+    },
       {
         title: "Beam Deflection Analysis - Cantilevered and Simply Supported",
         date: "December 2025",
@@ -188,7 +245,22 @@ export const projects: Project[] = [
         tags: {
           technologies: ["MicroPython", "Python", "TCP/IP", "Websockets"],
           categories: ["Research", "Software"]
-        }
+        },
+        discipline: "Computer Science"
+    },
+    {
+      title: "JumboMap",
+      date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
+      description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
+      imageUrl: "/images/jumbomap.png",
+      links: [
+        { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
+      ],
+      tags: {
+        technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
+        categories: ["Web Development"]
+      },
+      discipline: "Computer Science"
     },
     {
         title: "Gerp - Directory Search Tool",
@@ -200,7 +272,8 @@ export const projects: Project[] = [
           technologies: ["C++"],
           categories: ["Software"]
         },
-        academicProject: true
+        academicProject: true,
+        discipline: "Computer Science"
     },
     {
         title: "Satellite Orbit Simulation Toolkit",
@@ -212,20 +285,8 @@ export const projects: Project[] = [
           technologies: ["MATLAB"],
           categories: ["Research", "Software"]
         },
-        academicProject: true
-    },
-    {
-        title: "JumboMap",
-        date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
-        description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
-        imageUrl: "/images/jumbomap.png",
-        links: [
-          { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
-        ],
-        tags: {
-          technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
-          categories: ["Web Development"]
-        }
+        academicProject: true,
+        discipline: "Computer Science"
     },
     {
         title: "Somerville Museum Website - JumboCode",
@@ -239,7 +300,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["React.js", "Next.js", "JavaScript", "CSS", "PostgreSQL", "Neon"],
           categories: ["Web Development"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
         title: "InterSystems $VECTOR Data Type in Rust",
@@ -252,7 +314,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["Rust"],
           categories: ["Research"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
       title: "MealPlanGuru",
@@ -267,7 +330,8 @@ export const projects: Project[] = [
         technologies: ["React.js", "Next.js", "CSS", "PostgreSQL", "Neon", "Resend Email"],
         categories: ["Web Development"]
       },
-      featured: true
+      featured: true,
+      discipline: "Computer Science"
     },
     {
       title: "LEGO SPIKE Test Rig",
@@ -295,7 +359,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["HTML", "JavaScript", "CSS"],
           categories: ["Game Development"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
         title: "LEGO SPIKE AI Maze",
@@ -321,7 +386,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["HTML", "JavaScript", "CSS"],
           categories: ["Web Development"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
         title: "Hook Mechanism and Spool Design for FTC Robot",
@@ -349,7 +415,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["JavaScript"],
           categories: ["Game Development"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
         title: "Mandelbrot Fractal Generator",
@@ -362,7 +429,8 @@ export const projects: Project[] = [
         tags: {
           technologies: ["HTML", "JavaScript", "CSS"],
           categories: ["Web Development"]
-        }
+        },
+        discipline: "Computer Science"
     },
     {
         title: "Model Rockets",
@@ -373,6 +441,7 @@ export const projects: Project[] = [
         tags: {
           technologies: [],
           categories: ["Software"]
-        }
+        },
+        discipline: "Mechanical Engineering"
     }
 ];

@@ -1,3 +1,9 @@
+export interface SubProject {
+  title: string;
+  date: string;
+  description: string;
+}
+
 export interface Project {
   title: string;
   date: string;
@@ -14,6 +20,7 @@ export interface Project {
   discipline?: 'Computer Science' | 'Mechanical Engineering';
   pdfUrl?: string; // Optional PDF report URL for detailed project pages
   slug?: string; // Optional slug for routing to detail page
+  subProjects?: SubProject[]; // Optional array of sub-projects for grouped academic projects
 }
   
 export interface Hobby {
