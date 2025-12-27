@@ -31,13 +31,22 @@ export function ProjectTile(project: Project) {
     <div className="group relative flex flex-col h-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 border border-gray-100 dark:border-gray-800">
       {/* Image Gallery with sophisticated overlay */}
       <div className="relative h-56 w-full overflow-hidden">
-        <Image
-          src={allImages[currentImageIndex]}
-          alt={`${title} - Image ${currentImageIndex + 1}`}
-          fill
-          style={{ objectFit: 'cover' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60" />
+        {/* Render all images for instant carousel navigation */}
+        {allImages.map((img, idx) => (
+          <Image
+            key={idx}
+            src={img}
+            alt={`${title} - Image ${idx + 1}`}
+            fill
+            style={{ objectFit: 'cover' }}
+            className={`absolute inset-0 transition-opacity duration-200 ${
+              idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+            priority={idx === 0}
+            loading={idx <= 1 ? 'eager' : 'lazy'}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60 z-10" />
         
         {/* Image Navigation Arrows */}
         {hasMultipleImages && (
@@ -86,7 +95,7 @@ export function ProjectTile(project: Project) {
         
         {/* Discipline Badge */}
         {project.discipline && (
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-30">
             <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-md text-gray-900 dark:text-white shadow-lg">
               {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
             </span>
@@ -95,7 +104,7 @@ export function ProjectTile(project: Project) {
         
         {/* Featured Badge */}
         {project.featured && (
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 z-30">
             <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-blue-500/90 backdrop-blur-md text-white shadow-lg">
               Featured
             </span>

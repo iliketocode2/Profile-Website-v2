@@ -2,6 +2,20 @@ import { Project } from './types'
 
 export const projects: Project[] = [
   {
+    title: "JumboMap",
+    date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
+    description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
+    imageUrl: "/images/jumbomap.png",
+    links: [
+      { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
+    ],
+    tags: {
+      technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
+      categories: ["Web Development"]
+    },
+    discipline: "Computer Science"
+  },
+  {
       title: "C & Assembly Projects",
       date: "September 2025 - December 2025",
       description: `A collection of systems programming projects written in C and x86 assembly language. 
@@ -127,9 +141,11 @@ export const projects: Project[] = [
         imageUrl: "/images/ME10 Project Images/Final Project - StepLadder/Final Step.jpeg",
         images: [
           "/images/ME10 Project Images/Final Project - StepLadder/English Roller.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/Iron Worker.jpeg",
           "/images/ME10 Project Images/Final Project - StepLadder/16step.jpeg",
-          "/images/ME10 Project Images/Final Project - StepLadder/16side_bent.jpeg",
-          "/images/ME10 Project Images/Final Project - StepLadder/16side_allfour.jpeg"
+          "/images/ME10 Project Images/Final Project - StepLadder/waterjet.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/16side_allfour.jpeg",
+          "/images/ME10 Project Images/Final Project - StepLadder/Bead Roller.jpeg"
         ],
         tags: {
           technologies: ["Ironworker", "Waterjet", "Drill Press", "Hydraulic Press"],
@@ -149,7 +165,8 @@ export const projects: Project[] = [
         analysis and fabricated an acrylic phone stand using localized heating.`,
         imageUrl: "/images/ME10 Project Images/Project6.1.jpeg",
         images: [
-          "/images/ME10 Project Images/Project6.jpeg" 
+          "/images/ME10 Project Images/Project6.jpeg", 
+          "/images/ME10 Project Images/Injection Molder.jpeg"
         ],
         tags: {
           technologies: ["Injection Molding", "Strip Heater", "Instron"],
@@ -227,6 +244,10 @@ export const projects: Project[] = [
           { label: "Documentation", url: "https://fetlab.notion.site/Remote-FLL-Competition-237df3d0e05280e09622c856f06f14f7", isGithub: false },
           { label: "GitHub", url: "https://github.com/tuftsceeo/Remote-Robotics-Competition", isGithub: true }
         ],
+        images: [
+          "/images/Demo Field Setup (Marked up).png",
+          "/images/robot and controller.jpeg"
+        ],
         tags: {
           technologies: ["MicroPython", "Python", "JavaScript", "Websockets", "WebRTC", "Pyscript.com"],
           categories: ["Research", "Robotics", "Software"]
@@ -247,20 +268,6 @@ export const projects: Project[] = [
           categories: ["Research", "Software"]
         },
         discipline: "Computer Science"
-    },
-    {
-      title: "JumboMap",
-      date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
-      description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
-      imageUrl: "/images/jumbomap.png",
-      links: [
-        { label: "Website", url: "https://jumbohack2025.vercel.app/", isGithub: false }
-      ],
-      tags: {
-        technologies: ["React.js", "Next.js", "TypeScript", "CSS", "PostgreSQL", "Neon"],
-        categories: ["Web Development"]
-      },
-      discipline: "Computer Science"
     },
     {
         title: "Gerp - Directory Search Tool",
@@ -403,6 +410,21 @@ export const projects: Project[] = [
           categories: ["CAD/Design", "Robotics"]
         },
         discipline: "Mechanical Engineering"
+    },
+    {
+      title: "CoreXY Microscrope",
+      date: "May - June 2023 | Onshape, Fusion 360",
+      description: "Developed in collaboration with Cellino BioTech, this open-source research project explored the feasibility of repurposing 3D printer architecture for automated microscopy. The system used a CoreXY motion chassis to maneuver a high-resolution camera and microscopic lens over cell plates, controlled with a Raspberry Pi.",
+      imageUrl: "/images/microscopeFusion360.png",
+      images: [
+        "/images/microscope1.jpg",
+        "/images/microscope2.jpg"
+      ],
+      tags: {
+        technologies: ["Onshape", "Fusion 360"],
+        categories: ["CAD/Design", "Research"]
+      },
+      discipline: "Mechanical Engineering"
     },
     {
         title: "Pong Game",
