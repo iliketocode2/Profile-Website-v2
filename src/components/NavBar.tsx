@@ -27,7 +27,7 @@ export default function Navbar() {
               className={`
                 transition-colors duration-300
                 ${pathname === item.href 
-                  ? 'font-normal text-gray-900 dark:text-white' 
+                  ? 'font-semibold text-gray-900 dark:text-white' 
                   : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}
               `}
             >
@@ -57,7 +57,7 @@ export default function Navbar() {
                   className={`
                     mt-1 transition-colors duration-300
                     ${pathname === item.href 
-                      ? 'text-blue-600 dark:text-blue-400' 
+                      ? 'text-blue-600 dark:text-blue-400 font-semibold' 
                       : 'text-gray-500 dark:text-gray-400'}
                   `}
                 >

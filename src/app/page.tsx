@@ -2,6 +2,7 @@
 import { projects } from '@/app/lib/projects';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Mail } from 'lucide-react';
 
 export default function Home() {
   const featuredProjectTitles = [
@@ -23,7 +24,7 @@ export default function Home() {
             className="w-full max-w-4xl mx-auto text-center py-8"
           >
             <h1  
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-mono uppercase leading-tight mb-4 w-full text-center"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-mono uppercase leading-tight mb-2 w-full text-center"
               style={{
                 background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(34, 197, 94))',
                 WebkitBackgroundClip: 'text',
@@ -35,6 +36,20 @@ export default function Home() {
               William <br className="sm:hidden" />
               Goldman
             </h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4"
+            >
+            <a 
+              href="mailto:William.Goldman@tufts.edu"
+              className="inline-flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              <Mail className="w-4 h-4 sm:w-5 h-5" /> 
+              <span>William.Goldman@tufts.edu</span>
+            </a>
+            </motion.p>
           </motion.section>
 
           <div className="w-full max-w-6xl mx-auto mb-12 pb-12 border-b border-gray-300 dark:border-gray-700">
