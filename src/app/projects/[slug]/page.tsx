@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowLeft, Download, FileText } from 'lucide-react';
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 import { createProjectSlug } from '@/app/lib/utils';
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
 // Helper to find project by slug
 function findProjectBySlug(slug: string): Project | undefined {
@@ -19,15 +19,15 @@ function findProjectBySlug(slug: string): Project | undefined {
 export default function ProjectDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const [project, setProject] = useState<Project | undefined>(undefined);
-
-  useEffect(() => {
+  
+  // Use useMemo to compute project immediately on render
+  const project = useMemo(() => {
     const slug = params?.slug as string;
     if (slug) {
-      const foundProject = findProjectBySlug(slug);
-      setProject(foundProject);
+      return findProjectBySlug(slug);
     }
-  }, [params]);
+    return undefined;
+  }, [params?.slug]);
 
   if (!project) {
     return (

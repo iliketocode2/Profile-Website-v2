@@ -173,6 +173,7 @@ export function ProjectTile(project: Project) {
             {(project.pdfUrl || project.subProjects) && (
               <Link
                 href={`/projects/${project.slug || createProjectSlug(project.title)}`}
+                prefetch={true}
                 className="flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 
                            hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 
                            group"
