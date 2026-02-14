@@ -3,7 +3,7 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
+    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
       <ThemeToggle />
       <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4">
         {/* Footer content */}
