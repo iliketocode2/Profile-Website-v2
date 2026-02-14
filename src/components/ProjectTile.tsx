@@ -12,6 +12,7 @@ export function ProjectTile(project: Project) {
   const [datePart] = date.split(' | ');
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const primaryLink = links && links.length > 0 ? links[0] : undefined;
   
   // Combine imageUrl with images array if provided
   const allImages = images && images.length > 0 ? [imageUrl, ...images] : [imageUrl];
@@ -114,8 +115,21 @@ export function ProjectTile(project: Project) {
       
       {/* Content */}
       <div className="flex flex-col flex-grow p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-          {title}
+        <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 transition-colors duration-300 ${
+          primaryLink ? 'group-hover:text-blue-600 dark:group-hover:text-blue-400' : ''
+        }`}>
+          {primaryLink ? (
+            <a
+              href={primaryLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+            >
+              {title}
+            </a>
+          ) : (
+            <span>{title}</span>
+          )}
         </h3>
         
         <div className="text-xs mb-3 text-gray-500 dark:text-gray-400">
