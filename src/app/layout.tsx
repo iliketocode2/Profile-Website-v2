@@ -9,7 +9,7 @@ const lora = Lora({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'William Goldman',
-  description: 'Personal portfolio of William Goldman',
+  description: 'Personal portfolio of William J. Goldman',
 }
 
 export default function RootLayout({
