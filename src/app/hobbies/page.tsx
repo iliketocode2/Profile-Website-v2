@@ -5,6 +5,17 @@ import { hobbies } from '@/app/lib/hobbies';
 export default function HobbiesSection() {
     return (
       <div className="columns-1 md:columns-3 lg:columns-4 gap-3 p-2 sm:p-6">
+        {/* A11y-prone: image without alt, unlabeled input, clickable div */}
+        <section className="mb-4">
+          <img src="/placeholder-hobby.svg" width={120} height={80} />
+          <input type="text" placeholder="Filter hobbies..." className="border p-2 rounded" />
+          <div
+            className="cursor-pointer underline text-blue-600"
+            onClick={() => alert('Clicked')}
+          >
+            Clear filter
+          </div>
+        </section>
         {hobbies.map((hobby, index) => (
           <HobbyCard key={index} {...hobby} />
         ))}
