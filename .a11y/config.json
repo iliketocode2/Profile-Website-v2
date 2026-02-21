@@ -1,7 +1,0 @@
-{
-    "urls": ["/", "/about", "/dashboard"],
-    "ignore": [],
-    "waitForNetworkIdle": true,
-    "extraWaitMs": 500,
-    "impactLevels": ["critical", "serious", "moderate", "minor"]
-  }
