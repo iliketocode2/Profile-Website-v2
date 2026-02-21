@@ -8,7 +8,7 @@ name: Update Accessibility Baseline
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   update-baseline:

@@ -1,5 +1,5 @@
 {
-    "urls": ["/", "/about", "/dashboard"],
+    "urls": ["/", "/hobbies"],
     "ignore": [],
     "waitForNetworkIdle": true,
     "extraWaitMs": 500,
