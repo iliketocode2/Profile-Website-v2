@@ -13,5 +13,5 @@ jobs:
       - uses: zachkklein/WCAG_PR_Checker@main
         with:
           APP_DIR: '.'
-          BUILD_DIR: 'dist'
+          BUILD_DIR: 'out'
           URLS: '/,/hobbies'
