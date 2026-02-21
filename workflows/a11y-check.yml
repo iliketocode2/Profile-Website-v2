@@ -1,0 +1,130 @@
+# a11y-check.yml
+# Runs on every pull request.
+# Checks out both main and PR branches, scans both with axe,
+# diffs the results, posts a PR comment, and fails if regressions exist.
+
+name: Accessibility Regression Check
+
+on:
+  pull_request:
+
+jobs:
+  a11y-regression:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write   # needed to post PR comments
+
+    steps:
+      # ── 1. Checkout PR branch ───────────────────────────────────────────────
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          path: pr-branch
+
+      # ── 2. Checkout main (base) branch ──────────────────────────────────────
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: main-branch
+
+      # ── 3. Setup Node ────────────────────────────────────────────────────────
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: pr-branch/package-lock.json
+
+      # ── 4. Install dependencies ──────────────────────────────────────────────
+      # We only need to install once (in pr-branch) because:
+      #   - scan.js, diff.js, comment.js all live in pr-branch
+      #   - We're serving main-branch's BUILD OUTPUT, not running its node_modules
+      #   - Playwright only needs to be installed once on the runner
+      - name: Install dependencies (PR branch)
+        working-directory: pr-branch
+        run: npm ci
+
+      # Install Playwright browser binaries — only needed once per runner.
+      # --with-deps installs OS-level dependencies (fonts, libs) required in CI.
+      - name: Install Playwright browsers
+        working-directory: pr-branch
+        run: npx playwright install chromium --with-deps
+
+      # ── 5. Install dependencies for main branch build ───────────────────────
+      # We need main-branch's own node_modules to build it correctly.
+      # We do NOT install Playwright here — the build tools are enough.
+      - name: Install dependencies (main branch — build only)
+        working-directory: main-branch
+        run: npm ci
+
+      # ── 6. Build both branches ───────────────────────────────────────────────
+      - name: Build PR branch
+        working-directory: pr-branch
+        run: npm run build
+
+      - name: Build main branch
+        working-directory: main-branch
+        run: npm run build
+
+      # ── 7. Serve both builds on different ports ──────────────────────────────
+      # We use npx serve (static file server) — adjust if your app needs SSR.
+      # The & runs it in the background so the step doesn't block.
+      - name: Serve main branch on port 4000
+        working-directory: main-branch
+        run: npx serve dist -l 4000 &
+
+      - name: Serve PR branch on port 5000
+        working-directory: pr-branch
+        run: npx serve dist -l 5000 &
+
+      # ── 8. Wait for both servers to be ready ────────────────────────────────
+      - name: Wait for servers
+        run: |
+          npx wait-on http://localhost:4000 --timeout 30000
+          npx wait-on http://localhost:5000 --timeout 30000
+
+      # ── 9. Run axe scan on main (baseline) ──────────────────────────────────
+      - name: Scan main branch (baseline)
+        working-directory: pr-branch
+        run: node .a11y/scan.js --baseUrl http://localhost:4000 --output baseline.json
+
+      # ── 10. Run axe scan on PR branch ───────────────────────────────────────
+      - name: Scan PR branch
+        working-directory: pr-branch
+        run: node .a11y/scan.js --baseUrl http://localhost:5000 --output pr.json
+
+      # ── 11. Diff the two scan results ───────────────────────────────────────
+      # Exit code 1 from diff.js means regressions were found.
+      # We use || true here so the step doesn't stop the workflow —
+      # we want comment.js to run and post the result regardless.
+      - name: Diff accessibility results
+        working-directory: pr-branch
+        run: node .a11y/diff.js --baseline baseline.json --head pr.json --output diff.json || true
+
+      # ── 12. Post PR comment and set final status ─────────────────────────────
+      # comment.js exits 1 if diff.json contains regressions — this is what
+      # actually fails the GitHub check. Separating it from diff.js means
+      # the PR always gets a comment even when the check fails.
+      - name: Post PR comment
+        working-directory: pr-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node .a11y/comment.js --diff diff.json
+
+      # ── 13. Upload scan artifacts for debugging ──────────────────────────────
+      # Useful when you need to inspect raw axe output after a run.
+      - name: Upload scan artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-scan-results
+          path: |
+            pr-branch/baseline.json
+            pr-branch/pr.json
+            pr-branch/diff.json
+          retention-days: 7
