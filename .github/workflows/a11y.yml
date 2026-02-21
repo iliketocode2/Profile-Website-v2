@@ -10,7 +10,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: your-org/a11y-diff-action@v1
+      - uses: zachkklein/WCAG_PR_Checker@main
         with:
           APP_DIR: '.'
           BUILD_DIR: 'dist'
