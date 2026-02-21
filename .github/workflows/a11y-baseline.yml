@@ -1,0 +1,20 @@
+name: Update Accessibility Baseline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update baseline
+        uses: zachkklein/WCAG_PR_Checker@main
+        with:
+          mode: baseline
