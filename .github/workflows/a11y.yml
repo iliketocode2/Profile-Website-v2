@@ -15,4 +15,4 @@ jobs:
         with:
           APP_DIR: '.'
           BUILD_DIR: 'out'
-          URLS: '/hobbies,/'
+          URLS: '/hobbies'
