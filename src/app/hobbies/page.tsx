@@ -13,7 +13,7 @@ export default function HobbiesSection() {
             className="cursor-pointer underline text-blue-600"
             onClick={() => alert('Clicked')}
           >
-            Clear filter
+            Clear filters
           </div>
           <a href="/hobbies">Click here</a>
           <p className="text-[#b0b0b0] bg-white">Low contrast helper text</p>
