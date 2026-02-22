@@ -6,9 +6,11 @@ import { motion } from 'framer-motion';
 
 export default function Stack() {
   return (
-    <main className="min-h-screen w-full pb-12">
+    <main id="main-content" className="min-h-screen w-full pb-12">
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
-        {/* Skill Categories - Two Column Layout */}
+        
+        <h2 className="text-center">Technical Stack</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {stackCategories.map((category, categoryIndex) => (
             <motion.div
@@ -28,7 +30,6 @@ export default function Stack() {
 }
 
 function StackCategorySection({ category }: { category: StackCategory }) {
-  // Group items by subcategory if they have one
   const groupedItems = category.items.reduce((acc, item) => {
     const key = item.category || 'main';
     if (!acc[key]) {
@@ -43,28 +44,28 @@ function StackCategorySection({ category }: { category: StackCategory }) {
       className="p-4 rounded-lg"
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
-      <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+      <h3 className="text-lg font-bold text-gray-600 dark:text-gray-700 mb-3">
         {category.title}
-      </h2>
+      </h3>
       
       <div className="space-y-2">
         {Object.entries(groupedItems).map(([subcategory, items]) => (
           <div key={subcategory}>
             {subcategory !== 'main' && (
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+              <h4 className="text-sm font-semibold mb-1">
                 {subcategory}
-              </h3>
+              </h4>
             )}
             
-            <div className="text-sm text-gray-700 dark:text-gray-300">
+            <div className="text-sm">
               {items.map((item, itemIndex) => (
                 <span key={itemIndex}>
-                  <span 
-                    className="hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-                    title={item.description}
+                  <button
+                    className="cursor-pointer text-gray-400"
+                    onClick={() => console.log(item.name)}
                   >
                     {item.name}
-                  </span>
+                  </button>
                   {itemIndex < items.length - 1 && ', '}
                 </span>
               ))}
