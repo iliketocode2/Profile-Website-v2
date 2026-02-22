@@ -7,11 +7,13 @@ jobs:
   a11y:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     steps:
-      - uses: zachkklein/WCAG_PR_Checker@will-llm
+      - name: Run accessibility check
+        uses: zachkklein/WCAG_PR_Checker@v2
         with:
           APP_DIR: '.'
-          BUILD_DIR: '.next/server/app'
-          URLS: '/,/projects'
+          BUILD_DIR: 'public'
+          URLS: '/'
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
