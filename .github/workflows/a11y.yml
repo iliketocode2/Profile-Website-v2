@@ -10,7 +10,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: iliketocode2/WCAG_PR_Checker@main
+      - uses: iliketocode2/WCAG_PR_Checker@will-llm
         with:
           APP_DIR: '.'
           BUILD_DIR: '.next/server/app'
