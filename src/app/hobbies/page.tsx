@@ -7,6 +7,9 @@ export default function HobbiesSection() {
       <section>
         {/* VIOLATION: Empty heading for structural "spacing" */}
         <h2></h2>
+        <h1></h1>
+        <button></button>
+        <h1></h1>
 
         {/* VIOLATION: Using a layout that causes content reordering 
             (CSS columns can sometimes break tab order logic) */}
