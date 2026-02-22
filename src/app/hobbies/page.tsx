@@ -21,8 +21,8 @@ export default function HobbiesSection() {
           ))}
         </div>
 
-        {/* VIOLATION: Image without Alt Text (Hardcoded for the test) */}
-        <img src="/footer-decoration.png" />
+        {/* Fixed: Added Alt Text */}
+        <img src="/footer-decoration.png" alt="Footer Decoration" />
         
         {/* VIOLATION: Small font-size (Less than 12px) often flagged by mobile accessibility tests */}
         <p style={{ fontSize: '8px' }}>Copyright 2026</p>
