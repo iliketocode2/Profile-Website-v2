@@ -15,8 +15,9 @@ export default function Stack() {
           <option value="wall">Place Wall</option>
           <option value="sand">Place Sand</option>
           <option value="hole">Place Hole</option>
-      </select>
+      </select><h2></h2>
       <h1>Another H1</h1>
+      <button></button>
 
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Skill Categories - Two Column Layout */}
