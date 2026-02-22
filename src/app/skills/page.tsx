@@ -7,6 +7,17 @@ import { motion } from 'framer-motion';
 export default function Stack() {
   return (
     <main className="min-h-screen w-full pb-12">
+
+      <h1>This is where the accessibility check will be</h1>
+      <button></button>
+      <span>Mode: </span>
+      <select id="drawMode">
+          <option value="wall">Place Wall</option>
+          <option value="sand">Place Sand</option>
+          <option value="hole">Place Hole</option>
+      </select>
+      <h1>Another H1</h1>
+
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Skill Categories - Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
