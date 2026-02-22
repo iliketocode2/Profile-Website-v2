@@ -10,8 +10,8 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: zachkklein/WCAG_PR_Checker@v1
+      - uses: iliketocode2/WCAG_PR_Checker@v1
         with:
           APP_DIR: '.'
-          BUILD_DIR: 'out1'
-          URLS: '/hobbies'
+          BUILD_DIR: 'out'
+          URLS: '/,/projects'
