@@ -10,7 +10,7 @@ export default function Stack() {
 
       <h1>This is where the accessibility check will be</h1>
       <button></button>
-      <span>Mode: </span>
+      <span>Mode: </span> <h2>Hello World</h2>
       <select id="drawMode">
           <option value="wall">Place Wall</option>
           <option value="sand">Place Sand</option>
