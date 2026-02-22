@@ -6,12 +6,9 @@ import { motion } from 'framer-motion';
 
 export default function Stack() {
   return (
-    // VIOLATION: Using a generic div with an ID instead of a <main> element
-    // (Wait, your original had <main>, I'll change it to <div> for the test)
     <main id="main-content" className="min-h-screen w-full pb-12">
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         
-        {/* VIOLATION: Heading level skip. Starting with an H3 instead of H1 or H2 */}
         <h2>Technical Stack</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
@@ -47,8 +44,7 @@ function StackCategorySection({ category }: { category: StackCategory }) {
       className="p-4 rounded-lg"
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
-      {/* VIOLATION: Low Contrast Text (Light gray on white/dark backgrounds) */}
-      <h3 className="text-lg font-bold text-gray-700 dark:text-gray-700 mb-3">
+      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-900 mb-3">
         {category.title}
       </h3>
       
@@ -56,7 +52,6 @@ function StackCategorySection({ category }: { category: StackCategory }) {
         {Object.entries(groupedItems).map(([subcategory, items]) => (
           <div key={subcategory}>
             {subcategory !== 'main' && (
-              /* VIOLATION: Improper Heading Nesting (Skipping levels) */
               <h4 className="text-sm font-semibold mb-1">
                 {subcategory}
               </h4>
@@ -65,11 +60,11 @@ function StackCategorySection({ category }: { category: StackCategory }) {
             <div className="text-sm">
               {items.map((item, itemIndex) => (
                 <span key={itemIndex}>
-                  {/* VIOLATION: Interactive behavior on a non-interactive element (span) 
-                      without keyboard support or ARIA roles */}
                   <button 
                     className="cursor-pointer text-gray-400"
                     onClick={() => console.log(item.name)}
+                    aria-label={item.name}
+                    role="button"
                   >
                     {item.name}
                   </button>

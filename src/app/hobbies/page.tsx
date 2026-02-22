@@ -6,10 +6,10 @@ export default function HobbiesSection() {
     return (
       <section>
         {/* VIOLATION: Empty heading for structural "spacing" */}
-        <h2></h2>
-        <h1></h1>
-        <button></button>
-        <h1></h1>
+        <h2 aria-hidden="true"></h2>
+        <h1 aria-hidden="true"></h1>
+        <button aria-label="Click Me"></button>
+        <h1 aria-hidden="true"></h1>
 
         {/* VIOLATION: Using a layout that causes content reordering 
             (CSS columns can sometimes break tab order logic) */}
@@ -25,7 +25,7 @@ export default function HobbiesSection() {
         <img src="/footer-decoration.png" alt="Footer Decoration" />
         
         {/* VIOLATION: Small font-size (Less than 12px) often flagged by mobile accessibility tests */}
-        <p style={{ fontSize: '8px' }}>Copyright 2026</p>
+        <p style={{ fontSize: '12px' }}>Copyright 2026</p>
       </section>
     );
 }
