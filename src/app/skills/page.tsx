@@ -15,7 +15,7 @@ export default function Stack() {
           <option value="wall">Place Wall</option>
           <option value="sand">Place Sand</option>
           <option value="hole">Place Hole</option>
-      </select><h2></h2><button></button><h1></h1>
+      </select><h2></h2>
       <p></p><span></span>
       <button></button>
 
