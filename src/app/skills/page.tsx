@@ -8,11 +8,11 @@ export default function Stack() {
   return (
     // VIOLATION: Using a generic div with an ID instead of a <main> element
     // (Wait, your original had <main>, I'll change it to <div> for the test)
-    <div id="main-content" className="min-h-screen w-full pb-12">
+    <main id="main-content" className="min-h-screen w-full pb-12">
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         
         {/* VIOLATION: Heading level skip. Starting with an H3 instead of H1 or H2 */}
-        <h3 className="text-center">Technical Stack</h3>
+        <h2>Technical Stack</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
           {stackCategories.map((category, categoryIndex) => (
@@ -28,7 +28,7 @@ export default function Stack() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -48,18 +48,18 @@ function StackCategorySection({ category }: { category: StackCategory }) {
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
       {/* VIOLATION: Low Contrast Text (Light gray on white/dark backgrounds) */}
-      <h2 className="text-lg font-bold text-gray-300 dark:text-gray-700 mb-3">
+      <h3 className="text-lg font-bold text-gray-700 dark:text-gray-700 mb-3">
         {category.title}
-      </h2>
+      </h3>
       
       <div className="space-y-2">
         {Object.entries(groupedItems).map(([subcategory, items]) => (
           <div key={subcategory}>
             {subcategory !== 'main' && (
               /* VIOLATION: Improper Heading Nesting (Skipping levels) */
-              <h5 className="text-sm font-semibold mb-1">
+              <h4 className="text-sm font-semibold mb-1">
                 {subcategory}
-              </h5>
+              </h4>
             )}
             
             <div className="text-sm">
@@ -67,12 +67,12 @@ function StackCategorySection({ category }: { category: StackCategory }) {
                 <span key={itemIndex}>
                   {/* VIOLATION: Interactive behavior on a non-interactive element (span) 
                       without keyboard support or ARIA roles */}
-                  <span 
+                  <button 
                     className="cursor-pointer text-gray-400"
                     onClick={() => console.log(item.name)}
                   >
                     {item.name}
-                  </span>
+                  </button>
                   {itemIndex < items.length - 1 && ', '}
                 </span>
               ))}

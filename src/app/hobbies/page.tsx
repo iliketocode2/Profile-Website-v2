@@ -5,8 +5,7 @@ import { hobbies } from '@/app/lib/hobbies';
 export default function HobbiesSection() {
     return (
       <section>
-        {/* VIOLATION: Empty heading for structural "spacing" */}
-        <h2></h2>
+        {/* Fixed: Removed empty heading */}
 
         {/* VIOLATION: Using a layout that causes content reordering 
             (CSS columns can sometimes break tab order logic) */}
@@ -18,8 +17,8 @@ export default function HobbiesSection() {
           ))}
         </div>
 
-        {/* VIOLATION: Image without Alt Text (Hardcoded for the test) */}
-        <img src="/footer-decoration.png" />
+        {/* Fixed: Added Alt Text */}
+        <img src="/footer-decoration.png" alt="Footer Decoration" />
         
         {/* VIOLATION: Small font-size (Less than 12px) often flagged by mobile accessibility tests */}
         <p style={{ fontSize: '8px' }}>Copyright 2026</p>
