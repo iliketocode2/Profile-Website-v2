@@ -16,6 +16,7 @@ export default function Stack() {
           <option value="sand">Place Sand</option>
           <option value="hole">Place Hole</option>
       </select><h2></h2><button></button><h1></h1>
+      <p></p><span></span>
       <button></button>
 
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
