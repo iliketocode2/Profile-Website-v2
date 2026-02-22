@@ -9,15 +9,16 @@ export default function Stack() {
     <main className="min-h-screen w-full pb-12">
 
       <h1>This is where the accessibility check will be</h1>
-      <button></button>
+      <button aria-label="Button"></button>
       <span>Mode: </span> <h2>Hello World</h2><p>This is a paragraph</p>
-      <select id="drawMode">
+      <label htmlFor="drawMode">Draw Mode</label>
+      <select id="drawMode" aria-label="Draw Mode">
           <option value="wall">Place Wall</option>
           <option value="sand">Place Sand</option>
           <option value="hole">Place Hole</option>
       </select><h2></h2>
       <p></p><span></span>
-      <button></button>
+      <button aria-label="Button"></button>
 
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* Skill Categories - Two Column Layout */}
