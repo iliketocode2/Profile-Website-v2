@@ -16,6 +16,7 @@ export default function HobbiesSection() {
             Clear filter
           </div>
           <a href="/hobbies">Click here</a>
+          <button>Test</button>
           <p className="text-[#b0b0b0] bg-white">Low contrast helper text</p>
         </section>
         {hobbies.map((hobby, index) => (
