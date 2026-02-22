@@ -13,5 +13,5 @@ jobs:
       - uses: iliketocode2/WCAG_PR_Checker@main
         with:
           APP_DIR: '.'
-          BUILD_DIR: 'build'
+          BUILD_DIR: '.next/server/app'
           URLS: '/,/projects'
