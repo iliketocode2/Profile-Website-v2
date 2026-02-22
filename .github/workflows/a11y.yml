@@ -1,0 +1,19 @@
+name: Accessibility Regression Check
+
+on:
+  pull_request:
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Run accessibility check
+        uses: zachkklein/WCAG_PR_Checker@main
+        with:
+          APP_DIR: '.'
+          BUILD_DIR: '.next/server/app'
+          URLS: '/skills,/hobbies'
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
