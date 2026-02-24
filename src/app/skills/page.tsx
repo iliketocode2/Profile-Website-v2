@@ -64,7 +64,6 @@ function StackCategorySection({ category }: { category: StackCategory }) {
                     className="cursor-pointer text-gray-400"
                     onClick={() => console.log(item.name)}
                     aria-label={item.name}
-                    role="button"
                   >
                     {item.name}
                   </button>
