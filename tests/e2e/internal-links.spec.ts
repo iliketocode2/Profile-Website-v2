@@ -12,13 +12,13 @@ function internalPathFromHref(href: string | null): string | null {
   return path;
 }
 
+/** Same as smoke routes. */
 const seedPaths = [
   "/",
   "/resume",
   "/projects",
   "/skills",
   "/hobbies",
-  "/about",
 ];
 
 test.describe("internal links", () => {

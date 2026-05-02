@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
+/** Routes that exist on the default branch */
 const mainRoutes = [
   "/",
   "/resume",
   "/projects",
   "/skills",
   "/hobbies",
-  "/about",
 ] as const;
 
 test.describe("smoke", () => {
