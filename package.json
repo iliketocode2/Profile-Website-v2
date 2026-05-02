@@ -6,19 +6,27 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:full": "npm run build && playwright test"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
     "clsx": "^2.1.1",
+    "d3-cloud": "^1.2.7",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
     "framer-motion": "^12.26.2",
     "lucide-react": "^0.471.1",
-    "next": "^16.1.5",
+    "next": "^16.2.4",
     "react": "^19.2.3",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/d3-cloud": "^1.2.9",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
