@@ -19,9 +19,9 @@ export default function HobbyCard({ title, image, description }: Hobby) {
         <Image
           src={image}
           alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-md"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 400px"
+          className="rounded-md object-cover"
         />
       </div>
       <p className="text-gray-700 dark:text-gray-300 text-center">

@@ -113,13 +113,13 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
                       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                       className="w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"
                     >
-                      <div className="relative">
+                      <div className="relative h-28 w-full">
                         <Image
                           src={project.imageUrl}
                           alt={project.title}
-                          width={400}
-                          height={112}
-                          className="w-full h-28 object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 320px"
                         />
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/70 flex items-end p-3">
                           <h3 className="text-white text-base font-semibold">{project.title}</h3>

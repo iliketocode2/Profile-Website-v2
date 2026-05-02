@@ -11,9 +11,9 @@ export function ProjectCard(project: Project) {
           <Image
             src={imageUrl}
             alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
+            fill
+            sizes="(max-width: 768px) 100vw, 288px"
+            className="rounded-lg object-cover"
           />
         </div>
       </div>

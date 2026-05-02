@@ -39,6 +39,7 @@ export function ProjectTile(project: Project) {
             src={img}
             alt={`${title} - Image ${idx + 1}`}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             style={{ objectFit: 'cover' }}
             className={`absolute inset-0 transition-opacity duration-200 ${
               idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
