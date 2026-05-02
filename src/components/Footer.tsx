@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 export default function Footer() {
@@ -40,13 +40,48 @@ export default function Footer() {
               href="https://www.linkedin.com/in/william-goldman-79125a283/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center transition-transform hover:scale-110"
+              className={[
+                'group flex flex-col items-center',
+                'transition-transform hover:scale-110',
+              ].join(' ')}
             >
-              <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
+              <div className={[
+                'p-2 rounded-full transition-colors',
+                'bg-gray-100 dark:bg-gray-800',
+                'group-hover:bg-blue-100',
+                'dark:group-hover:bg-blue-900/30',
+              ].join(' ')}>
                 <Linkedin className="h-6 w-6 text-[#0A66C2] dark:text-blue-400" />
               </div>
-              <span className="text-xs mt-1 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200">
+              <span className={[
+                'text-xs mt-1 text-gray-600 dark:text-gray-400',
+                'group-hover:text-gray-900 dark:group-hover:text-gray-200',
+              ].join(' ')}>
                 LinkedIn
+              </span>
+            </a>
+
+            <a
+              href="https://docs.google.com/document/d/1lSkKShNRphKa4fnbEpuaeE1REsETmUX14UV60kVxU4A/export?format=pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={[
+                'group flex flex-col items-center',
+                'transition-transform hover:scale-110',
+              ].join(' ')}
+            >
+              <div className={[
+                'p-2 rounded-full transition-colors',
+                'bg-gray-100 dark:bg-gray-800',
+                'group-hover:bg-gray-200 dark:group-hover:bg-gray-700',
+              ].join(' ')}>
+                <FileText className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+              </div>
+              <span className={[
+                'text-xs mt-1 text-gray-600 dark:text-gray-400',
+                'group-hover:text-gray-900 dark:group-hover:text-gray-200',
+              ].join(' ')}>
+                Resume
               </span>
             </a>
           </div>

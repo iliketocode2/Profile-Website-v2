@@ -64,6 +64,15 @@
   }
 }
 
+/* Base background colors so content is readable over the gradient */
+body {
+  background-color: #ffffff;
+}
+
+:root.dark body {
+  background-color: #111827;
+}
+
 /* Ensure content doesn't overflow viewport */
 html, body {
   overflow-x: hidden;
