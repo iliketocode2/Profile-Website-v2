@@ -60,10 +60,10 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
                   >
-                    Hi, I&apos;m Will! I&apos;m a sophomore at Tufts University studying Mechanical Engineering and Computer Science. 
-                    In addition to my studies, I work as a research technology intern at Tufts Technology Services (TTS) 
+                    Hi, I&apos;m Will! I&apos;m a junior at Tufts University studying Mechanical Engineering and Computer Science. 
+                    In addition to my studies, I work as a Process Automation Intern at Draper Labs
                     and I serve as the captain of the Tufts CubeSat team, where I lead a group of students in designing and building a small satellite. 
-                    Some of my current interests include web development, cybersecurity, aerospace engineering, and robotics.
+                    Some of my current interests include web/interface development, managing compute, aerospace engineering, and robotics.
                   </motion.p>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
