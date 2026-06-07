@@ -15,8 +15,8 @@ function internalPathFromHref(href: string | null): string | null {
 /** Same as smoke routes. */
 const seedPaths = [
   "/",
-  "/resume",
   "/projects",
+  "/impact",
   "/skills",
   "/hobbies",
 ];

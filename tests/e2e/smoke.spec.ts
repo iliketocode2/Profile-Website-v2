@@ -3,8 +3,8 @@ import { test, expect } from "@playwright/test";
 /** Routes that exist on the default branch */
 const mainRoutes = [
   "/",
-  "/resume",
   "/projects",
+  "/impact",
   "/skills",
   "/hobbies",
 ] as const;
