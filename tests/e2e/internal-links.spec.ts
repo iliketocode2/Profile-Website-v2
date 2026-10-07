@@ -18,7 +18,7 @@ const seedPaths = [
   "/projects",
   "/impact",
   "/skills",
-  "/hobbies",
+  "/about",
 ];
 
 test.describe("internal links", () => {
