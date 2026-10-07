@@ -36,7 +36,7 @@ export default function Projects() {
         >
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Projects</h1>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Newest at the top. Pick a bubble to dig in.</p>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Newest at the top. Click a bubble to learn more.</p>
           </div>
 
           <div role="radiogroup" aria-label="Filter projects by discipline" className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1">
