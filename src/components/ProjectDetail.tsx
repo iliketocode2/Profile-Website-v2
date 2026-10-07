@@ -27,14 +27,14 @@ function Gallery({ project }: { project: Project }) {
   const step = (delta: number) => setIndex((i) => (i + delta + allImages.length) % allImages.length);
 
   return (
-    <div className="relative aspect-[16/10] w-full bg-gray-100 dark:bg-gray-800">
+    <div className="relative h-44 sm:h-56 w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
       {allImages.map((img, i) => (
         <Image
           key={img}
           src={img}
           alt={`${project.title} - Image ${i + 1}`}
           fill
-          sizes="(max-width: 640px) 100vw, 672px"
+          sizes="(max-width: 640px) 90vw, 624px"
           className={`object-cover transition-opacity duration-200 ${i === index ? 'opacity-100' : 'opacity-0'}`}
           priority={i === 0}
         />
@@ -78,65 +78,67 @@ function DetailBody({ project }: { project: Project }) {
   const hasDetailPage = Boolean(project.pdfUrl || project.subProjects);
 
   return (
-    <>
-      <Gallery project={project} />
-      <div className="p-5 sm:p-6">
-        <div className="flex flex-wrap items-center gap-2 mb-2 text-xs text-gray-500 dark:text-gray-400">
-          {project.discipline && (
-            <span className="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 font-semibold uppercase tracking-wider text-[10px] text-gray-700 dark:text-gray-300">
-              {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
-            </span>
-          )}
-          <span>{datePart}</span>
-        </div>
-        <Dialog.Title className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white pr-8">
-          {project.title}
-        </Dialog.Title>
-        <Dialog.Description className="mt-3 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-300">
-          {project.description}
-        </Dialog.Description>
-
-        {project.tags.technologies.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {project.tags.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-2.5 py-1 text-xs rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+    <div className="p-5 sm:p-6">
+      {/* Header: meta, title and links */}
+      <div className="flex flex-wrap items-center gap-2 mb-1.5 text-xs text-gray-500 dark:text-gray-400">
+        {project.discipline && (
+          <span className="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 font-semibold uppercase tracking-wider text-[10px] text-gray-700 dark:text-gray-300">
+            {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
+          </span>
         )}
-
-        <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium">
-          {hasDetailPage && (
-            <Link
-              href={`/projects/${project.slug || createProjectSlug(project.title)}`}
-              className="inline-flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              <FileText className="h-4 w-4" />
-              {project.pdfUrl ? 'View Report' : 'View Details'}
-            </Link>
-          )}
-          {project.links?.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-            >
-              {link.isGithub ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
-              {link.label}
-            </a>
-          ))}
-          {project.academicProject && !hasDetailPage && (
-            <span className="text-gray-500 dark:text-gray-400">Academic project · contact me for details</span>
-          )}
-        </div>
+        <span>{datePart}</span>
       </div>
-    </>
+      <Dialog.Title className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white pr-10">
+        {project.title}
+      </Dialog.Title>
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+        {hasDetailPage && (
+          <Link
+            href={`/projects/${project.slug || createProjectSlug(project.title)}`}
+            className="inline-flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            <FileText className="h-4 w-4" />
+            {project.pdfUrl ? 'View Report' : 'View Details'}
+          </Link>
+        )}
+        {project.links?.map((link) => (
+          <a
+            key={link.url}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+          >
+            {link.isGithub ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+            {link.label}
+          </a>
+        ))}
+        {project.academicProject && !hasDetailPage && (
+          <span className="text-gray-500 dark:text-gray-400">Academic project · contact me for details</span>
+        )}
+      </div>
+
+      <div className="mt-4">
+        <Gallery project={project} />
+      </div>
+
+      <Dialog.Description className="mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+        {project.description}
+      </Dialog.Description>
+
+      {project.tags.technologies.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {project.tags.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-2.5 py-1 text-xs rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -169,9 +171,9 @@ export default function ProjectDetail({ project, onClose }: { project: Project |
                   className="pointer-events-auto relative w-full sm:max-w-2xl max-h-[88vh] overflow-y-auto overscroll-contain rounded-t-2xl sm:rounded-2xl bg-white dark:bg-gray-900 shadow-2xl focus:outline-none pb-[env(safe-area-inset-bottom)]"
                 >
                   {/* Grab handle hints the sheet can be dismissed on phones */}
-                  <div className="sm:hidden absolute top-2 left-1/2 -translate-x-1/2 h-1 w-10 rounded-full bg-white/80 z-10" />
+                  <div className="sm:hidden absolute top-2 left-1/2 -translate-x-1/2 h-1 w-10 rounded-full bg-gray-300 dark:bg-gray-700 z-10" />
                   <Dialog.Close
-                    className="absolute top-3 right-3 z-10 rounded-full bg-black/50 hover:bg-black/70 p-2 text-white"
+                    className="absolute top-4 right-4 z-10 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 p-2 text-gray-600 dark:text-gray-300"
                     aria-label="Close"
                   >
                     <X className="h-4 w-4" />
