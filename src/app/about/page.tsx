@@ -48,7 +48,7 @@ export default function About() {
       </section>
 
       <section className="border-t border-gray-200 dark:border-gray-700 pt-10">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">Outside the Lab</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">Hobbies</h2>
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 px-1 sm:px-4">
           {hobbies.map((hobby) => (
             <HobbyCard key={hobby.title} {...hobby} />
