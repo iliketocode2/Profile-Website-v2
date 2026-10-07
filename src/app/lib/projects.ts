@@ -9,7 +9,7 @@ export const projects: Project[] = [
     description: "µNorman is a small programming language for AI agents, with typed model calls, budgets in money and time, capabilities for tools, and dataflow concurrency. It's designed in the style of Norman Ramsey's Programming Languages: Build, Prove, and Compare and implemented as a definitional interpreter in Rust.",
     imageUrl: "/images/munorman.png",
     links: [
-      { label: "Docs", url: "https://iliketocode2.github.io/Norman", isGithub: false },
+      { label: "Docs", url: "https://norman-docs.vercel.app/", isGithub: false },
       { label: "GitHub", url: "https://github.com/iliketocode2/Norman", isGithub: true }
     ],
     tags: {
