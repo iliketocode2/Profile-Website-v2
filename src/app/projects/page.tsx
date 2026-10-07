@@ -1,163 +1,76 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { ProjectTile } from "@/components/ProjectTile";
-import ProjectFilter from "@/components/ProjectFilter";
-import CategoryTabs from "@/components/CategoryTabs";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import ProjectBubbles from "@/components/ProjectBubbles";
+import ProjectDetail from "@/components/ProjectDetail";
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 
-type Category = 'Computer Science' | 'Mechanical Engineering' | 'All';
+type Filter = 'All' | 'Computer Science' | 'Mechanical Engineering';
+
+const FILTERS: { value: Filter; label: string; dot?: string }[] = [
+  { value: 'All', label: 'All' },
+  { value: 'Computer Science', label: 'CS', dot: 'bg-blue-500' },
+  { value: 'Mechanical Engineering', label: 'MechE', dot: 'bg-green-500' },
+];
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>('All');
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
-  const [showAll, setShowAll] = useState(12);
+  const [filter, setFilter] = useState<Filter>('All');
+  const [selected, setSelected] = useState<Project | null>(null);
 
-  // Filter projects by discipline category
-  const categoryFilteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') {
-      return projects;
-    }
-    return projects.filter(project => 
-      project.discipline === selectedCategory || 
-      (!project.discipline && selectedCategory === 'Computer Science') // Default to CS if no discipline set
-    );
-  }, [selectedCategory]);
-
-  // Reset filters when category changes
-  useEffect(() => {
-    setFilteredProjects(categoryFilteredProjects);
-    setShowAll(12);
-  }, [categoryFilteredProjects]);
-
-  // Reset showAll when filters change
-  useEffect(() => {
-    setShowAll(12);
-  }, [filteredProjects]);
-
-  const handleFilteredProjects = useCallback((filtered: Project[]) => {
-    setFilteredProjects(filtered);
-  }, []);
-
-  // Separate featured and regular projects
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const regularProjects = filteredProjects.filter(p => !p.featured);
-  const displayedRegularProjects = regularProjects.slice(0, showAll - featuredProjects.length);
-  const hasMore = regularProjects.length > displayedRegularProjects.length;
-  
-  // Combine all displayed projects for the animated grid
-  const allDisplayedProjects = [...featuredProjects, ...displayedRegularProjects];
+  const visibleProjects = useMemo(() => {
+    if (filter === 'All') return projects;
+    // Projects without a discipline are software/research work, so they count as CS
+    return projects.filter((p) => (p.discipline ?? 'Computer Science') === filter);
+  }, [filter]);
 
   return (
-    <div className="w-full px-2 sm:px-4 py-12 min-h-screen">
-      <div className="max-w-7xl mx-auto mb-16">
-        {/* Header */}
-        <div className="flex flex-col items-center space-y-6 mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center space-y-2"
-          >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Portfolio</h1>
-            <p className="text-gray-500 dark:text-gray-400">Exploring the intersection of code and hardware.</p>
-          </motion.div>
-          
-          {/* Search and Filters */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full max-w-3xl"
-          >
-            <ProjectFilter 
-              projects={categoryFilteredProjects} 
-              onFilteredProjects={handleFilteredProjects}
-            />
-          </motion.div>
-        </div>
+    <div className="w-full pt-6 pb-8 sm:pt-10">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="flex flex-col items-center text-center gap-4 mb-6 sm:mb-8"
+        >
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Projects</h1>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Newest at the top. Click a bubble to learn more.</p>
+          </div>
 
-        {/* Category Tabs */}
-        <CategoryTabs 
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-        />
+          <div role="radiogroup" aria-label="Filter projects by discipline" className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1">
+            {FILTERS.map(({ value, label, dot }) => {
+              const active = filter === value;
+              return (
+                <button
+                  key={value}
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => setFilter(value)}
+                  className={`relative inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                    active ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="project-filter-pill"
+                      className="absolute inset-0 rounded-full bg-white dark:bg-gray-700 shadow-sm"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  {dot && <span className={`relative h-2 w-2 rounded-full ${dot}`} />}
+                  <span className="relative">{label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
 
-        {/* Results Summary */}
-        {allDisplayedProjects.length > 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="mb-8 text-center"
-          >
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Showing {allDisplayedProjects.length} of {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
-              {filteredProjects.length !== categoryFilteredProjects.length && ` (filtered from ${categoryFilteredProjects.length} ${selectedCategory.toLowerCase()} projects)`}
-            </p>
-          </motion.div>
-        )}
-
-        {/* Animated Grid */}
-        {allDisplayedProjects.length > 0 ? (
-          <LayoutGroup>
-            <motion.div 
-              layout 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              <AnimatePresence mode="popLayout">
-                {allDisplayedProjects.map((project) => (
-                  <motion.div
-                    key={`project-${project.title}`}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                    transition={{ 
-                      layout: { type: "spring", bounce: 0.2, duration: 0.6 },
-                      opacity: { duration: 0.2 },
-                      scale: { duration: 0.2 }
-                    }}
-                  >
-                    <ProjectTile {...project} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          </LayoutGroup>
-        ) : (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <div className="text-gray-500 dark:text-gray-400">
-              <h3 className="text-xl font-semibold mb-2">No projects found</h3>
-              <p className="text-sm">Try adjusting your search terms or filters to find what you&apos;re looking for.</p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Load More Button */}
-        {hasMore && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex justify-center mt-12"
-          >
-            <button
-              onClick={() => setShowAll(prev => prev + 12)}
-              className="px-8 py-3 text-lg font-medium rounded-full bg-blue-600 dark:bg-blue-500 
-                         text-white hover:bg-blue-700 dark:hover:bg-blue-600 hover:scale-105 
-                         transition-all duration-300 shadow-lg shadow-blue-500/30"
-            >
-              Load More
-            </button>
-          </motion.div>
-        )}
+        <ProjectBubbles projects={visibleProjects} onSelect={setSelected} />
       </div>
+
+      <ProjectDetail project={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

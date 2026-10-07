@@ -6,7 +6,7 @@ const mainRoutes = [
   "/projects",
   "/impact",
   "/skills",
-  "/hobbies",
+  "/about",
 ] as const;
 
 test.describe("smoke", () => {

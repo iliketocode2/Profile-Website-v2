@@ -4,9 +4,13 @@ export interface SubProject {
   description: string;
 }
 
+export type BubbleSize = 'xl' | 'lg' | 'md' | 'sm';
+
 export interface Project {
   title: string;
   date: string;
+  sortDate: string; // "YYYY-MM", used to order the projects page newest first
+  size?: BubbleSize; // Bubble size on the projects page (default 'md')
   description: string;
   imageUrl: string;
   images?: string[]; // Optional array of additional images for gallery/carousel

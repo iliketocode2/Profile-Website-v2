@@ -1,172 +1,132 @@
-'use client'; // Moved the home client directive here
+'use client';
 
 import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Mail } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Project } from '@/app/lib/types';
+import { getProjectHref } from '@/app/lib/utils';
+
+function FeaturedCard({ project, index }: { project: Project; index: number }) {
+  const { href, external } = getProjectHref(project);
+  const [datePart] = project.date.split(' | ');
+
+  const card = (
+    <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <Image
+        src={project.imageUrl}
+        alt=""
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 330px"
+        priority={index === 0}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      {project.discipline && (
+        <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-md text-gray-900 dark:text-white">
+          {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
+        </span>
+      )}
+      <div className="absolute inset-x-0 bottom-0 p-3 flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h3 className="text-white text-base font-semibold leading-snug line-clamp-2">{project.title}</h3>
+          <p className="text-white/75 text-xs mt-1">{datePart}</p>
+        </div>
+        <ArrowUpRight className="h-4 w-4 shrink-0 text-white/80 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      </div>
+    </div>
+  );
+
+  const className =
+    'group block overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+      className="w-[70%] sm:w-[40%] shrink-0 snap-start lg:w-auto"
+    >
+      {external ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+          {card}
+        </a>
+      ) : (
+        <Link href={href} className={className}>
+          {card}
+        </Link>
+      )}
+    </motion.div>
+  );
+}
 
 export default function HomeClient({ featuredProjects }: { featuredProjects: Project[] }) {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden pb-12">
-        <div className="container mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-center">
-          <motion.section 
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-full max-w-4xl mx-auto text-center py-8"
+    <main className="w-full max-w-full overflow-x-hidden pb-8">
+      <motion.section
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="w-full max-w-4xl mx-auto text-center pt-6 pb-8 sm:pt-10 sm:pb-12"
+      >
+        <h1
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono uppercase leading-tight"
+          style={{
+            background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(34, 197, 94))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            display: 'inline-block',
+          }}
+        >
+          William <br className="sm:hidden" />
+          Goldman
+        </h1>
+        <ul className="mt-6 inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-0 sm:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+          <li className="sm:px-4">
+             Software & Automation @ Draper
+          </li>
+          <li className="sm:px-4">
+            CS &amp; Mechanical Engineering · Tufts &apos;28
+          </li>
+        </ul>
+
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm">
+          <a
+            href="mailto:William.Goldman@tufts.edu"
+            className="inline-flex items-center gap-2 rounded-full border border-gray-300 dark:border-gray-700 px-4 py-1.5 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <h1  
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-mono uppercase leading-tight mb-2 w-full text-center"
-              style={{
-                background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(34, 197, 94))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                display: 'inline-block'
-              }}
-            >
-              William <br className="sm:hidden" />
-              Goldman
-            </h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4"
-            >
-            <a 
-              href="mailto:William.Goldman@tufts.edu"
-              className="inline-flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-            >
-              <Mail className="w-4 h-4 sm:w-5 h-5" /> 
-              <span>William.Goldman@tufts.edu</span>
-            </a>
-            </motion.p>
-          </motion.section>
-
-          <div className="w-full max-w-6xl mx-auto mb-12 pb-12 border-b border-gray-300 dark:border-gray-700">
-            <div className="flex flex-col lg:flex-row lg:space-x-8 space-y-8 lg:space-y-0">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-                className="lg:w-[75%]"
-              >
-                <div className="space-y-4">
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
-                  >
-                    Hi, I&apos;m Will! I&apos;m a junior at Tufts University studying Mechanical Engineering and Computer Science. 
-                    In addition to my studies, I work as a Process Automation Intern at Draper Labs
-                    and I serve as the captain of the Tufts CubeSat team, where I lead a group of students in designing and building a small satellite. 
-                    Some of my current interests include web/interface development, managing compute, aerospace engineering, and robotics.
-                  </motion.p>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
-                  >
-                    I learn quickly and enjoy working with others, or independently on smaller projects. 
-                    I&apos;ve worked across the full stack on web-based projects and have recently been building systems that connect software and hardware 
-                    through UART, BLE, and serial connection. 
-                    On the mechanical side, I&apos;ve led a competition robotics team (FTC Team 5276), contributing to CAD modeling, 
-                    machining, simulation, and systems integration in addition to my current work as the CubeSat lead.
-                  </motion.p>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center lg:text-left"
-                  >
-                    In my free time, I enjoy watching Chelsea FC, building with LEGO, and skiing whenever I get the chance. 
-                    Feel free to reach out if you&apos;d like to collaborate on a project or just chat about tech, engineering, or anything else!
-                  </motion.p>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-                className="lg:w-[25%]"
-              >
-                <motion.h2 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-gray-100"
-                >
-                  Featured Projects
-                </motion.h2>
-                <div className="space-y-4">
-                  {featuredProjects.map((project, index) => (
-                    <motion.div 
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
-                      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                      className="w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md relative"
-                    >
-                      <div className="relative h-28 w-full">
-                        <Image
-                          src={project.imageUrl}
-                          alt={project.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 320px"
-                        />
-                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/70 flex items-end p-3">
-                          <h3 className="text-white text-base font-semibold">{project.title}</h3>
-                        </div>
-                      </div>
-                      <div className="p-3">
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{project.date}</p>
-                      </div>
-                      <div className="absolute inset-0 bg-gray-900 bg-opacity-70 opacity-0 hover:opacity-100 transition-opacity duration-300 flex">
-                        {project.academicProject ? (
-                          <div className="flex-1 flex items-center justify-center p-2">
-                            <div className="text-white text-xs text-center">
-                              <div className="mb-1">Academic Project</div>
-                              <div>Contact for details</div>
-                            </div>
-                          </div>
-                        ) : (
-                        
-                        project.links?.map((link, linkIndex) => (
-                          <a
-                            key={linkIndex}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center hover:bg-black/10 transition-colors"
-                          >
-                          {link.isGithub ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github">
-                              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
-                            </svg>
-                          ) : (
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-globe">
-                              <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                          )}
-                          </a>
-                        ))
-                      )}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
+            <Mail className="w-4 h-4" />
+            William.Goldman@tufts.edu
+          </a>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+          >
+            More about me
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </div>
+      </motion.section>
+
+      <section className="w-full max-w-5xl mx-auto">
+        <div className="flex items-baseline justify-between mb-4 px-1">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Featured Projects</h2>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+          >
+            All projects
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+        {/* Swipeable row on phones and tablets, grid from lg up */}
+        <div className="no-scrollbar -mx-3 px-3 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-3 pb-2 sm:gap-4 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-3 lg:overflow-visible">
+          {featuredProjects.map((project, index) => (
+            <FeaturedCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

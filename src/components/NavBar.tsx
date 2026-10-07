@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Hammer, Layers, GitPullRequest } from 'lucide-react';
+import { Home, Briefcase, User, Layers, GitPullRequest } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/projects', label: 'Projects', icon: Briefcase },
   { href: '/impact', label: 'Impact', icon: GitPullRequest },
   { href: '/skills', label: 'Skills', icon: Layers },
-  { href: '/hobbies', label: 'Hobbies', icon: Hammer },
+  { href: '/about', label: 'About', icon: User },
 ];
 
 export default function Navbar() {

@@ -12,29 +12,31 @@
     "test:e2e:full": "npm run build && playwright test"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dialog": "^1.2.0",
     "clsx": "^2.1.1",
-    "d3-cloud": "^1.2.7",
+    "d3-cloud": "^1.2.9",
+    "d3-force": "^3.0.0",
     "d3-scale": "^4.0.2",
     "d3-scale-chromatic": "^3.1.0",
-    "framer-motion": "^12.26.2",
-    "lucide-react": "^0.471.1",
-    "next": "^16.2.4",
-    "react": "^19.2.3",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.6.0"
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^0.471.2",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^2.6.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.51.0",
+    "@eslint/eslintrc": "^3.3.7",
+    "@playwright/test": "^1.63.0",
     "@types/d3-cloud": "^1.2.9",
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/d3-force": "^3.0.10",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
     "eslint-config-next": "15.1.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "postcss": "^8.5.29",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }
