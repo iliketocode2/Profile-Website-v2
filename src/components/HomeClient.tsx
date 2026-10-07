@@ -84,7 +84,7 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
         </h1>
         <ul className="mt-6 inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-0 sm:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
           <li className="sm:px-4">
-            Process Automation Intern @ Draper
+             Software & Automation @ Draper
           </li>
           <li className="sm:px-4">
             CS &amp; Mechanical Engineering · Tufts &apos;28
