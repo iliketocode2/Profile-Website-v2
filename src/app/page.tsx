@@ -4,7 +4,7 @@ import HomeClient from '@/components/HomeClient';
 export default function Home() {
   const featuredProjectTitles = [
     "Technologies and Designs for Remote Robotics Competition",
-    "MealPlanGuru"
+    "µNorman"
   ];
   
   const featuredProjects = projects.filter(project => 

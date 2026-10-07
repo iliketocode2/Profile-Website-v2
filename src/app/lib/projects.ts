@@ -2,6 +2,22 @@ import { Project } from './types'
 
 export const projects: Project[] = [
   {
+    title: "µNorman",
+    date: "September 2026 - Present | Rust, WebAssembly, JavaScript",
+    description: "µNorman is a small programming language for AI agents, with typed model calls, budgets in money and time, capabilities for tools, and dataflow concurrency. It's designed in the style of Norman Ramsey's Programming Languages: Build, Prove, and Compare and implemented as a definitional interpreter in Rust.",
+    imageUrl: "/images/munorman.png",
+    links: [
+      { label: "Docs", url: "https://iliketocode2.github.io/Norman", isGithub: false },
+      { label: "GitHub", url: "https://github.com/iliketocode2/Norman", isGithub: true }
+    ],
+    tags: {
+      technologies: ["Rust", "WebAssembly", "JavaScript"],
+      categories: ["Research", "Software"]
+    },
+    featured: true,
+    discipline: "Computer Science"
+  },
+  {
     title: "JumboMap",
     date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
     description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
@@ -337,7 +353,6 @@ export const projects: Project[] = [
         technologies: ["React.js", "Next.js", "CSS", "PostgreSQL", "Neon", "Resend Email"],
         categories: ["Web Development"]
       },
-      featured: true,
       discipline: "Computer Science"
     },
     {
