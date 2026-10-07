@@ -4,6 +4,8 @@ export const projects: Project[] = [
   {
     title: "µNorman",
     date: "September 2026 - Present | Rust, WebAssembly, JavaScript",
+    sortDate: "2026-09",
+    size: "xl",
     description: "µNorman is a small programming language for AI agents, with typed model calls, budgets in money and time, capabilities for tools, and dataflow concurrency. It's designed in the style of Norman Ramsey's Programming Languages: Build, Prove, and Compare and implemented as a definitional interpreter in Rust.",
     imageUrl: "/images/munorman.png",
     links: [
@@ -20,6 +22,8 @@ export const projects: Project[] = [
   {
     title: "JumboMap",
     date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
+    sortDate: "2025-02",
+    size: "lg",
     description: "Originally started as a Hackathon project at JumboHack 2025, the initial prototype of this site was developed by myself and a team of five others in 36 hours. Since then we have continued to expand and refine the capabilities of the website which is designed for easier navigation of events at Tufts University.",
     imageUrl: "/images/jumbomap.png",
     links: [
@@ -34,6 +38,8 @@ export const projects: Project[] = [
   {
       title: "C & Assembly Projects",
       date: "September 2025 - December 2025",
+      sortDate: "2025-12",
+      size: "lg",
       description: `A collection of systems programming projects written in C and x86 assembly language. 
       These projects focused on low-level programming, memory management, performance optimization, 
       and understanding computer architecture fundamentals.`,
@@ -91,6 +97,8 @@ export const projects: Project[] = [
       {
         title: "Beam Deflection Analysis - Cantilevered and Simply Supported",
         date: "December 2025",
+        sortDate: "2025-12",
+        size: "lg",
         description: `Experimental and analytical study of beam mechanics, focusing on the 
         deflection and stress profiles of steel, aluminum, and acrylic under varying support 
         conditions. With a partner, we conducted theoretical calculations and physical 
@@ -110,6 +118,8 @@ export const projects: Project[] = [
       {
         title: "Hip Truss Analysis",
         date: "October 2025",
+        sortDate: "2025-10",
+        size: "md",
         description: `Working in a group of two, this project focused on the design and 
         structural analysis of a statically determinate truss. The workflow involved 
         calculating theoretical support reactions and internal member forces using the 
@@ -129,6 +139,8 @@ export const projects: Project[] = [
       {
         title: "FEA Analysis of a Cantilevered Beam",
         date: "October 2025",
+        sortDate: "2025-10",
+        size: "md",
         description: `This project focused on the fundamentals of Finite Element Analysis (FEA) 
         by simulating a copper cantilever beam under a 75 lbf load. The study involved 
         configuring boundary conditions, generating meshes, and extracting displacement 
@@ -148,6 +160,8 @@ export const projects: Project[] = [
       {
         title: "Step Stool",
         date: "December 2025",
+        sortDate: "2025-12",
+        size: "xl",
         description: `The step ladder project was a 3-week design and build process that 
         consisted of an initial round of designs in OnShape and SOLIDWORKS, followed by 
         an FEA in SOLIDWORKS to simulate loads on the final design. The build process took 
@@ -175,6 +189,8 @@ export const projects: Project[] = [
       {
         title: "Acrylic Phone Stand & Injection Molding",
         date: "November 2025",
+        sortDate: "2025-11",
+        size: "md",
         description: `This lab focused on the fundamentals of polymer processing, 
         specifically exploring the manufacturing techniques of injection molding 
         and thermal forming. I produced standardized "dogbone" test specimens for tensile
@@ -193,6 +209,8 @@ export const projects: Project[] = [
       {
         title: "Tea Candle Holder",
         date: "November 2025",
+        sortDate: "2025-11",
+        size: "sm",
         description: `Using the cold saw and Ironworker, I manufactured a small tea candle
         holder! This involved the fabrication of a three-piece assembly consisting of an 
         Aluminum ring, a steel plate, and a steel stand.`,
@@ -209,6 +227,8 @@ export const projects: Project[] = [
       {
         title: "Sheet Metal Box",
         date: "October 2025",
+        sortDate: "2025-10",
+        size: "sm",
         description: `A simple box made of 1/32" Aluminum. The goal was to practice using
         the sheet metal break, table sheet metal bender, bead roller, English Wheel, and 
         various punches and rivets.`,
@@ -222,6 +242,8 @@ export const projects: Project[] = [
       {
         title: "Gear Sand Casting",
         date: "September 2025",
+        sortDate: "2025-09",
+        size: "sm",
         description: `This project was an introduction to sand casting and how to design a 
         proper mold with a runner and a sprue. I chose to make a gear which was casted
         with molten pewter.`,
@@ -239,6 +261,8 @@ export const projects: Project[] = [
       {
         title: "Press Support Base",
         date: "September 2025",
+        sortDate: "2025-09",
+        size: "sm",
         description: `This lab activity focused on developing proficiency with the horizontal and vertical bandsaws, 
         the drill press, and the belt sander. The goal was to fabricate a precision part from 
         Aluminum 6061-T6511 stock, requiring that the tolerances specified in the 
@@ -254,6 +278,8 @@ export const projects: Project[] = [
     {
         title: "Technologies and Designs for Remote Robotics Competition",
         date: "July 2025 | MicroPython, Python, JavaScript, OpenCV, Websockets, WebRTC, Pyscript.com",
+        sortDate: "2025-07",
+        size: "xl",
         description: "Inspired by FIRST LEGO League, this project explored and developed multiple mission-based robotics competitions using LEGO SPIKE, LEGO Science Hardware, and OpenMV cameras. Real-time Apriltag tracking (via OpenCV and Pupil-Apriltags) enabled projection of both a team's and their opponent's robot positions onto a shared field, with communication handled through WebSockets and Bluetooth protocols using PyScript.com interfaces.",
         imageUrl: "/images/Apriltag overview1.png",
         links: [
@@ -273,6 +299,8 @@ export const projects: Project[] = [
     {
         title: "Websocket Communication with ESP32s",
         date: "June 2025 | MicroPython, Python, TCP/IP, Websockets",
+        sortDate: "2025-06",
+        size: "md",
         description: "This project explored the feasibility of creating a direct WebSocket connection written in MicroPython from ESP32 \"Smart Motors\" to a secure JSON-based messaging system called channels, without relying on intermediary PyScript webpages.",
         imageUrl: "/images/Smart Motor Swarm img.png",
         links: [
@@ -288,6 +316,8 @@ export const projects: Project[] = [
     {
         title: "Gerp - Directory Search Tool",
         date: "May 2025 | C++, Data Structures, Hash Tables",
+        sortDate: "2025-05",
+        size: "md",
         description: "C++ implementation of a simplified Unix grep tool that recursively searches through directory structures. Features custom hash table with quadratic probing for efficient word indexing, case-sensitive and case-insensitive search modes, memory-optimized file path storage, and query processing with various commands.",
         imageUrl: "/images/gerp.png",
         links: [],
@@ -301,6 +331,8 @@ export const projects: Project[] = [
     {
         title: "Satellite Orbit Simulation Toolkit",
         date: "April 2025 | MATLAB, Numerical Methods, GUI Development",
+        sortDate: "2025-04",
+        size: "md",
         description: "A MATLAB simulation toolkit for satellite orbital mechanics featuring multiple numerical methods (Euler, Runge-Kutta 4,5), interactive GUI for parameter selection, 3D visualization with Earth texture mapping, and orbital stability analysis. Demonstrates Newton-Raphson root finding and cubic spline interpolation.",
         imageUrl: "/images/matlab_final.png",
         links: [],
@@ -314,6 +346,8 @@ export const projects: Project[] = [
     {
         title: "Somerville Museum Website - JumboCode",
         date: "September 2024 - May 2025 | React.js, Next.js, JavaScript, CSS, PostgreSQL, Neon",
+        sortDate: "2024-09",
+        size: "lg",
         description: "Working with a team of 13 other Tufts students, we developed an inventory management system for a local museum in Somerville, MA. The project was developed as part of the JumboCode organization at Tufts University.",
         imageUrl: "/images/Somerville Museum Dashboard.png",
         links: [
@@ -329,6 +363,8 @@ export const projects: Project[] = [
     {
         title: "InterSystems $VECTOR Data Type in Rust",
         date: "January 2025 | Rust",
+        sortDate: "2025-01",
+        size: "md",
         description: "During January 2025, I worked as a team member of a project group whose goal was to implement the InterSystems $VECTOR data type in Rust. This was an unpaid internship through Tufts and I worked with an Intersystems developer on the project.",
         imageUrl: "/images/IrisVector.png",
         links: [
@@ -343,6 +379,8 @@ export const projects: Project[] = [
     {
       title: "MealPlanGuru",
       date: "January 2025 | React.js, Next.js, Tailwind CSS, PostgreSQL, Neon, Resend Email",
+      sortDate: "2025-01",
+      size: "lg",
       description: "A website designed to help students at Boston universities learn more about their meal plans.",
       imageUrl: "/images/mealplangurus.png",
       links: [
@@ -358,6 +396,8 @@ export const projects: Project[] = [
     {
       title: "LEGO SPIKE Test Rig",
       date: "Winter 2024 | HTML, JavaScript, CSS, Python, MicroPython, LEGO",
+      sortDate: "2024-12",
+      size: "md",
       description: "A website and physical rig to test the installation of new firmware on the LEGO SPIKE. Research project for the Tufts Center for Engineering Education and Outreach.",
       imageUrl: "/images/testRigSite.png",
       links: [
@@ -372,6 +412,8 @@ export const projects: Project[] = [
     {
         title: "AI Mini Golf",
         date: "August 2024 | HTML, JavaScript, CSS",
+        sortDate: "2024-08",
+        size: "md",
         description: "A fun simulation that enables users to draw a mini golf course on a grid and then find the best path through it with a Q-learning algorithm.",
         imageUrl: "/images/mini golf interface.png",
         links: [
@@ -387,6 +429,8 @@ export const projects: Project[] = [
     {
         title: "LEGO SPIKE AI Maze",
         date: "July 2024 | HTML, JavaScript, CSS, Python, LEGO",
+        sortDate: "2024-07",
+        size: "lg",
         description: "As a research project for the Tufts Center for Engineering Education and Outreach, I developed a Lego labyrinth that is able to solve itself. This project integrated an openMV camera with a Lego Spike, all sending and receiving data from my computer.",
         imageUrl: "/images/MazeAndInterfaceRender.png",
         links: [
@@ -400,6 +444,8 @@ export const projects: Project[] = [
     {
         title: "5276 Robotics Website",
         date: "2023 - 2024 | HTML, JavaScript, CSS",
+        sortDate: "2023-09",
+        size: "sm",
         description: "I made this website for my school's FIRST Robotics team. It was the first major website that I actually deployed. The website has since be rebuilt by the team's new leadership, but the code is still buried in the original repository.",
         imageUrl: "/images/robotics team cover.png",
         links: [
@@ -414,6 +460,8 @@ export const projects: Project[] = [
     {
         title: "Hook Mechanism and Spool Design for FTC Robot",
         date: "Jan 2024 | Shapr3D",
+        sortDate: "2024-01",
+        size: "md",
         description: "These are some of the parts I designed for our team's robot during the 2023-24 season. The hook mechanism was able to lift the robot off the ground using a tape measure mounted inside of and controlled by this geared setup.",
         imageUrl: "/images/robot24.jpg",
         links: [
@@ -429,6 +477,8 @@ export const projects: Project[] = [
     {
       title: "CoreXY Microscrope",
       date: "May - June 2023 | Onshape, Fusion 360",
+      sortDate: "2023-05",
+      size: "lg",
       description: "Developed in collaboration with Cellino BioTech, this open-source research project explored the feasibility of repurposing 3D printer architecture for automated microscopy. The system used a CoreXY motion chassis to maneuver a high-resolution camera and microscopic lens over cell plates, controlled with a Raspberry Pi.",
       imageUrl: "/images/microscopeFusion360.png",
       images: [
@@ -444,6 +494,8 @@ export const projects: Project[] = [
     {
         title: "Pong Game",
         date: "April 2021 | JavaScript",
+        sortDate: "2021-04",
+        size: "sm",
         description: "A pong game that I created on Code.org's app lab.",
         imageUrl: "/images/willPong1.png",
         links: [
@@ -458,6 +510,8 @@ export const projects: Project[] = [
     {
         title: "Mandelbrot Fractal Generator",
         date: "May 2020 | HTML, JavaScript, CSS",
+        sortDate: "2020-05",
+        size: "sm",
         description: "A website that generates iterations of the Mandelbrot Set with zoom capabilities.",
         imageUrl: "/images/willFractal2.png",
         links: [
@@ -472,6 +526,8 @@ export const projects: Project[] = [
     {
         title: "Model Rockets",
         date: "2015 - 2023 | Estes and Custom Builds",
+        sortDate: "2015-01",
+        size: "sm",
         description: "In my spare time I enjoy building model rockets and launching them-- from double staged models to pyramid versions they're a fun summer and fall project.",
         imageUrl: "/images/rockets.jpg",
         links: [],

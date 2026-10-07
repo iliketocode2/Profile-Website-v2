@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Project } from '@/app/lib/types';
@@ -86,13 +86,11 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
           Builder
         </p>
 
-        <ul className="mt-6 inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-0 sm:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-          <li className="inline-flex items-center gap-2 sm:px-4">
-            <Briefcase className="w-4 h-4 shrink-0 text-blue-500" />
+        <ul className="mt-6 inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-0 sm:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+          <li className="sm:px-4">
             Process Automation Intern @ Draper
           </li>
-          <li className="inline-flex items-center gap-2 sm:px-4">
-            <GraduationCap className="w-4 h-4 shrink-0 text-green-500" />
+          <li className="sm:px-4">
             CS &amp; Mechanical Engineering · Tufts &apos;28
           </li>
         </ul>
