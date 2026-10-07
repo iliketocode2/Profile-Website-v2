@@ -11,9 +11,15 @@ export default function ContributionsLoading() {
             <div key={i} className="h-56 bg-gray-200 dark:bg-gray-700 rounded-xl" />
           ))}
         </div>
-        <div className="space-y-8 max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-24 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+            <div key={i} className="grid grid-cols-1 sm:grid-cols-[8.5rem_1fr] gap-x-6 gap-y-2 py-6 border-b border-gray-200 dark:border-gray-800">
+              <div className="h-4 w-24 bg-gray-200 dark:bg-gray-700 rounded" />
+              <div className="space-y-2">
+                <div className="h-5 w-2/3 bg-gray-200 dark:bg-gray-700 rounded" />
+                <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded" />
+              </div>
+            </div>
           ))}
         </div>
       </div>

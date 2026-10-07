@@ -1,136 +1,69 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Mic } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { TimelineEntry } from '@/app/lib/impact';
 
-const connectorClass = 'w-0.5 bg-gray-300 dark:bg-gray-700 shrink-0';
+const TYPE_STYLES: Record<TimelineEntry['type'], { label: string; dot: string; text: string }> = {
+  award: { label: 'Award', dot: 'bg-amber-500', text: 'text-amber-600 dark:text-amber-400' },
+  talk: { label: 'Talk', dot: 'bg-purple-500', text: 'text-purple-600 dark:text-purple-400' },
+};
 
-function TimelineIcon({ type }: { type: TimelineEntry['type'] }) {
-  const Icon = type === 'award' ? Award : Mic;
-  const colorClass =
-    type === 'award'
-      ? 'bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800'
-      : 'bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800';
-
+function TypeLabel({ type }: { type: TimelineEntry['type'] }) {
+  const style = TYPE_STYLES[type];
   return (
-    <div
-      className={`flex items-center justify-center w-10 h-10 rounded-full border-2 shrink-0 ${colorClass}`}
-    >
-      <Icon className="h-4 w-4" />
-    </div>
-  );
-}
-
-function EntryContent({
-  entry,
-  align = 'left',
-}: {
-  entry: TimelineEntry;
-  align?: 'left' | 'right';
-}) {
-  const alignClass = align === 'right' ? 'sm:text-right' : '';
-
-  return (
-    <div className={alignClass}>
-      <span
-        className={`inline-block text-xs font-semibold uppercase tracking-wider mb-1 ${
-          entry.type === 'award'
-            ? 'text-amber-600 dark:text-amber-400'
-            : 'text-purple-600 dark:text-purple-400'
-        }`}
-      >
-        {entry.type === 'award' ? 'Award' : 'Talk'} · {entry.date}
-      </span>
-      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{entry.title}</h3>
-      {entry.subtitle && (
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{entry.subtitle}</p>
-      )}
-      <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
-        {entry.description}
-      </p>
-      {entry.links && entry.links.length > 0 && (
-        <div
-          className={`flex flex-wrap gap-3 mt-3 ${
-            align === 'right' ? 'sm:justify-end' : 'sm:justify-start'
-          }`}
-        >
-          {entry.links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function TimelineSpine({
-  type,
-  showTopConnector,
-  showBottomConnector,
-}: {
-  type: TimelineEntry['type'];
-  showTopConnector: boolean;
-  showBottomConnector: boolean;
-}) {
-  return (
-    <div className="flex flex-col items-center self-stretch">
-      {showTopConnector && <div className={`${connectorClass} h-10`} />}
-      <TimelineIcon type={type} />
-      {showBottomConnector && <div className={`${connectorClass} flex-1 min-h-6`} />}
-    </div>
+    <span className={`inline-flex items-center gap-1.5 text-xs font-medium ${style.text}`}>
+      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
+      {style.label}
+    </span>
   );
 }
 
 export default function ContributionsTimeline({ entries }: { entries: TimelineEntry[] }) {
   return (
-    <div className="relative max-w-3xl mx-auto">
-      {entries.map((entry, index) => {
-        const isEven = index % 2 === 0;
-        const isFirst = index === 0;
-        const isLast = index === entries.length - 1;
+    <ol className="max-w-3xl mx-auto border-t border-gray-200 dark:border-gray-800">
+      {entries.map((entry, index) => (
+        <motion.li
+          key={`${entry.title}-${entry.sortDate}`}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '40px' }}
+          transition={{ duration: 0.35, delay: index * 0.04 }}
+          className="grid grid-cols-1 sm:grid-cols-[8.5rem_1fr] gap-x-6 gap-y-1 py-5 sm:py-6 border-b border-gray-200 dark:border-gray-800"
+        >
+          {/* Date gutter; on phones it sits on one line above the title */}
+          <div className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1.5 sm:pt-1">
+            <time className="font-mono text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              {entry.date}
+            </time>
+            <TypeLabel type={entry.type} />
+          </div>
 
-        return (
-          <motion.div
-            key={`${entry.title}-${entry.sortDate}`}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '60px' }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-          >
-            {/* Mobile */}
-            <div className="flex gap-4 sm:hidden">
-              <TimelineSpine
-                type={entry.type}
-                showTopConnector={!isFirst}
-                showBottomConnector={!isLast}
-              />
-              <div className="flex-1 pb-2">
-                <EntryContent entry={entry} />
+          <div>
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">{entry.title}</h3>
+            {entry.subtitle && (
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{entry.subtitle}</p>
+            )}
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">{entry.description}</p>
+            {entry.links && entry.links.length > 0 && (
+              <div className="flex flex-wrap gap-4 mt-3">
+                {entry.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                ))}
               </div>
-            </div>
-
-            {/* Desktop — alternating columns with centered spine */}
-            <div className="hidden sm:grid sm:grid-cols-[1fr_2.5rem_1fr] sm:gap-x-8 sm:items-stretch">
-              <div className="pr-4">{isEven ? <EntryContent entry={entry} align="right" /> : null}</div>
-              <TimelineSpine
-                type={entry.type}
-                showTopConnector={!isFirst}
-                showBottomConnector={!isLast}
-              />
-              <div className="pl-4">{!isEven ? <EntryContent entry={entry} /> : null}</div>
-            </div>
-          </motion.div>
-        );
-      })}
-    </div>
+            )}
+          </div>
+        </motion.li>
+      ))}
+    </ol>
   );
 }
