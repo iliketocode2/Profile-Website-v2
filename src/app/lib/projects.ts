@@ -20,6 +20,85 @@ export const projects: Project[] = [
     discipline: "Computer Science"
   },
   {
+    title: "User-Centered Treat Dispenser",
+    date: "March - May 2026",
+    sortDate: "2026-04",
+    size: "lg",
+    description: `A user-centered design project in a team of five to build a dog treat dispenser
+    for a wheelchair user. Starting from the user's needs and market research, we went through low and
+    medium fidelity prototypes and design reviews before arriving at a laser-cut wooden housing that
+    mounts to the right side of the wheelchair and lifts off for refilling and cleaning. Inside, a
+    feed funnel and agitator keep treats moving toward a geared indexer so a light press of the
+    actuation lever releases one or two treats at a time. For our prototype, I laser-cut the housing
+    and 3D printed the feed funnels.`,
+    imageUrl: "/images/ME40 Project Images/treat-dispenser-internal.jpg",
+    tags: {
+      technologies: ["SOLIDWORKS", "Laser Cutting", "3D Printing", "Stepper Motor"],
+      categories: ["CAD/Design", "Manufacturing"]
+    },
+    discipline: "Mechanical Engineering"
+  },
+  {
+    title: "Motorized Embosser",
+    date: "March 2026",
+    sortDate: "2026-03",
+    size: "lg",
+    description: `Working with a partner, I designed and built a motorized embosser that presses a
+    design between a matched positive and negative die. A DC motor drives a gear train
+    into a Scotch yoke, which converts the motor's rotation into the back-and-forth stroke of the die
+    along a dowel shaft. The frame is laser-cut acrylic, the yoke, dies, and supports are 3D printed
+    in PLA, and the full assembly was modeled in SOLIDWORKS with assembly and exploded-view drawings.`,
+    imageUrl: "/images/ME40 Project Images/embosser.jpg",
+    images: [
+      "/images/ME40 Project Images/embosser-cad.jpg"
+    ],
+    tags: {
+      technologies: ["SOLIDWORKS", "Laser Cutting", "3D Printing"],
+      categories: ["CAD/Design", "Manufacturing"]
+    },
+    discipline: "Mechanical Engineering"
+  },
+  {
+    title: "Food Chopper Teardown",
+    date: "February 2026",
+    sortDate: "2026-02",
+    size: "md",
+    description: `With a partner, I took apart an OXO hand-operated food chopper, documented each of
+    its twelve components, and rebuilt the entire device as a SOLIDWORKS assembly with mates,
+    animations, and an exploded-view drawing. I modeled the top half of the mechanism (the plunger,
+    rotation mechanism, and main body) and wrote the product decomposition and a design analysis
+    of how changing the return spring's stiffness would affect user force, blade return, and
+    cutting performance.`,
+    imageUrl: "/images/ME40 Project Images/slicer.jpg",
+    images: [
+      "/images/ME40 Project Images/slicer-teardown.jpg",
+      "/images/ME40 Project Images/slicer-assembly-drawing.jpg"
+    ],
+    tags: {
+      technologies: ["SOLIDWORKS"],
+      categories: ["CAD/Design", "Analysis"]
+    },
+    discipline: "Mechanical Engineering"
+  },
+  {
+    title: "Water Bottle CAD Model",
+    date: "January 2026",
+    sortDate: "2026-01",
+    size: "sm",
+    description: `A SOLIDWORKS model of an insulated water bottle, built as separate body, cap, and
+    handle parts and brought together in an assembly. The project practiced the revolve, loft, and
+    sweep features, and finished with a dimensioned engineering drawing of the bottle body.`,
+    imageUrl: "/images/ME40 Project Images/water-bottle.jpg",
+    images: [
+      "/images/ME40 Project Images/water-bottle-drawing.jpg"
+    ],
+    tags: {
+      technologies: ["SOLIDWORKS"],
+      categories: ["CAD/Design"]
+    },
+    discipline: "Mechanical Engineering"
+  },
+  {
     title: "JumboMap",
     date: "February 2025 - Present | React.js, Next.js, Typescript, Tailwind CSS, PostgreSQL, Neon",
     sortDate: "2025-02",
