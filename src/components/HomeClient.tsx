@@ -82,11 +82,22 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
           William <br className="sm:hidden" />
           Goldman
         </h1>
-        <ul className="mt-6 inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-0 sm:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-          <li className="sm:px-4">
+        <ul className="mt-6 inline-flex flex-col lg:flex-row items-center gap-1 lg:gap-0 lg:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+          <li className="lg:px-4 whitespace-nowrap">
              Software & Automation @ Draper
           </li>
-          <li className="sm:px-4">
+          <li className="lg:px-4 whitespace-nowrap">
+            Project Lead -{' '}
+            <a
+              href="https://tufts-cubesat.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-gray-400 dark:decoration-gray-600 underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400 hover:decoration-current transition-colors duration-200"
+            >
+              Tufts CubeSat Team
+            </a>
+          </li>
+          <li className="lg:px-4 whitespace-nowrap">
             CS &amp; Mechanical Engineering · Tufts &apos;28
           </li>
         </ul>

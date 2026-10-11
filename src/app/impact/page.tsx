@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import CommunityCard from '@/components/CommunityCard';
+import CubeSatShowcase from '@/components/CubeSatShowcase';
 import ContributionsTimeline from '@/components/ContributionsTimeline';
 import { communityContributions, timelineEntries } from '@/app/lib/impact';
 
@@ -42,6 +43,21 @@ export default function Impact() {
             A timeline of hackathon wins, competitions, and conference presentations.
           </p>
           <ContributionsTimeline entries={timelineEntries} />
+        </section>
+
+        <section className="mt-16">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center"
+          >
+            Tufts CubeSat
+          </motion.h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-8">
+            Leading the student team building Tufts&apos;s first satellite.
+          </p>
+          <CubeSatShowcase />
         </section>
       </div>
     </main>
