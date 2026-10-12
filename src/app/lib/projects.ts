@@ -2,6 +2,36 @@ import { Project } from './types'
 
 export const projects: Project[] = [
   {
+    title: "Rogers Cup - Virtual Ping-Pong",
+    date: "Fall 2026 | Python, JavaScript, Three.js, MediaPipe, OpenVINO, MQTT",
+    sortDate: "2026-10",
+    size: "xl",
+    description: `A virtual table tennis game for ME193 Robotics where a LEGO Education Double Motor
+    is the paddle. The webcam cuts the player out of the room and places them at a 3D table: MediaPipe
+    pose tracking says where the paddle is, the motor's gyro says when you swing, and a hit only counts
+    when both agree. Two commentators call the match, one scripted with about 1,200 pre-rendered clips
+    and one written live by Qwen3-4B running locally on the laptop's GPU through OpenVINO. An Arduino
+    UNO Q publishes the live weather at Tufts over MQTT, and the arena's sky, lighting, rain and snow
+    follow it. Python owns all of the game rules and physics at 60 Hz, while the browser only draws.`,
+    imageUrl: "/images/Rogers Cup/title.png",
+    images: [
+      "/images/Rogers Cup/architecture.png",
+      "/images/Rogers Cup/gameplay.png",
+      "/images/Rogers Cup/commentary.png",
+      "/images/Rogers Cup/weather.png",
+      "/images/Rogers Cup/performance.png"
+    ],
+    links: [
+      { label: "Slides (PDF)", url: "/pdfs/Rogers-Cup-slides.pdf", isGithub: false },
+      { label: "GitHub", url: "https://github.com/iliketocode2/ME193-Robotics/tree/will-main/Public%20stuff/projects/Project%205%20-%20Virtual%20Ping%20Pong", isGithub: true }
+    ],
+    tags: {
+      technologies: ["Python", "JavaScript", "Three.js", "MediaPipe", "OpenVINO", "MQTT", "LEGO", "Arduino"],
+      categories: ["Software", "Robotics", "Game Development"]
+    },
+    discipline: "Computer Science"
+  },
+  {
     title: "µNorman",
     date: "September 2026 - Present | Rust, WebAssembly, JavaScript",
     sortDate: "2026-09",
