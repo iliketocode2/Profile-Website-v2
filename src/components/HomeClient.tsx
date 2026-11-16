@@ -1,143 +1,134 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Project } from '@/app/lib/types';
 import { getProjectHref } from '@/app/lib/utils';
+import DisciplineMark from './DisciplineMark';
 
-function FeaturedCard({ project, index }: { project: Project; index: number }) {
+// The facts that would sit in an engineering drawing's title block
+function TitleBlock() {
+  const rows: { label: string; value: React.ReactNode }[] = [
+    { label: 'Working at', value: 'Draper, software & automation' },
+    {
+      label: 'Leading',
+      value: (
+        <a href="https://tufts-cubesat.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-link">
+          Tufts CubeSat Team
+        </a>
+      ),
+    },
+    { label: 'Studying', value: "CS and mechanical engineering, Tufts '28" },
+    {
+      label: 'Contact',
+      value: (
+        <a href="mailto:William.Goldman@tufts.edu" className="text-link break-all">
+          William.Goldman@tufts.edu
+        </a>
+      ),
+    },
+  ];
+
+  return (
+    <dl className="hero-block grid grid-cols-1 sm:grid-cols-2 border-[1.5px] border-ink text-[15px]">
+      {rows.map((row, i) => (
+        <div
+          key={row.label}
+          className={`px-4 py-3 border-ink/25 ${i > 0 ? 'border-t sm:border-t-0' : ''} ${
+            i >= 2 ? 'sm:border-t' : ''
+          } ${i % 2 === 1 ? 'sm:border-l' : ''}`}
+        >
+          <dt className="text-xs text-graphite">{row.label}</dt>
+          <dd className="mt-0.5 text-ink font-medium">{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function FeaturedProject({ project, lead }: { project: Project; lead: boolean }) {
   const { href, external } = getProjectHref(project);
   const [datePart] = project.date.split(' | ');
 
-  const card = (
-    <div className="relative aspect-[16/10] w-full overflow-hidden">
-      <Image
-        src={project.imageUrl}
-        alt=""
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
-        sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 330px"
-        priority={index === 0}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-      {project.discipline && (
-        <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-md text-gray-900 dark:text-white">
-          {project.discipline === 'Computer Science' ? 'CS' : 'MechE'}
-        </span>
-      )}
-      <div className="absolute inset-x-0 bottom-0 p-3 flex items-end justify-between gap-3">
-        <div className="min-w-0">
-          <h3 className="text-white text-base font-semibold leading-snug line-clamp-2">{project.title}</h3>
-          <p className="text-white/75 text-xs mt-1">{datePart}</p>
-        </div>
-        <ArrowUpRight className="h-4 w-4 shrink-0 text-white/80 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+  const content = (
+    <>
+      <div className={`relative w-full overflow-hidden rounded-[3px] bg-rule ${lead ? 'aspect-[16/10]' : 'aspect-[16/9]'}`}>
+        <Image
+          src={project.imageUrl}
+          alt=""
+          fill
+          className="object-cover"
+          sizes={lead ? '(max-width: 1024px) 100vw, 700px' : '(max-width: 1024px) 100vw, 340px'}
+          priority={lead}
+        />
       </div>
-    </div>
+      <div className="mt-3 flex items-center gap-3 text-sm text-graphite">
+        <DisciplineMark discipline={project.discipline} />
+        <span>{datePart}</span>
+      </div>
+      <h3
+        className={`mt-1 font-semibold text-ink leading-snug decoration-kapton decoration-2 underline-offset-4 group-hover:underline ${
+          lead ? 'text-2xl sm:text-[28px]' : 'text-lg'
+        }`}
+      >
+        {project.title}
+      </h3>
+    </>
   );
 
-  const className =
-    'group block overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500';
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-      className="w-[70%] sm:w-[40%] shrink-0 snap-start lg:w-auto"
-    >
-      {external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-          {card}
-        </a>
-      ) : (
-        <Link href={href} className={className}>
-          {card}
-        </Link>
-      )}
-    </motion.div>
+  const className = 'group block';
+  return external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      {content}
+    </a>
+  ) : (
+    <Link href={href} className={className}>
+      {content}
+    </Link>
   );
 }
 
 export default function HomeClient({ featuredProjects }: { featuredProjects: Project[] }) {
+  const [lead, ...rest] = featuredProjects;
+
   return (
-    <main className="w-full max-w-full overflow-x-hidden pb-8">
-      <motion.section
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="w-full max-w-4xl mx-auto text-center pt-6 pb-8 sm:pt-10 sm:pb-12"
-      >
-        <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-mono uppercase leading-tight"
-          style={{
-            background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(34, 197, 94))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            display: 'inline-block',
-          }}
-        >
-          William <br className="sm:hidden" />
+    <div className="pb-8">
+      <section className="pt-12 pb-16 sm:pt-20 sm:pb-24">
+        <h1 className="hero-name display font-black text-ink text-[clamp(3.25rem,15.5vw,10.5rem)]">
+          William
+          <br />
           Goldman
         </h1>
-        <ul className="mt-6 inline-flex flex-col lg:flex-row items-center gap-1 lg:gap-0 lg:divide-x divide-gray-300 dark:divide-gray-700 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-          <li className="lg:px-4 whitespace-nowrap">
-             Software & Automation @ Draper
-          </li>
-          <li className="lg:px-4 whitespace-nowrap">
-            Project Lead -{' '}
-            <a
-              href="https://tufts-cubesat.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-gray-400 dark:decoration-gray-600 underline-offset-4 hover:text-blue-600 dark:hover:text-blue-400 hover:decoration-current transition-colors duration-200"
-            >
-              Tufts CubeSat Team
-            </a>
-          </li>
-          <li className="lg:px-4 whitespace-nowrap">
-            CS &amp; Mechanical Engineering · Tufts &apos;28
-          </li>
-        </ul>
-
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm">
-          <a
-            href="mailto:William.Goldman@tufts.edu"
-            className="inline-flex items-center gap-2 rounded-full border border-gray-300 dark:border-gray-700 px-4 py-1.5 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          >
-            <Mail className="w-4 h-4" />
-            William.Goldman@tufts.edu
-          </a>
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          >
-            More about me
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </motion.section>
-
-      <section className="w-full max-w-5xl mx-auto">
-        <div className="flex items-baseline justify-between mb-4 px-1">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Featured Projects</h2>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          >
-            All projects
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-        {/* Swipeable row on phones and tablets, grid from lg up */}
-        <div className="no-scrollbar -mx-3 px-3 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-3 pb-2 sm:gap-4 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-3 lg:overflow-visible">
-          {featuredProjects.map((project, index) => (
-            <FeaturedCard key={project.title} project={project} index={index} />
-          ))}
+        <div className="mt-10 sm:mt-14 lg:ml-auto lg:w-[38rem]">
+          <TitleBlock />
+          <p className="mt-4 text-[15px]">
+            <Link href="/about" className="text-ink text-link">
+              More about me
+            </Link>
+          </p>
         </div>
       </section>
-    </main>
+
+      {lead && (
+        <section>
+          <div className="flex items-baseline justify-between gap-4 mb-6">
+            <h2 className="display text-2xl sm:text-3xl font-extrabold text-ink">Featured projects</h2>
+            <Link href="/projects" className="text-[15px] text-ink text-link">
+              All projects
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <FeaturedProject project={lead} lead />
+            </div>
+            <div className="grid gap-y-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-1">
+              {rest.map((project) => (
+                <FeaturedProject key={project.title} project={project} lead={false} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

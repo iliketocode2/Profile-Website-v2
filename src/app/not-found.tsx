@@ -1,15 +1,15 @@
-import React from 'react';
 import Link from 'next/link';
 
-const NotFound: React.FC = () => {
+export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white">404 - Page Not Found</h1>
-      <Link href="/" className="mt-4 text-lg text-blue-600 dark:text-blue-400 hover:underline">
-        Go Back Home
+    <div className="pt-20 pb-12">
+      <h1 className="display text-5xl sm:text-6xl font-black text-ink">Page not found</h1>
+      <p className="mt-4 text-[15px] text-graphite max-w-measure">
+        There&apos;s nothing at this address. It may have moved when the site was reorganized.
+      </p>
+      <Link href="/" className="inline-block mt-6 text-[15px] font-medium text-ink text-link">
+        Go to the home page
       </Link>
     </div>
   );
-};
-
-export default NotFound;
+}

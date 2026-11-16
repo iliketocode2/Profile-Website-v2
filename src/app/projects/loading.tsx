@@ -12,14 +12,14 @@ const PLACEHOLDERS = [
 export default function Loading() {
   return (
     <div className="w-full pt-6 pb-8 sm:pt-10">
-      <div className="flex flex-col items-center gap-4 mb-8">
-        <div className="h-10 w-40 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
-        <div className="h-4 w-56 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
-        <div className="h-9 w-52 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
+      <div className="flex flex-col gap-4 mb-8 pt-6">
+        <div className="h-10 w-40 bg-rule/60 rounded animate-pulse" />
+        <div className="h-4 w-56 bg-rule/60 rounded animate-pulse" />
+        <div className="h-9 w-52 bg-rule/60 rounded-[3px] animate-pulse" />
       </div>
-      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-3 sm:gap-5">
+      <div className="max-w-6xl flex flex-wrap justify-center gap-3 sm:gap-5 mt-6">
         {PLACEHOLDERS.map((p, i) => (
-          <div key={i} className={`${p.size} ${p.offset} rounded-full bg-gray-200 dark:bg-gray-800 animate-pulse`} />
+          <div key={i} className={`${p.size} ${p.offset} rounded-full bg-rule/60 animate-pulse`} />
         ))}
       </div>
     </div>

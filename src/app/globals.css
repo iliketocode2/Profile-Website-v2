@@ -2,62 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base theme transition */
-.theme-transition * {
-  transition-property: color, background-color, border-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
+@layer base {
+  :root {
+    --frame: 232 234 237;    /* anodized aluminum */
+    --panel: 245 246 248;
+    --ink: 22 29 69;         /* solar-cell indigo */
+    --graphite: 74 81 99;
+    --rule: 198 203 211;
+    --kapton: 168 103 15;    /* MLI gold */
+    --cell: 52 74 186;       /* lighter cell blue, used to mark CS work */
+    color-scheme: light;
+  }
+
+  :root.dark {
+    --frame: 14 19 48;
+    --panel: 22 29 64;
+    --ink: 230 232 240;
+    --graphite: 160 167 190;
+    --rule: 50 59 102;
+    --kapton: 226 164 72;
+    --cell: 132 152 255;
+    color-scheme: dark;
+  }
+
+  html {
+    background: rgb(var(--frame));
+    overflow-x: hidden;
+  }
+
+  body {
+    background: rgb(var(--frame));
+    color: rgb(var(--ink));
+    font-variation-settings: 'wdth' 100;
+    font-feature-settings: 'kern', 'tnum' 0;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgb(var(--kapton) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--kapton));
+    outline-offset: 3px;
+  }
 }
 
-/* Keyframes for animations */
-@keyframes slide {
-  0% { transform: translateX(-25%); }
-  100% { transform: translateX(25%); }
+@layer components {
+  /* Expanded Archivo for display type */
+  .display {
+    font-variation-settings: 'wdth' 125;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+
+  /* The page's one load moment: the name opens from condensed to expanded,
+     then the title block settles in underneath it */
+  .hero-name {
+    animation: hero-widen 900ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  }
+
+  .hero-block {
+    animation: hero-settle 500ms ease-out 650ms both;
+  }
+
+  .text-link {
+    @apply underline decoration-rule decoration-1 underline-offset-4 transition-colors hover:decoration-kapton;
+  }
 }
 
 @layer utilities {
-  .animate-slide {
-    animation: slide 4s ease-in-out infinite alternate;
-  }
-  
-  .animate-slide-reverse {
-    animation: slide 4s ease-in-out infinite alternate-reverse;
+  .wdth-condensed {
+    font-variation-settings: 'wdth' 75;
   }
 
-  .animate-slide-slow {
-    animation: slide 5s ease-in-out infinite alternate;
-  }
-
-  .background-rec {
-    animation: slide 4s ease-in-out infinite alternate;
-    background-image: linear-gradient(-40deg, rgb(142, 255, 255) 50%, rgb(142, 210, 241) 50%);
-    bottom: 0;
-    left: -50%;
-    opacity: 0.5;
-    position: fixed;
-    right: -50%;
-    top: 0;
-    z-index: -1;
-    transition: background-image 300ms ease-in-out;
-  }
-
-  .background-rec-2 {
-    animation: slide 4s ease-in-out infinite alternate-reverse;
-  }
-
-  .background-rec-3 {
-    animation: slide 5s ease-in-out infinite alternate;
-  }
-
-  :root.dark .background-rec,
-  :root.dark .background-rec-2,
-  :root.dark .background-rec-3 {
-    background-image: linear-gradient(-40deg, rgb(60, 70, 80) 50%, rgb(30, 40, 50) 50%);
-    opacity: 0.3;
-  }
-}
-
-@layer utilities {
   .no-scrollbar {
     scrollbar-width: none;
   }
@@ -65,24 +84,28 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-
-  .safe-padding {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
 }
 
-/* Ensure content doesn't overflow viewport */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
+@keyframes hero-widen {
+  from { font-variation-settings: 'wdth' 62; }
+  to { font-variation-settings: 'wdth' 125; }
 }
 
-/* Add padding for mobile devices with notches */
-@supports (padding: env(safe-area-inset-left)) {
-  .container {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+@keyframes hero-settle {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.theme-transition,
+.theme-transition * {
+  transition-property: color, background-color, border-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

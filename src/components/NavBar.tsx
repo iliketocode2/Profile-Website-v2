@@ -2,71 +2,48 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, User, Layers, GitPullRequest } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/projects', label: 'Projects', icon: Briefcase },
-  { href: '/impact', label: 'Impact', icon: GitPullRequest },
-  { href: '/skills', label: 'Skills', icon: Layers },
-  { href: '/about', label: 'About', icon: User },
+  { href: '/projects', label: 'Projects' },
+  { href: '/impact', label: 'Impact' },
+  { href: '/skills', label: 'Skills' },
+  { href: '/about', label: 'About' },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <nav className="relative z-50">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-4">
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex justify-center space-x-8 text-2xl font-light">
-          {navItems.map((item) => (
+    <nav className="relative z-50 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5 sm:py-7 border-b border-rule">
+      <Link
+        href="/"
+        className="display text-lg font-extrabold tracking-tight text-ink"
+        aria-current={pathname === '/' ? 'page' : undefined}
+      >
+        W. Goldman
+      </Link>
+
+      <div className="flex items-center gap-1 sm:gap-2 -mr-2">
+        {navItems.map((item) => {
+          const active = isActive(item.href);
+          return (
             <Link
               key={item.href}
               href={item.href}
-              className={`
-                transition-colors duration-300
-                ${pathname === item.href 
-                  ? 'font-semibold text-gray-900 dark:text-white' 
-                  : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}
-              `}
+              aria-current={active ? 'page' : undefined}
+              className={`px-2 py-1 text-[15px] transition-colors border-b-2 ${
+                active
+                  ? 'text-ink font-semibold border-kapton'
+                  : 'text-graphite border-transparent hover:text-ink'
+              }`}
             >
               {item.label}
             </Link>
-          ))}
-        </div>
-
-        {/* Mobile Navigation Bar */}
-        <div className="md:hidden">
-          <div className="flex justify-around items-center">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="flex flex-col items-center text-xs"
-              >
-                <item.icon
-                  className={`
-                    h-6 w-6 transition-colors duration-300
-                    ${pathname === item.href 
-                      ? 'text-blue-600 dark:text-blue-400' 
-                      : 'text-gray-500 dark:text-gray-400'}
-                  `}
-                />
-                <span
-                  className={`
-                    mt-1 transition-colors duration-300
-                    ${pathname === item.href 
-                      ? 'text-blue-600 dark:text-blue-400 font-semibold' 
-                      : 'text-gray-500 dark:text-gray-400'}
-                  `}
-                >
-                  {item.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
+          );
+        })}
+        <ThemeToggle />
       </div>
     </nav>
   );

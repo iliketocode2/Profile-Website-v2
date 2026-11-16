@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import HobbyCard from '@/components/HobbyCard';
 import { hobbies } from '@/app/lib/hobbies';
 
@@ -22,39 +19,26 @@ const BIO_PARAGRAPHS = [
 
 export default function About() {
   return (
-    <main className="w-full pb-8">
-      <section className="max-w-3xl mx-auto px-1 sm:px-4 pt-6 sm:pt-10 pb-12">
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6"
-        >
-          About
-        </motion.h1>
-        <div className="space-y-5">
+    <div className="w-full pt-12 sm:pt-16 pb-8">
+      <section className="grid grid-cols-1 lg:grid-cols-[14rem_1fr] gap-x-12 pb-16">
+        <h1 className="display text-5xl sm:text-6xl font-black text-ink mb-8">About</h1>
+        <div className="space-y-5 max-w-measure lg:pt-3">
           {BIO_PARAGRAPHS.map((paragraph, index) => (
-            <motion.p
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200"
-            >
+            <p key={index} className="text-[17px] sm:text-lg leading-relaxed text-ink">
               {paragraph}
-            </motion.p>
+            </p>
           ))}
         </div>
       </section>
 
-      <section className="border-t border-gray-200 dark:border-gray-700 pt-10">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">Hobbies</h2>
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 px-1 sm:px-4">
+      <section className="border-t-[1.5px] border-ink pt-10">
+        <h2 className="display text-3xl sm:text-4xl font-extrabold text-ink mb-8">Outside of class</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {hobbies.map((hobby) => (
             <HobbyCard key={hobby.title} {...hobby} />
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -1,77 +1,46 @@
-'use client'
-
 import { stackCategories } from '@/app/lib/skills';
 import { StackCategory } from '@/app/lib/types';
-import { motion } from 'framer-motion';
 
 export default function Stack() {
   return (
-    <main className="min-h-screen w-full pb-12">
-      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
-        {/* Skill Categories - Two Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-          {stackCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.3, delay: categoryIndex * 0.05 }}
-            >
-              <StackCategorySection category={category} />
-            </motion.div>
-          ))}
-        </div>
+    <div className="w-full pt-12 sm:pt-16 pb-12">
+      <h1 className="display text-5xl sm:text-6xl font-black text-ink mb-10 sm:mb-14">Skills</h1>
+      <div className="border-t-[1.5px] border-ink">
+        {stackCategories.map((category) => (
+          <StackCategoryRow key={category.title} category={category} />
+        ))}
       </div>
-    </main>
+    </div>
   );
 }
 
-function StackCategorySection({ category }: { category: StackCategory }) {
+function StackCategoryRow({ category }: { category: StackCategory }) {
   // Group items by subcategory if they have one
   const groupedItems = category.items.reduce((acc, item) => {
     const key = item.category || 'main';
-    if (!acc[key]) {
-      acc[key] = [];
-    }
-    acc[key].push(item);
+    (acc[key] ??= []).push(item);
     return acc;
   }, {} as Record<string, typeof category.items>);
 
   return (
-    <motion.div 
-      className="p-4 rounded-lg"
-      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-    >
-      <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-        {category.title}
-      </h2>
-      
-      <div className="space-y-2">
+    <section className="grid grid-cols-1 md:grid-cols-[16rem_1fr] gap-x-10 gap-y-2 py-5 border-b border-rule">
+      <h2 className="text-base font-semibold text-ink">{category.title}</h2>
+
+      <div className="space-y-3">
         {Object.entries(groupedItems).map(([subcategory, items]) => (
-          <div key={subcategory}>
-            {subcategory !== 'main' && (
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                {subcategory}
-              </h3>
-            )}
-            
-            <div className="text-sm text-gray-700 dark:text-gray-300">
+          <div key={subcategory} className="max-w-measure">
+            {subcategory !== 'main' && <h3 className="text-sm text-graphite mb-0.5">{subcategory}</h3>}
+            <p className="text-[15px] leading-relaxed text-ink">
               {items.map((item, itemIndex) => (
-                <span key={itemIndex}>
-                  <span 
-                    className="hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-                    title={item.description}
-                  >
-                    {item.name}
-                  </span>
+                <span key={item.name}>
+                  <span title={item.description}>{item.name}</span>
                   {itemIndex < items.length - 1 && ', '}
                 </span>
               ))}
-            </div>
+            </p>
           </div>
         ))}
       </div>
-    </motion.div>
+    </section>
   );
 }

@@ -3,54 +3,31 @@ import { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeToggle() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // null until mounted; the inline script in layout.tsx has already applied the theme class
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Set mounted to prevent hydration mismatch
-    setMounted(true);
-    
-    // Check system preference
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const systemPreference = mediaQuery.matches ? 'dark' : 'light';
-    
-    // Load theme from localStorage or use system preference
-    const savedTheme = localStorage.getItem('theme') || systemPreference;
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      setDarkMode(true);
-    }
-
-    // Add transition class after initial load
-    setTimeout(() => {
-      document.documentElement.classList.add('theme-transition');
-    }, 0);
+    setDarkMode(document.documentElement.classList.contains('dark'));
+    const id = setTimeout(() => document.documentElement.classList.add('theme-transition'), 0);
+    return () => clearTimeout(id);
   }, []);
 
   const toggleDarkMode = () => {
-    const newTheme = darkMode ? 'light' : 'dark';
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', newTheme);
+    const next = !darkMode;
+    setDarkMode(next);
+    document.documentElement.classList.toggle('dark', next);
+    try {
+      localStorage.setItem('theme', next ? 'dark' : 'light');
+    } catch {}
   };
 
-  if (!mounted) return null;
-
   return (
-    <div className="fixed bottom-toggley left-togglex z-50">
-      <button
-        onClick={toggleDarkMode}
-        className="p-2 rounded-full transition-all duration-300 hover:scale-110 shadow-lg
-          dark:bg-gray-800 dark:hover:bg-gray-700 
-          bg-white hover:bg-gray-100"
-        aria-label="Toggle dark mode"
-      >
-        {darkMode ? (
-          <Sun className="h-5 w-5 text-yellow-400 transition-colors duration-300" />
-        ) : (
-          <Moon className="h-5 w-5 text-gray-800 transition-colors duration-300" />
-        )}
-      </button>
-    </div>
+    <button
+      onClick={toggleDarkMode}
+      className="ml-1 sm:ml-2 grid place-items-center h-9 w-9 rounded-full text-graphite hover:text-ink hover:bg-ink/5 transition-colors"
+      aria-label={darkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+    >
+      {darkMode === null ? null : darkMode ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+    </button>
   );
 }

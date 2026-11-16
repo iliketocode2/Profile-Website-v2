@@ -1,16 +1,22 @@
 import type { Metadata } from 'next'
-import { Lora } from 'next/font/google'
+import { Archivo } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import BackgroundAnimation from '@/components/BackgroundAnimation'
 
-const lora = Lora({ subsets: ['latin'] })
+const archivo = Archivo({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  variable: '--font-archivo',
+})
 
 export const metadata: Metadata = {
   title: 'William Goldman',
   description: 'Personal portfolio of William Goldman',
 }
+
+// Applies the saved or system theme before first paint so dark mode doesn't flash
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()`
 
 export default function RootLayout({
   children,
@@ -18,16 +24,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={lora.className}>
-        <BackgroundAnimation />
-        <div className="min-h-screen pb-28">
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <main className="mt-4 bg-white/90 dark:bg-gray-900/90 rounded-lg shadow p-3 sm:p-8">
-              <Navbar />
-              {children}
-            </main>
-          </div>
+    <html lang="en" className={archivo.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="font-sans min-h-screen flex flex-col">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex-1 flex flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
         </div>
         <Footer />
       </body>

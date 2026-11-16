@@ -5,11 +5,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { layoutBubbles } from '@/app/lib/bubbleLayout';
 import { Project } from '@/app/lib/types';
+import { DISCIPLINES } from './DisciplineMark';
 
-const RING_CLASS = {
-  'Computer Science': 'ring-blue-500/70',
-  'Mechanical Engineering': 'ring-green-500/70',
-} as const;
 
 export default function ProjectBubbles({
   projects,
@@ -39,14 +36,14 @@ export default function ProjectBubbles({
       <AnimatePresence>
         {bubbles.map(({ project, x, y, r }, index) => {
           const isLarge = project.size === 'xl' || project.size === 'lg';
-          const ring = RING_CLASS[project.discipline ?? 'Computer Science'];
+          const ring = DISCIPLINES[project.discipline ?? 'Computer Science'].ring;
           return (
             <motion.button
               key={project.title}
               type="button"
               onClick={() => onSelect(project)}
               aria-label={`${project.title} — open details`}
-              className={`group absolute rounded-full overflow-hidden shadow-lg ring-2 ${ring} bg-gray-200 dark:bg-gray-800 hover:z-20 focus-visible:z-20 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500`}
+              className={`group absolute rounded-full overflow-hidden ring-2 ring-offset-2 ring-offset-frame ${ring} bg-rule hover:z-20 focus-visible:z-20 focus:outline-none focus-visible:ring-4`}
               initial={{ opacity: 0, scale: 0.6, left: x - r, top: y - r, width: r * 2, height: r * 2 }}
               animate={{ opacity: 1, scale: 1, left: x - r, top: y - r, width: r * 2, height: r * 2 }}
               exit={{ opacity: 0, scale: 0.6 }}
@@ -72,7 +69,7 @@ export default function ProjectBubbles({
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <span
-                className={`absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/75 via-black/20 to-transparent px-[12%] pb-[16%] transition-opacity duration-200 ${
+                className={`absolute inset-0 flex items-end justify-center bg-[linear-gradient(to_top,rgb(14_19_48/0.85),rgb(14_19_48/0.15)_55%,transparent)] px-[12%] pb-[16%] transition-opacity duration-200 ${
                   isLarge ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'
                 }`}
               >

@@ -1,78 +1,34 @@
-import { FileText, Github, Linkedin, Mail } from 'lucide-react';
-
 const RESUME_URL =
   'https://docs.google.com/document/d/1lSkKShNRphKa4fnbEpuaeE1REsETmUX14UV60kVxU4A/preview';
-import ThemeToggle from './ThemeToggle';
+
+const LINKS = [
+  { label: 'Email', href: 'mailto:goldmanwilliam3@gmail.com' },
+  { label: 'GitHub', href: 'https://github.com/iliketocode2' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/william-goldman-79125a283/' },
+  { label: 'Resume', href: RESUME_URL },
+];
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
-      <ThemeToggle />
-      <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4">
-        {/* Footer content */}
-        <div className="flex flex-col items-center md:flex-row md:justify-between">
-          {/* Centered icons */}
-          <div className="flex justify-center gap-6 mb-4 md:mb-0">
-            <a
-              href="https://github.com/iliketocode2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center transition-transform hover:scale-110"
-            >
-              <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                <Github className="h-6 w-6 text-[#333] dark:text-white" />
-              </div>
-              <span className="text-xs mt-1 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200">
-                GitHub
-              </span>
-            </a>
-
-            <a
-              href="mailto:goldmanwilliam3@gmail.com"
-              className="group flex flex-col items-center transition-transform hover:scale-110"
-            >
-              <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                <Mail className="h-6 w-6 text-[#EA4335] dark:text-red-400" />
-              </div>
-              <span className="text-xs mt-1 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200">
-                Email
-              </span>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/william-goldman-79125a283/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center transition-transform hover:scale-110"
-            >
-              <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                <Linkedin className="h-6 w-6 text-[#0A66C2] dark:text-blue-400" />
-              </div>
-              <span className="text-xs mt-1 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200">
-                LinkedIn
-              </span>
-            </a>
-
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center transition-transform hover:scale-110"
-            >
-              <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                <FileText className="h-6 w-6 text-gray-700 dark:text-gray-400" />
-              </div>
-              <span className="text-xs mt-1 text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200">
-                Resume
-              </span>
-            </a>
-          </div>
-
-          {/* Copyright information */}
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-            William Goldman © {new Date().getFullYear()}
-          </div>
-        </div>
+    <footer className="mt-20 border-t border-rule">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-8 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-graphite">William Goldman, {new Date().getFullYear()}</p>
+        <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+          {LINKS.map((link) => {
+            const external = link.href.startsWith('http');
+            return (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="text-ink text-link"
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </footer>
   );

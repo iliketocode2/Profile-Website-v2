@@ -1,11 +1,10 @@
 'use client'
 
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowLeft, Download, FileText } from 'lucide-react';
+import { ArrowLeft, Download } from 'lucide-react';
 import { projects } from '@/app/lib/projects';
 import { Project } from '@/app/lib/types';
 import { createProjectSlug } from '@/app/lib/utils';
-import { motion } from 'framer-motion';
 import { useMemo } from 'react';
 
 // Helper to find project by slug
@@ -31,193 +30,121 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Project not found</h1>
-          <button
-            onClick={() => router.push('/projects')}
-            className="text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            Return to Projects
-          </button>
-        </div>
+      <div className="pt-20 pb-12">
+        <h1 className="display text-4xl font-black text-ink">Project not found</h1>
+        <p className="mt-3 text-[15px] text-graphite">The link may be out of date.</p>
+        <button onClick={() => router.push('/projects')} className="mt-6 text-[15px] font-medium text-ink text-link">
+          Go to all projects
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full py-12">
-      <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-          onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Projects
-        </motion.button>
+    <div className="w-full pt-8 sm:pt-12 pb-12">
+      <button
+        onClick={() => router.back()}
+        className="flex items-center gap-2 text-[15px] text-graphite hover:text-ink mb-10 transition-colors"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to projects
+      </button>
 
-        {/* Project Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8"
-        >
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {project.title}
-          </h1>
-          <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            {project.date}
-          </div>
-          
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.categories.map((category, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+      <header className="mb-10">
+        <p className="text-[15px] text-graphite mb-3">{project.date.split(' | ')[0]}</p>
+        <h1 className="display text-4xl sm:text-5xl lg:text-6xl font-black text-ink max-w-4xl">{project.title}</h1>
+        <dl className="mt-8 grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-x-8 gap-y-2 border-t-[1.5px] border-ink pt-4 text-[15px] max-w-4xl">
+          {project.tags.categories.length > 0 && (
+            <>
+              <dt className="text-graphite">Area</dt>
+              <dd className="text-ink">{project.tags.categories.join(', ')}</dd>
+            </>
+          )}
+          {project.tags.technologies.length > 0 && (
+            <>
+              <dt className="text-graphite">Tools</dt>
+              <dd className="text-ink">{project.tags.technologies.join(', ')}</dd>
+            </>
+          )}
+        </dl>
+      </header>
+
+      <p className="text-lg leading-relaxed text-ink max-w-measure whitespace-pre-line mb-12">{project.description}</p>
+
+      {/* Sub-projects (for grouped academic projects) */}
+      {project.subProjects && project.subProjects.length > 0 && (
+        <section className="mb-14">
+          <h2 className="display text-3xl font-extrabold text-ink mb-3">Projects</h2>
+          {project.academicProject && (
+            <p className="text-[15px] text-graphite mb-6">
+              Source code is available on request from{' '}
+              <a href="mailto:William.Goldman@tufts.edu" className="text-ink text-link">
+                William.Goldman@tufts.edu
+              </a>
+              .
+            </p>
+          )}
+          <div className="border-t-[1.5px] border-ink">
+            {project.subProjects.map((subProject) => (
+              <article
+                key={subProject.title}
+                className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-x-8 gap-y-1 py-6 border-b border-rule"
               >
-                {category}
-              </span>
-            ))}
-            {project.tags.technologies.map((tech, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300"
-              >
-                {tech}
-              </span>
+                <p className="text-sm text-ink font-medium tabular-nums">{subProject.date}</p>
+                <div className="max-w-measure">
+                  <h3 className="text-lg font-semibold text-ink">{subProject.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink/85">{subProject.description}</p>
+                </div>
+              </article>
             ))}
           </div>
-        </motion.div>
+        </section>
+      )}
 
-        {/* Description */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8"
-        >
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-            {project.description}
-          </p>
-        </motion.div>
+      {/* PDF embed */}
+      {project.pdfUrl && (
+        <section className="mb-14">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 mb-5">
+            <h2 className="display text-3xl font-extrabold text-ink">Project report</h2>
+            <a
+              href={project.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="flex items-center gap-2 text-[15px] font-medium text-ink text-link"
+            >
+              <Download className="h-4 w-4" />
+              Download PDF
+            </a>
+          </div>
+          <div className="rounded-[3px] overflow-hidden border-[1.5px] border-ink bg-panel">
+            <iframe
+              src={`${project.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
+              className="w-full h-[800px]"
+              title={`${project.title} Report`}
+            />
+          </div>
+        </section>
+      )}
 
-        {/* Sub-Projects (for grouped academic projects) */}
-        {project.subProjects && project.subProjects.length > 0 && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-8"
-          >
-            {/* Academic Notice */}
-            {project.academicProject && (
-              <div className="mb-6">
-                <p className="text-sm text-gray-700 dark:text-gray-300">
-                  <span className="font-semibold">PLEASE NOTE: </span>
-                  All source code is available for request from{' '}
-                  <a 
-                    href="mailto:William.Goldman@tufts.edu" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    William.Goldman@tufts.edu
-                  </a>
-                </p>
-              </div>
-            )}
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Projects</h2>
-            <div className="space-y-6">
-              {project.subProjects.map((subProject, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
-                  className="border-l-4 border-blue-500 dark:border-blue-400 pl-6 py-2"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {subProject.title}
-                    </h3>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                      {subProject.date}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {subProject.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* PDF Embed */}
-        {project.pdfUrl && (
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Project Report</h2>
+      {project.links && project.links.length > 0 && (
+        <section className="border-t border-rule pt-8">
+          <h2 className="text-lg font-semibold text-ink mb-3">Links</h2>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {project.links.map((link) => (
               <a
-                href={project.pdfUrl}
+                key={link.url}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                download
-                className="ml-auto flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 
-                           hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                className="text-[15px] font-medium text-ink text-link"
               >
-                <Download className="h-4 w-4" />
-                Download PDF
+                {link.label || (link.isGithub ? 'GitHub' : 'View project')}
               </a>
-            </div>
-            <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-lg">
-              <iframe
-                src={`${project.pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-                className="w-full h-[800px]"
-                title={`${project.title} Report`}
-              />
-            </div>
-          </motion.div>
-        )}
-
-        {/* Links */}
-        {project.links && project.links.length > 0 && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
-            className="border-t border-gray-200 dark:border-gray-800 pt-8"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Links</h3>
-            <div className="flex flex-wrap gap-4">
-              {project.links.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  {link.label || (link.isGithub ? 'GitHub' : 'View Project')}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
-
