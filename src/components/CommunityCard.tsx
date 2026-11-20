@@ -1,67 +1,42 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import Image from 'next/image';
 import { CommunityContribution } from '@/app/lib/impact';
+import TextLink from '@/components/TextLink';
 
+// Compact open source entry: logo tile, name, one-line summary, what I worked on
 export default function CommunityCard({
   name,
+  logo,
   description,
   highlights,
   repoUrl,
   links,
 }: CommunityContribution) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '80px' }}
-      transition={{ duration: 0.4 }}
-      className="flex flex-col h-full p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-800/60 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
-    >
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{name}</h3>
-        <a
-          href={repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-          aria-label={`${name} on GitHub`}
-        >
-          <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-        </a>
-      </div>
+    <article className="flex gap-4">
+      {/* Logos stay on white so dark-text marks remain readable in dark mode */}
+      <a
+        href={repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${name} on GitHub`}
+        className="relative shrink-0 h-20 w-28 sm:w-32 rounded-md bg-white ring-1 ring-gray-200 dark:ring-gray-700 overflow-hidden"
+      >
+        <Image src={logo} alt="" fill unoptimized className="object-contain p-1" />
+      </a>
 
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">{description}</p>
-
-      <ul className="space-y-1.5 mb-4">
-        {highlights.map((highlight) => (
-          <li
-            key={highlight}
-            className="text-sm text-gray-700 dark:text-gray-300 flex items-start gap-2"
-          >
-            <span className="text-blue-500 mt-1">•</span>
-            {highlight}
-          </li>
-        ))}
-      </ul>
-
-      {links && links.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
-          {links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-            >
+      <div className="min-w-0">
+        <h3 className="text-lg font-bold leading-tight text-gray-900 dark:text-white">{name}</h3>
+        <p className="mt-1 text-[15px] leading-snug text-gray-700 dark:text-gray-300">{description}</p>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{highlights.join(' · ')}</p>
+        <p className="mt-1.5 flex flex-wrap gap-x-5 text-sm">
+          <TextLink href={repoUrl}>GitHub</TextLink>
+          {links?.map((link) => (
+            <TextLink key={link.url} href={link.url}>
               {link.label}
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+            </TextLink>
           ))}
-        </div>
-      )}
-    </motion.article>
+        </p>
+      </div>
+    </article>
   );
 }

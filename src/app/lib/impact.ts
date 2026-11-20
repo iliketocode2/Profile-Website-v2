@@ -1,5 +1,6 @@
 export interface CommunityContribution {
   name: string;
+  logo: string; // Small logo shown on a white tile
   description: string;
   highlights: string[];
   repoUrl: string;
@@ -19,48 +20,36 @@ export interface TimelineEntry {
 export const communityContributions: CommunityContribution[] = [
   {
     name: 'Invent',
-    description:
-      'Contributing to the Invent framework, a PyScript-based platform for building creative websites!',
-    highlights: [
-      'Framework development and documentation',
-      'Created new widgets: Webcam, Donkey',
-    ],
+    logo: '/images/impact/invent.png',
+    description: 'A PyScript-based framework for building creative websites.',
+    highlights: ['Framework development and docs', 'New Webcam and Donkey widgets'],
     repoUrl: 'https://github.com/invent-framework/invent',
     links: [
       {
-        label: 'Contribution Report',
+        label: 'Contribution report',
         url: 'https://iliketocode2.github.io/invent/examples/final_report/index.html',
       },
     ],
   },
   {
     name: 'PyScript',
-    description:
-      'Contributing to PyScript, the open source platform for running Python in the browser.',
-    highlights: [
-      'Community contributions and issue resolution',
-      'Exploring PyScript integrations in education',
-    ],
+    logo: '/images/impact/pyscript.svg',
+    description: 'The open source platform for running Python in the browser.',
+    highlights: ['Issue fixes and community contributions', 'PyScript in education'],
     repoUrl: 'https://github.com/pyscript/pyscript',
   },
   {
     name: 'Generalized ADCS',
-    description:
-      'Currently the Open Source Community Manager for this Python framework for satellite attitude determination and control (ADCS).',
-    highlights: [
-      'Developed optimizations for running simulations',
-      'Creating simulation examples using the Tufts CubeSat mission',
-    ],
+    logo: '/images/impact/starlab.svg',
+    description: 'A Python framework for satellite attitude determination and control. I’m its open source community manager.',
+    highlights: ['Faster simulations', 'Examples built on the Tufts CubeSat mission'],
     repoUrl: 'https://github.com/nscheuer/Generalized_ADCS',
   },
   {
     name: 'Open OnDemand',
-    description:
-      'Writing new features for the next release of Open OnDemand!',
-    highlights: [
-      'Collapsible app list dropdowns',
-      'Customizeable pinned apps on the dashboard',
-    ],
+    logo: '/images/impact/open-ondemand.svg',
+    description: 'Writing features for the next release of the Open OnDemand HPC portal.',
+    highlights: ['Collapsible app list dropdowns', 'Customizable pinned apps'],
     repoUrl: 'https://github.com/OSC/ondemand',
   },
 ];
@@ -71,17 +60,21 @@ const timelineEntriesUnsorted: TimelineEntry[] = [
     sortDate: '2026-03',
     title: 'GOOD Conference Presentation',
     subtitle: 'Tufts Technology Services · Salt Lake City, UT',
-    description:
-      'Presented on open source contributions and research technology work at the GOOD conference for Tufts Technology Services.',
+    description: 'Talk on open source contributions and research technology work.',
     type: 'talk',
+    links: [
+      {
+        label: 'LinkedIn post',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7437886390618505216/',
+      },
+    ],
   },
   {
     date: 'April 2026',
     sortDate: '2026-04-19',
     title: 'Harvard HC³ Competition - 2nd Place',
     subtitle: 'Harvard University',
-    description:
-      'Placed 2nd in the first Harvard HC³ competition, working with Evan Zhang to write programatic solutions to various math problems.',
+    description: 'Wrote programmatic solutions to math problems with Evan Zhang.',
     type: 'award',
   },
   {
@@ -89,8 +82,7 @@ const timelineEntriesUnsorted: TimelineEntry[] = [
     sortDate: '2026-04-11',
     title: 'Tufts Datathon - Environmental Track Winner',
     subtitle: 'Tufts University',
-    description:
-      'Won the environmental track at the Tufts Datathon with a wildfire prediction model for the state of Florida.',
+    description: 'A wildfire prediction model for the state of Florida.',
     type: 'award',
   },
   {
@@ -98,8 +90,7 @@ const timelineEntriesUnsorted: TimelineEntry[] = [
     sortDate: '2026-02-22',
     title: 'JumboHack - AI Track Winner',
     subtitle: 'Tufts University',
-    description:
-      'Won the AI track at JumboHack 2026 with a GitHub action that automates accessibility checking for pull requests in GitHub.',
+    description: 'A GitHub Action that checks pull requests for accessibility issues.',
     type: 'award',
   },
 ];
