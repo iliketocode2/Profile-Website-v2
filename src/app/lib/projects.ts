@@ -2,6 +2,32 @@ import { Project } from './types'
 
 export const projects: Project[] = [
   {
+    title: "Space Invaders Tabletop Game",
+    date: "November 2026 | CircuitPython, KB2040, Stepper Motor, Laser Cutting",
+    sortDate: "2026-11",
+    size: "lg",
+    description: `A tabletop Space Invaders game for ME30. Invaders fall down a 3 × 8 LED matrix,
+    and you shoot back by driving a stepper-powered carriage along a rail with two arcade buttons:
+    moving the carriage under a column fires up that column. A spring wire on the carriage bridges
+    copper pads at each column, and the pads and limit switches share one analog pin through a
+    resistor ladder, so the game board can tell where the carriage is from a single voltage. A second
+    KB2040 drives a 1.3" OLED over a UART link, showing the score, lives, and win and game-over
+    animations. The enclosure is laser-cut 3 mm plywood with finger joints, and the deck lifts off as
+    a lid with all of the electronics attached.`,
+    imageUrl: "/images/Space Invaders/schematic.png",
+    images: [
+      "/images/Space Invaders/game.jpg",
+      "/images/Space Invaders/game-open.jpg"
+    ],
+    videoUrl: "/videos/space-invaders.mp4",
+    videoPoster: "/images/Space Invaders/video-poster.jpg",
+    tags: {
+      technologies: ["CircuitPython", "KB2040", "Stepper Motor", "L298N", "OLED", "Laser Cutting"],
+      categories: ["Electronics", "Game Development", "Manufacturing"]
+    },
+    discipline: "Mechanical Engineering"
+  },
+  {
     title: "Rogers Cup - Virtual Ping-Pong",
     date: "Fall 2026 | Python, JavaScript, Three.js, MediaPipe, OpenVINO, MQTT",
     sortDate: "2026-10",

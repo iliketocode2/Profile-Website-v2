@@ -14,6 +14,8 @@ export interface Project {
   description: string;
   imageUrl: string;
   images?: string[]; // Optional array of additional images for gallery/carousel
+  videoUrl?: string; // Optional MP4 shown in the project popup
+  videoPoster?: string; // Optional still frame shown before the video plays
   links?: { label: string; url: string; isGithub?: boolean }[];
   tags: {
     technologies: string[];

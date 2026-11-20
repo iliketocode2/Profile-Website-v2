@@ -118,6 +118,17 @@ function DetailBody({ project }: { project: Project }) {
         )}
       </div>
 
+      {project.videoUrl && (
+        <video
+          className="mt-4 w-full aspect-video rounded-xl bg-black"
+          src={project.videoUrl}
+          poster={project.videoPoster}
+          controls
+          playsInline
+          preload="metadata"
+        />
+      )}
+
       <div className="mt-4">
         <Gallery project={project} />
       </div>
