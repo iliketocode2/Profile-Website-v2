@@ -2,6 +2,40 @@ import { Project } from './types'
 
 export const projects: Project[] = [
   {
+    title: "Operation Lost and Found",
+    date: "November 2026 | ESP32, Raspberry Pi, Python, OpenCV, Arduino, TAK",
+    sortDate: "2026-11",
+    size: "lg",
+    description: `A search-and-rescue system built in 26 hours at the Code Metal Forge 2026 hackathon. Cheap
+    acoustic sensor nodes, about $15 each, are dropped onto a collapsed building, where they mesh over ESP-NOW
+    with no router or internet and listen for trapped survivors: tapping, voices and nearby phones. Each node
+    processes its own audio and sends only small event packets. A downward camera stitches a live map of the
+    floor and records where each node landed, and a Raspberry Pi field box fuses every node's readings into
+    an evidence heatmap. The result appears as a "look here" marker in TAK, the map software responders
+    already use. The drone that carries the camera and drops the nodes was designed as a concept; for the
+    demo, the camera was carried by hand.`,
+    imageUrl: "/images/Lost and Found/drone-concept.jpg",
+    images: [
+      "/images/Lost and Found/ops-dashboard.jpg",
+      "/images/Lost and Found/wintak-overlay.jpg",
+      "/images/Lost and Found/heatmap.jpg",
+      "/images/Lost and Found/hardware.jpg",
+      "/images/Lost and Found/system-overview.png",
+      "/images/Lost and Found/drone-exploded.jpg"
+    ],
+    videoUrl: "/videos/lost-and-found-mosaic.mp4",
+    videoPoster: "/images/Lost and Found/mosaic-poster.jpg",
+    links: [
+      { label: "Slides", url: "https://canva.link/wfmanuplspyfn6p", isGithub: false },
+      { label: "GitHub", url: "https://github.com/CodeMetalForge-Hackathon/Team-10-Operation-Lost-and-Found/tree/main", isGithub: true }
+    ],
+    tags: {
+      technologies: ["ESP32", "ESP-NOW", "Raspberry Pi", "Python", "OpenCV", "Arduino", "TAK", "CadQuery"],
+      categories: ["Software", "Electronics", "Robotics"]
+    },
+    discipline: "Computer Science"
+  },
+  {
     title: "Space Invaders Tabletop Game",
     date: "November 2026 | CircuitPython, KB2040, Stepper Motor, Laser Cutting",
     sortDate: "2026-11",
